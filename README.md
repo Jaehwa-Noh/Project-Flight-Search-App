@@ -22,4 +22,5 @@ There are 2 branchs for 1 practice, Compose and SwiftUI.
 
 
 ## Flight Search App (비행기 검색 앱)
-
+Search the departure aireport and show the route from departure airport to destination airport. (출발 공항을 검색하고 출발 공항과 도착 공항 비행기편을 보여줍니다.)
+And also you can bookmark the favorite routes. (그리고, 선호하는 항공편을 책갈피 지정할 수 있습니다.)
