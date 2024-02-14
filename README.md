@@ -27,7 +27,7 @@ And also you can bookmark the favorite routes. (그리고, 선호하는 항공�
 
 ## Specifications (명세서)   
 ### Requirements (요구 사항)
-• Provide a text field for the user to enter an airport name or International Air Transport Association (IATA) airport identifier. (공항 이름 또는 국제 항공 운송 협회 (IATA) 공항 고유 코드를 넣습니다.)   
+• Provide a text field for the user to enter an airport name or International Air Transport Association (IATA) airport identifier. (공항 이름 또는 국제 항공 운송 협회 (IATA) 공항 고유 코드를 적을 수 있는 텍스트 필드를 제공합니다.)   
 • Query the database to provide autocomplete suggestions as the user types. (사용자 입력을 쿼리로 이용해서 데이터베이스의 자료를 불러와 자동완성 제안을 보여줍니다.)   
 • When the user chooses a suggestion, generate a list of available flights from that airport, including the IATA identifier and airport name to other airports in the database. (사용자가 완성된 제안을 눌렀을 때, 해당 공항에서 이용 가능한 비행기를 보여주고, IATA 코드와 도착 공항 이름을 데이터베이스에서 불러와 보여줍니다.)   
 • Let the user save favorite individual routes. (사용자가 개별 항로를 선호하는 경로로 저장 할 수 있습니다.)   
