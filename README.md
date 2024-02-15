@@ -33,3 +33,13 @@ And also you can bookmark the favorite routes. (그리고, 선호하는 항공�
 • Let the user save favorite individual routes. (사용자가 개별 항로를 선호하는 경로로 저장 할 수 있습니다.)   
 • When no search query is entered, display all the user-selected favorite routes in a list. (검색 글자가 없을 때, 사용자가 저장한 선호 경로를 표시합니다.)    
 • Save the search text with Preferences DataStore. When the user reopens the app, the search text, if any, needs to prepopulate the text field with appropriate results from the database. (검색 글자를 DataStore에 저장하여 사용자가 다시 앱을 열었을 때, 검색 글자를 넣고, 검색 글자가 존재한다면, 검색 결과를 표시합니다.)   
+
+### Database (데이터베이스)
+#### airport table (공항 테이블)
+|Column (항목)|Data type (데이터 형식)|Description (설명)|
+|------|---------|-----------|
+|id|INTEGER|Unique identifier (primary key) (고유한 아이디 (프라이머리 키))|
+|iata_code|VARCHAR|3 letter IATA code (3 자리수 IATA 코드)|
+|name|VARCHAR|Full airport name (전체 공항 이름)|
+|passengers|INTEGER|Number of passengers per year (연간 이용 승객 수)|
+
