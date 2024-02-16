@@ -43,3 +43,10 @@ And also you can bookmark the favorite routes. (그리고, 선호하는 항공�
 |name|VARCHAR|Full airport name (전체 공항 이름)|
 |passengers|INTEGER|Number of passengers per year (연간 이용 승객 수)|
 
+#### favorite table (선호 테이블)
+|Column (항목)|Data type (데이터 형식)|Description (설명)|
+|------|---------|-----------|
+|id|INTEGER|Unique identifier (primary key) (고유한 아이디 (프라이머리 키))|
+|departure_code|VARCHAR|IATA code for departure (출발지 IATA 코드)|
+|destination_code|VARCHAR|IATA code for destination (도착지 IATA 코드)|
+
