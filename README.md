@@ -50,3 +50,6 @@ And also you can bookmark the favorite routes. (그리고, 선호하는 항공�
 |departure_code|VARCHAR|IATA code for departure (출발지 IATA 코드)|
 |destination_code|VARCHAR|IATA code for destination (도착지 IATA 코드)|
 
+## Resources (재료)
+### Database (데이터베이스)
+[flight_search.db](https://github.com/google-developer-training/android-basics-kotlin-sql-basics-app/blob/project/flight_search.db)
