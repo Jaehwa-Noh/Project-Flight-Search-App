@@ -34,6 +34,12 @@ And also you can bookmark the favorite routes. (그리고, 선호하는 항공�
 • When no search query is entered, display all the user-selected favorite routes in a list. (검색 글자가 없을 때, 사용자가 저장한 선호 경로를 표시합니다.)    
 • Save the search text with Preferences DataStore. When the user reopens the app, the search text, if any, needs to prepopulate the text field with appropriate results from the database. (검색 글자를 DataStore에 저장하여 사용자가 다시 앱을 열었을 때, 검색 글자를 넣고, 검색 글자가 존재한다면, 검색 결과를 표시합니다.)   
 
+### Full screen (전체 화면)
+|Search (검색)|Select (선택)|Empty (빈)|
+|------------|-------------|----------|
+|<img width="250" alt="Search (검색)" src="https://github.com/Jaehwa-Noh/Project-Flight-Search-App/assets/48680511/ca31fb60-919f-4979-aff1-4efef9c37cfe">|<img width="250" alt="Select (선택)" src="https://github.com/Jaehwa-Noh/Project-Flight-Search-App/assets/48680511/50704804-c54a-4759-9e48-302846eea671">|<img width="250" alt="Empty (빈)" src="https://github.com/Jaehwa-Noh/Project-Flight-Search-App/assets/48680511/b53060b8-dc7d-4d3a-8220-935918403952">|
+
+
 ### Database (데이터베이스)
 #### airport table (공항 테이블)
 |Column (항목)|Data type (데이터 형식)|Description (설명)|
