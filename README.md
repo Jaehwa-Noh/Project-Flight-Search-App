@@ -6,7 +6,7 @@ This main branch is the main directory.
 
 There are 2 branchs for 1 practice, Compose and SwiftUI.   
    
-• [Compose branch]   
+• [Compose branch](https://github.com/Jaehwa-Noh/Project-Flight-Search-App/tree/compose-flight-search-app)   
 • [SwiftUI branch]   
 
 
@@ -17,7 +17,7 @@ There are 2 branchs for 1 practice, Compose and SwiftUI.
 
 1개의 연습에 컴포즈와 스위프트유아이 2개의 브랜치가 있습니다.   
    
-• [컴포즈 브랜치]   
+• [컴포즈 브랜치](https://github.com/Jaehwa-Noh/Project-Flight-Search-App/tree/compose-flight-search-app)   
 • [스위프트유아이 브랜치]   
 
 
