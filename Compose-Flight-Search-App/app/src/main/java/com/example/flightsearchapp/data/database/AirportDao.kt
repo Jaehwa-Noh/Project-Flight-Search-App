@@ -13,5 +13,5 @@ interface AirportDao {
              WHERE (iata_code LIKE :query) OR (name LIKE :query)
         """
     )
-    fun getSuggestions(query: String): Flow<List<Airport>>
+    fun getSuggestionsStream(query: String): Flow<List<Airport>>
 }
