@@ -5,6 +5,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-fun SearchFlightListScreen(modifier: Modifier = Modifier) {
-    Text("List", modifier = modifier)
+fun SearchFlightListScreen(
+    modifier: Modifier = Modifier,
+    searchScreenUiState: SearchScreenUiState
+) {
+    if (searchScreenUiState is SearchScreenUiState.SuccessSuggests) {
+
+        Text("List ${searchScreenUiState.result}", modifier = modifier)
+
+    }
 }
