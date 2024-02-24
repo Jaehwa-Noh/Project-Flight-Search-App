@@ -15,10 +15,16 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun SearchScreen(modifier: Modifier = Modifier) {
     val keyboardController = LocalSoftwareKeyboardController.current
+    val searchScreenViewModel: SearchScreenViewModel = viewModel()
+    val searchScreenUiState =
+        searchScreenViewModel.searchScreenUiState.collectAsStateWithLifecycle()
+
 
     var searchQuery: String by rememberSaveable {
         mutableStateOf("")
@@ -29,6 +35,7 @@ fun SearchScreen(modifier: Modifier = Modifier) {
     }
 
     val onSearch: (String) -> Unit = {
+        searchScreenViewModel.getSuggestsStream(query = it)
         keyboardController?.hide()
     }
 
@@ -39,7 +46,10 @@ fun SearchScreen(modifier: Modifier = Modifier) {
             onQueryChange = onQueryChange,
             onSearch = onSearch,
         )
-        SearchFlightListScreen(modifier = Modifier.fillMaxSize())
+        SearchFlightListScreen(
+            modifier = Modifier.fillMaxSize(),
+            searchScreenUiState = searchScreenUiState.value,
+        )
     }
 }
 
