@@ -14,9 +14,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 
 @Composable
 fun SearchScreen(modifier: Modifier = Modifier) {
+    val keyboardController = LocalSoftwareKeyboardController.current
+
     var searchQuery: String by remember {
         mutableStateOf("")
     }
@@ -26,7 +29,7 @@ fun SearchScreen(modifier: Modifier = Modifier) {
     }
 
     val onSearch: (String) -> Unit = {
-
+        keyboardController?.hide()
     }
 
     Column(modifier = modifier) {
