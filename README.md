@@ -33,7 +33,7 @@ And also you can bookmark the favorite routes.
 - [x] • Provide a text field for the user to enter an airport name or International Air Transport Association (IATA) airport identifier.   
 (공항 이름 또는 국제 항공 운송 협회 (IATA) 공항 고유 코드를 적을 수 있는 텍스트 필드를 제공합니다.)   
 
-- [ ] • Query the database to provide autocomplete suggestions as the user types.   
+- [x] • Query the database to provide autocomplete suggestions as the user types.   
 (사용자 입력을 쿼리로 이용해서 데이터베이스의 자료를 불러와 자동완성 제안을 보여줍니다.)   
 
 - [ ] • When the user chooses a suggestion, generate a list of available flights from that airport, including the IATA identifier and airport name to other airports in the database.   
@@ -91,3 +91,8 @@ And also you can bookmark the favorite routes.
 ## Resources (재료)
 ### Database (데이터베이스)
 [flight_search.db](https://github.com/google-developer-training/android-basics-kotlin-sql-basics-app/blob/project/flight_search.db)
+
+## Problem Solve (문제 해결)
+### Compose (컴포즈)
+#### Using Room database LIKE with wildcard (룸 데이터베이스 LIKE 단어 와일드 카드와 같이 사용)
+• [Using Room database LIKE with wildcard (룸 데이터베이스 LIKE 단어 와일드 카드와 같이 사용)](https://shwoghk14.blogspot.com/2024/02/android-room-database-like-with-wildcard.html)
