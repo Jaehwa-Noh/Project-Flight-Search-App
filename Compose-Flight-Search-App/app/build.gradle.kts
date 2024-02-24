@@ -52,6 +52,13 @@ android {
 
 dependencies {
 
+    // room database
+    val roomVersion = "2.6.1"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+    ksp("androidx.room:room-compiler:$roomVersion")
+
+    // hilt
     implementation("com.google.dagger:hilt-android:2.50")
     ksp("com.google.dagger:hilt-android-compiler:2.50")
 
