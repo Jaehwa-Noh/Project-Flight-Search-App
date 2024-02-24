@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "airport")
 data class Airport(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Long,
 
     @ColumnInfo(name = "iata_code")
     val iataCode: String,
