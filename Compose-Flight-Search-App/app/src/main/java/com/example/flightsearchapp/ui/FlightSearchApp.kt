@@ -7,6 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun FlightSearchApp(modifier: Modifier = Modifier) {
@@ -16,9 +17,10 @@ fun FlightSearchApp(modifier: Modifier = Modifier) {
             FlightSearchAppTopBar()
         }
     ) { contentPadding ->
-        Text(
-            "Content",
-            modifier = Modifier.padding(contentPadding),
+        SearchScreen(
+            modifier
+                .padding(contentPadding)
+                .padding(horizontal = 8.dp)
         )
     }
 }
