@@ -30,12 +30,12 @@ fun SearchScreen(modifier: Modifier = Modifier) {
         mutableStateOf("")
     }
 
-    val onQueryChange: (String) -> Unit = {
-        searchQuery = it
+    val onQueryChange: (String) -> Unit = { currentSearchQuery ->
+        searchQuery = currentSearchQuery
+        searchScreenViewModel.setSavedSearchText(searchText = currentSearchQuery)
     }
 
     val onSearch: (String) -> Unit = {
-        searchScreenViewModel.getSuggestsStream(query = it)
         keyboardController?.hide()
     }
 
