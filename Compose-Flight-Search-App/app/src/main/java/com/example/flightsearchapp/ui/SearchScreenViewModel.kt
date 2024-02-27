@@ -9,12 +9,16 @@ import com.example.flightsearchapp.domain.SetSavedSearchTextUseCase
 import com.example.flightsearchapp.ui.model.SearchedAirport
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,6 +28,24 @@ class SearchScreenViewModel @Inject constructor(
     private val setSavedSearchTextUseCase: SetSavedSearchTextUseCase,
     private val getSuggestionsStreamUseCase: GetSuggestionsStreamUseCase,
 ) : ViewModel() {
+
+    private var _searchQuery = MutableStateFlow("")
+    val searchQuery = _searchQuery.asStateFlow()
+
+    init {
+        getInitSearchQuery()
+    }
+
+    private fun getInitSearchQuery() {
+        viewModelScope.launch {
+
+            _searchQuery.update { getSavedSearchTextStreamUseCase().firstOrNull() ?: "" }
+        }
+    }
+
+    fun setSearchQuery(searchQuery: String) {
+        _searchQuery.update { searchQuery }
+    }
 
     @OptIn(ExperimentalCoroutinesApi::class)
     val searchScreenUiState: StateFlow<SearchScreenUiState> =
