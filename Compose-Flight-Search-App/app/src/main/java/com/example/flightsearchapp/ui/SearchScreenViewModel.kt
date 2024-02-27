@@ -1,13 +1,21 @@
 package com.example.flightsearchapp.ui
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.flightsearchapp.data.database.Favorite
 import com.example.flightsearchapp.domain.GetSavedSearchTextStreamUseCase
 import com.example.flightsearchapp.domain.GetSuggestionsStreamUseCase
 import com.example.flightsearchapp.domain.SetSavedSearchTextUseCase
 import com.example.flightsearchapp.ui.model.SearchedAirport
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.mapLatest
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -16,30 +24,40 @@ class SearchScreenViewModel @Inject constructor(
     private val setSavedSearchTextUseCase: SetSavedSearchTextUseCase,
     private val getSuggestionsStreamUseCase: GetSuggestionsStreamUseCase,
 ) : ViewModel() {
-    private var _searchScreenUiState: MutableStateFlow<SearchScreenUiState> =
-        MutableStateFlow(SearchScreenUiState.EmptySearch())
 
-    val searchScreenUiState = _searchScreenUiState
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val searchScreenUiState: StateFlow<SearchScreenUiState> =
+        getSavedSearchTextStreamUseCase()
+            .flatMapLatest { savedSearchText ->
+                if (savedSearchText.isEmpty()) {
+                    flowOf(SearchScreenUiState.ShowFavorite())
+                } else {
+                    getSuggestionsStreamUseCase(query = savedSearchText)
+                        .mapLatest { searchedApi ->
+                            SearchScreenUiState.ShowSuggests(
+                                result = searchedApi
+                            )
+                        }
+                }
+            }
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(5_000),
+                initialValue = SearchScreenUiState.Init
+            )
 
-    fun getSuggestsStream(query: String) {
+    fun setSavedSearchText(searchText: String) {
         viewModelScope.launch {
-            _searchScreenUiState.value = SearchScreenUiState.Loading
-            airportsRepository.getSuggestionsStream(query)
-                .catch { exception ->
-                    _searchScreenUiState.value =
-                        SearchScreenUiState.Error(message = exception.localizedMessage ?: "")
-                }
-                .collectLatest {
-                    _searchScreenUiState.value = SearchScreenUiState.SuccessSuggests(result = it)
-                }
+            setSavedSearchTextUseCase(searchText = searchText)
         }
     }
 }
 
 sealed interface SearchScreenUiState {
-    data class EmptySearch(val result: List<Favorite> = emptyList()) : SearchScreenUiState
+    data class ShowFavorite(val result: List<Favorite> = emptyList()) : SearchScreenUiState
     data object Loading : SearchScreenUiState
     data class Error(val message: String) : SearchScreenUiState
-    data class SuccessSuggests(val result: List<SearchedAirport>) : SearchScreenUiState
+    data class ShowSuggests(val result: List<SearchedAirport>) : SearchScreenUiState
     data class Select(val result: String) : SearchScreenUiState
+    data object Init : SearchScreenUiState
 }
