@@ -9,11 +9,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.SearchBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -24,25 +21,25 @@ fun SearchScreen(modifier: Modifier = Modifier) {
     val searchScreenViewModel: SearchScreenViewModel = viewModel()
     val searchScreenUiState =
         searchScreenViewModel.searchScreenUiState.collectAsStateWithLifecycle()
+    val searchQuery =
+        searchScreenViewModel.searchQuery.collectAsStateWithLifecycle(initialValue = "")
 
-
-    var searchQuery: String by rememberSaveable {
-        mutableStateOf("")
-    }
+    val focusManager = LocalFocusManager.current
 
     val onQueryChange: (String) -> Unit = { currentSearchQuery ->
-        searchQuery = currentSearchQuery
+        searchScreenViewModel.setSearchQuery(currentSearchQuery)
         searchScreenViewModel.setSavedSearchText(searchText = currentSearchQuery)
     }
 
     val onSearch: (String) -> Unit = {
+        focusManager.clearFocus()
         keyboardController?.hide()
     }
 
     Column(modifier = modifier) {
         FlightSearchBar(
             modifier = Modifier.fillMaxWidth(),
-            query = searchQuery,
+            query = searchQuery.value,
             onQueryChange = onQueryChange,
             onSearch = onSearch,
         )
