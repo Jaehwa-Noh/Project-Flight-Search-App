@@ -1,20 +1,20 @@
 package com.example.flightsearchapp.ui
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.flightsearchapp.data.AirportsRepository
 import com.example.flightsearchapp.data.database.Favorite
+import com.example.flightsearchapp.domain.GetSavedSearchTextStreamUseCase
+import com.example.flightsearchapp.domain.GetSuggestionsStreamUseCase
+import com.example.flightsearchapp.domain.SetSavedSearchTextUseCase
 import com.example.flightsearchapp.ui.model.SearchedAirport
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class SearchScreenViewModel @Inject constructor(
-    private val airportsRepository: AirportsRepository
+    private val getSavedSearchTextStreamUseCase: GetSavedSearchTextStreamUseCase,
+    private val setSavedSearchTextUseCase: SetSavedSearchTextUseCase,
+    private val getSuggestionsStreamUseCase: GetSuggestionsStreamUseCase,
 ) : ViewModel() {
     private var _searchScreenUiState: MutableStateFlow<SearchScreenUiState> =
         MutableStateFlow(SearchScreenUiState.EmptySearch())
