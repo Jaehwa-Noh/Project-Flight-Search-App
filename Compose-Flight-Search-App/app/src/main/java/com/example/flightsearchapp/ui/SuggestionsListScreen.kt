@@ -15,6 +15,7 @@ import com.example.flightsearchapp.ui.theme.FlightSearchAppTheme
 fun SuggestionsListScreen(
     modifier: Modifier = Modifier,
     searchedAirports: List<SearchedAirport>,
+    onSuggestionClick: (Long) -> Unit
 ) {
     LazyColumn(modifier = modifier) {
         items(searchedAirports)
@@ -23,7 +24,8 @@ fun SuggestionsListScreen(
                 searchedAirport = searchedAirport,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 4.dp)
+                    .padding(horizontal = 4.dp),
+                onItemClick = onSuggestionClick
             )
         }
     }
@@ -45,7 +47,8 @@ fun SuggestListScreenPreview() {
                     iataCode = "DEF",
                     name = "Airport2"
                 ),
-            )
+            ),
+            onSuggestionClick = {}
         )
     }
 }

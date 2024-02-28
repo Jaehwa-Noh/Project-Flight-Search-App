@@ -1,5 +1,6 @@
 package com.example.flightsearchapp.ui
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
@@ -17,11 +18,15 @@ import com.example.flightsearchapp.ui.theme.FlightSearchAppTheme
 fun SuggestionsListItem(
     modifier: Modifier = Modifier,
     searchedAirport: SearchedAirport,
+    onItemClick: (Long) -> Unit
 ) {
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier,
+        modifier = modifier
+            .clickable {
+                onItemClick(searchedAirport.id)
+            },
     ) {
         Text(
             text = searchedAirport.iataCode,
@@ -43,7 +48,8 @@ fun SuggestListItemCardPreview() {
                 id = 1,
                 iataCode = "ABC",
                 name = "Airport"
-            )
+            ),
+            onItemClick = {},
         )
     }
 }
