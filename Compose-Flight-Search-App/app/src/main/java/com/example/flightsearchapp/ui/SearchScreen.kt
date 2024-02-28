@@ -24,6 +24,8 @@ fun SearchScreen(modifier: Modifier = Modifier) {
     val searchScreenViewModel: SearchScreenViewModel = viewModel()
     val searchScreenUiState =
         searchScreenViewModel.searchScreenUiState.collectAsStateWithLifecycle()
+    val showFlightUiState =
+        searchScreenViewModel.showFlightUiState.collectAsStateWithLifecycle()
     val searchQuery =
         searchScreenViewModel.searchQuery.collectAsStateWithLifecycle(initialValue = "")
 
@@ -51,29 +53,35 @@ fun SearchScreen(modifier: Modifier = Modifier) {
             modifier = Modifier.height(8.dp)
         )
 
-        when (searchScreenUiState.value) {
-            is SearchScreenUiState.ShowSuggests -> {
-                SuggestionsListScreen(
-                    suggestionAirportModels = (searchScreenUiState.value as SearchScreenUiState.ShowSuggests).result,
-                    onSuggestionClick = {
+        when (showFlightUiState.value) {
+            is ShowFlightUiState.Clear -> {
+                when (searchScreenUiState.value) {
+                    is SearchScreenUiState.ShowSuggests -> {
+                        SuggestionsListScreen(
+                            suggestionAirportModels = (searchScreenUiState.value as SearchScreenUiState.ShowSuggests).results,
+                            onSuggestionClick = {
+                                searchScreenViewModel.getAllFlights(it)
+                            }
+                        )
+                    }
+
+                    is SearchScreenUiState.ShowFavorite -> {
 
                     }
-                )
+
+
+                    else -> Unit
+                }
             }
 
-            is SearchScreenUiState.ShowFavorite -> {
-
-            }
-
-            is SearchScreenUiState.Select -> {
+            is ShowFlightUiState.SelectSuggest -> {
                 SearchFlightListScreen(
                     modifier = Modifier.fillMaxSize(),
-                    searchScreenUiState = searchScreenUiState.value,
+                    showFlightUiState = showFlightUiState.value,
                 )
             }
-
-            else -> Unit
         }
+
 
     }
 }
