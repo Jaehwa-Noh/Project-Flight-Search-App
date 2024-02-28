@@ -23,4 +23,13 @@ interface AirportDao {
         """
     )
     fun getDepartureAirportStream(departureId: Long): Flow<Airport>
+
+    @Query(
+        """
+        SELECT *
+          FROM airport
+         WHERE id != :departureId
+    """
+    )
+    fun getArriveAirportsStream(departureId: Long): Flow<List<Airport>>
 }
