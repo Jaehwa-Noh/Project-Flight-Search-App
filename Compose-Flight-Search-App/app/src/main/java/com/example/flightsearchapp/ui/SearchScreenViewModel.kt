@@ -6,7 +6,7 @@ import com.example.flightsearchapp.data.database.Favorite
 import com.example.flightsearchapp.domain.GetSavedSearchTextStreamUseCase
 import com.example.flightsearchapp.domain.GetSuggestionsStreamUseCase
 import com.example.flightsearchapp.domain.SetSavedSearchTextUseCase
-import com.example.flightsearchapp.ui.model.SearchedAirport
+import com.example.flightsearchapp.ui.model.SuggestionAirportModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -38,7 +38,6 @@ class SearchScreenViewModel @Inject constructor(
 
     private fun getInitSearchQuery() {
         viewModelScope.launch {
-
             _searchQuery.update { getSavedSearchTextStreamUseCase().firstOrNull() ?: "" }
         }
     }
@@ -79,7 +78,7 @@ sealed interface SearchScreenUiState {
     data class ShowFavorite(val result: List<Favorite> = emptyList()) : SearchScreenUiState
     data object Loading : SearchScreenUiState
     data class Error(val message: String) : SearchScreenUiState
-    data class ShowSuggests(val result: List<SearchedAirport>) : SearchScreenUiState
+    data class ShowSuggests(val result: List<SuggestionAirportModel>) : SearchScreenUiState
     data class Select(val result: String) : SearchScreenUiState
     data object Init : SearchScreenUiState
 }

@@ -54,7 +54,7 @@ fun SearchScreen(modifier: Modifier = Modifier) {
         when (searchScreenUiState.value) {
             is SearchScreenUiState.ShowSuggests -> {
                 SuggestionsListScreen(
-                    searchedAirports = (searchScreenUiState.value as SearchScreenUiState.ShowSuggests).result,
+                    suggestionAirportModels = (searchScreenUiState.value as SearchScreenUiState.ShowSuggests).result,
                     onSuggestionClick = {
 
                     }

@@ -8,20 +8,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.flightsearchapp.ui.model.SearchedAirport
+import com.example.flightsearchapp.ui.model.SuggestionAirportModel
 import com.example.flightsearchapp.ui.theme.FlightSearchAppTheme
 
 @Composable
 fun SuggestionsListScreen(
     modifier: Modifier = Modifier,
-    searchedAirports: List<SearchedAirport>,
+    suggestionAirportModels: List<SuggestionAirportModel>,
     onSuggestionClick: (Long) -> Unit
 ) {
     LazyColumn(modifier = modifier) {
-        items(searchedAirports)
+        items(suggestionAirportModels)
         { searchedAirport ->
             SuggestionsListItem(
-                searchedAirport = searchedAirport,
+                suggestionAirportModel = searchedAirport,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 4.dp),
@@ -36,13 +36,13 @@ fun SuggestionsListScreen(
 fun SuggestListScreenPreview() {
     FlightSearchAppTheme(dynamicColor = false) {
         SuggestionsListScreen(
-            searchedAirports = listOf(
-                SearchedAirport(
+            suggestionAirportModels = listOf(
+                SuggestionAirportModel(
                     id = 1,
                     iataCode = "ABC",
                     name = "Airport"
                 ),
-                SearchedAirport(
+                SuggestionAirportModel(
                     id = 2,
                     iataCode = "DEF",
                     name = "Airport2"

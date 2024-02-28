@@ -14,10 +14,10 @@ interface AirportsRepository {
 class InDiskAirportsRepository @Inject constructor(
     private val airportsDataSource: AirportsDataSource,
 ) : AirportsRepository {
-    override suspend fun getSuggestionsStream(query: String): Flow<List<SearchedAirport>> {
+    override suspend fun getSuggestionsStream(query: String): Flow<List<SuggestionAirportModel>> {
         return airportsDataSource.getSuggestionsStream(query = query).map {
             it.map { airport ->
-                SearchedAirport(
+                SuggestionAirportModel(
                     id = airport.id,
                     iataCode = airport.iataCode,
                     name = airport.name,
