@@ -3,9 +3,11 @@ package com.example.flightsearchapp.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.flightsearchapp.data.database.Favorite
+import com.example.flightsearchapp.domain.GetAllFlightsStreamUseCase
 import com.example.flightsearchapp.domain.GetSavedSearchTextStreamUseCase
 import com.example.flightsearchapp.domain.GetSuggestionsStreamUseCase
 import com.example.flightsearchapp.domain.SetSavedSearchTextUseCase
+import com.example.flightsearchapp.ui.model.FlightModel
 import com.example.flightsearchapp.ui.model.SuggestionAirportModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -13,6 +15,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
@@ -27,10 +30,14 @@ class SearchScreenViewModel @Inject constructor(
     private val getSavedSearchTextStreamUseCase: GetSavedSearchTextStreamUseCase,
     private val setSavedSearchTextUseCase: SetSavedSearchTextUseCase,
     private val getSuggestionsStreamUseCase: GetSuggestionsStreamUseCase,
+    private val getAllFlightsStreamUseCase: GetAllFlightsStreamUseCase,
 ) : ViewModel() {
 
     private var _searchQuery = MutableStateFlow("")
     val searchQuery = _searchQuery.asStateFlow()
+
+    private var _showFlightUiState = MutableStateFlow<ShowFlightUiState>(ShowFlightUiState.Clear)
+    val showFlightUiState = _showFlightUiState.asStateFlow()
 
     init {
         getInitSearchQuery()
@@ -50,6 +57,7 @@ class SearchScreenViewModel @Inject constructor(
     val searchScreenUiState: StateFlow<SearchScreenUiState> =
         getSavedSearchTextStreamUseCase()
             .flatMapLatest { savedSearchText ->
+                _showFlightUiState.value = ShowFlightUiState.Clear
                 if (savedSearchText.isEmpty()) {
                     flowOf(SearchScreenUiState.ShowFavorite())
                 } else {
@@ -72,6 +80,15 @@ class SearchScreenViewModel @Inject constructor(
             setSavedSearchTextUseCase(searchText = searchText)
         }
     }
+
+    fun getAllFlights(departureId: Long) {
+        viewModelScope.launch {
+            _showFlightUiState.value =
+                ShowFlightUiState.SelectSuggest(
+                    allFlights = getAllFlightsStreamUseCase(departureId = departureId).first()
+                )
+        }
+    }
 }
 
 sealed interface SearchScreenUiState {
@@ -81,4 +98,9 @@ sealed interface SearchScreenUiState {
     data class ShowSuggests(val result: List<SuggestionAirportModel>) : SearchScreenUiState
     data class Select(val result: String) : SearchScreenUiState
     data object Init : SearchScreenUiState
+}
+
+sealed interface ShowFlightUiState {
+    data object Clear : ShowFlightUiState
+    data class SelectSuggest(val allFlights: List<FlightModel>) : ShowFlightUiState
 }
