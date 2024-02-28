@@ -64,7 +64,7 @@ class SearchScreenViewModel @Inject constructor(
                     getSuggestionsStreamUseCase(query = savedSearchText)
                         .mapLatest { searchedApi ->
                             SearchScreenUiState.ShowSuggests(
-                                result = searchedApi
+                                results = searchedApi
                             )
                         }
                 }
@@ -92,11 +92,8 @@ class SearchScreenViewModel @Inject constructor(
 }
 
 sealed interface SearchScreenUiState {
-    data class ShowFavorite(val result: List<Favorite> = emptyList()) : SearchScreenUiState
-    data object Loading : SearchScreenUiState
-    data class Error(val message: String) : SearchScreenUiState
-    data class ShowSuggests(val result: List<SuggestionAirportModel>) : SearchScreenUiState
-    data class Select(val result: String) : SearchScreenUiState
+    data class ShowFavorite(val results: List<Favorite> = emptyList()) : SearchScreenUiState
+    data class ShowSuggests(val results: List<SuggestionAirportModel>) : SearchScreenUiState
     data object Init : SearchScreenUiState
 }
 
