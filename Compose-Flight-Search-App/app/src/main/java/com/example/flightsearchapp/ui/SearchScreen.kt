@@ -1,8 +1,10 @@
 package com.example.flightsearchapp.ui
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -12,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 
@@ -43,10 +46,35 @@ fun SearchScreen(modifier: Modifier = Modifier) {
             onQueryChange = onQueryChange,
             onSearch = onSearch,
         )
-        SearchFlightListScreen(
-            modifier = Modifier.fillMaxSize(),
-            searchScreenUiState = searchScreenUiState.value,
+
+        Spacer(
+            modifier = Modifier.height(8.dp)
         )
+
+        when (searchScreenUiState.value) {
+            is SearchScreenUiState.ShowSuggests -> {
+                SuggestionsListScreen(
+                    searchedAirports = (searchScreenUiState.value as SearchScreenUiState.ShowSuggests).result,
+                    onSuggestionClick = {
+
+                    }
+                )
+            }
+
+            is SearchScreenUiState.ShowFavorite -> {
+
+            }
+
+            is SearchScreenUiState.Select -> {
+                SearchFlightListScreen(
+                    modifier = Modifier.fillMaxSize(),
+                    searchScreenUiState = searchScreenUiState.value,
+                )
+            }
+
+            else -> Unit
+        }
+
     }
 }
 
