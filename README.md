@@ -45,7 +45,7 @@ And also you can bookmark the favorite routes.
 - [ ] • When no search query is entered, display all the user-selected favorite routes in a list.   
 (검색 글자가 없을 때, 사용자가 저장한 선호 경로를 표시합니다.)    
 
-- [ ] • Save the search text with Preferences DataStore. When the user reopens the app, the search text, if any, needs to prepopulate the text field with appropriate results from the database.   
+- [x] • Save the search text with Preferences DataStore. When the user reopens the app, the search text, if any, needs to prepopulate the text field with appropriate results from the database.   
 (검색 글자를 DataStore에 저장하여 사용자가 다시 앱을 열었을 때, 검색 글자를 넣고, 검색 글자가 존재한다면, 검색 결과를 표시합니다.)   
 
 
