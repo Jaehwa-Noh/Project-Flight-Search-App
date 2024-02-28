@@ -3,6 +3,7 @@ package com.example.flightsearchapp.ui
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -26,7 +27,8 @@ fun SuggestionsListItem(
         modifier = modifier
             .clickable {
                 onItemClick(searchedAirport.id)
-            },
+            }
+            .padding(vertical = 8.dp),
     ) {
         Text(
             text = searchedAirport.iataCode,
