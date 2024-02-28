@@ -26,7 +26,7 @@ interface AirportDao {
 
     @Query(
         """
-        SELECT *
+        SELECT DISTINCT *
           FROM airport
          WHERE id != :departureId
     """
