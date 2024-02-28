@@ -14,4 +14,13 @@ interface AirportDao {
         """
     )
     fun getSuggestionsStream(query: String): Flow<List<Airport>>
+
+    @Query(
+        """
+            SELECT *
+              FROM airport
+             WHERE id = :departureId
+        """
+    )
+    fun getDepartureAirportStream(departureId: Long): Flow<Airport>
 }
