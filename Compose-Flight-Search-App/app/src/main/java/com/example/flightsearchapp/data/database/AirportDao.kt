@@ -11,6 +11,7 @@ interface AirportDao {
             SELECT *
               FROM airport 
              WHERE (iata_code LIKE :query) OR (name LIKE '%' || :query || '%')
+             ORDER BY passengers DESC
         """
     )
     fun getSuggestionsStream(query: String): Flow<List<Airport>>
@@ -29,6 +30,7 @@ interface AirportDao {
         SELECT DISTINCT *
           FROM airport
          WHERE id != :departureId
+         ORDER BY passengers DESC
     """
     )
     fun getArriveAirportsStream(departureId: Long): Flow<List<Airport>>
