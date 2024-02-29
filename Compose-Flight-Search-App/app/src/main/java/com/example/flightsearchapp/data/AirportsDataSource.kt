@@ -8,7 +8,7 @@ import javax.inject.Singleton
 
 interface AirportsDataSource {
     fun getSuggestionsStream(query: String): Flow<List<Airport>>
-    fun getDepartureAirportStream(departureId: Long): Flow<Airport>
+    fun getDepartureAirportStream(departureId: Long): Flow<Airport?>
     fun getArriveAirportsStream(departureId: Long): Flow<List<Airport>>
 }
 
@@ -20,7 +20,7 @@ class LocalAirportsDataSource @Inject constructor(
         return airportDao.getSuggestionsStream(query = query)
     }
 
-    override fun getDepartureAirportStream(departureId: Long): Flow<Airport> {
+    override fun getDepartureAirportStream(departureId: Long): Flow<Airport?> {
         return airportDao.getDepartureAirportStream(departureId = departureId)
     }
 

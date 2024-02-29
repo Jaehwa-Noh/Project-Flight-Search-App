@@ -23,7 +23,7 @@ interface AirportDao {
              WHERE id = :departureId
         """
     )
-    fun getDepartureAirportStream(departureId: Long): Flow<Airport>
+    fun getDepartureAirportStream(departureId: Long): Flow<Airport?>
 
     @Query(
         """

@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetDepartureAirportStreamUseCase @Inject constructor(
     private val airportsRepository: AirportsRepository,
 ) {
-    operator fun invoke(departureId: Long): Flow<Airport> {
+    operator fun invoke(departureId: Long): Flow<Airport?> {
         return airportsRepository.getDepartureAirportStream(departureId)
     }
 }

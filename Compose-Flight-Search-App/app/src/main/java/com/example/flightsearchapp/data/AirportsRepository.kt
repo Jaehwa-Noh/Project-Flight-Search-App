@@ -9,7 +9,7 @@ import javax.inject.Singleton
 
 interface AirportsRepository {
     suspend fun getSuggestionsStream(query: String): Flow<List<SuggestionAirportModel>>
-    fun getDepartureAirportStream(departureId: Long): Flow<Airport>
+    fun getDepartureAirportStream(departureId: Long): Flow<Airport?>
     fun getArriveAirportsStream(departureId: Long): Flow<List<Airport>>
 }
 
@@ -29,7 +29,7 @@ class InDiskAirportsRepository @Inject constructor(
         }
     }
 
-    override fun getDepartureAirportStream(departureId: Long): Flow<Airport> {
+    override fun getDepartureAirportStream(departureId: Long): Flow<Airport?> {
         return airportsDataSource.getDepartureAirportStream(departureId = departureId)
     }
 
