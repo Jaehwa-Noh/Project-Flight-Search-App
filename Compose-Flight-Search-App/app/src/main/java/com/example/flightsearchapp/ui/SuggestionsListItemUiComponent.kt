@@ -8,7 +8,7 @@ import com.example.flightsearchapp.ui.model.SuggestionAirportModel
 import com.example.flightsearchapp.ui.theme.FlightSearchAppTheme
 
 @Composable
-fun SuggestionsListItem(
+fun SuggestionsListItemUiComponent(
     modifier: Modifier = Modifier,
     suggestionAirportModel: SuggestionAirportModel,
     onItemClick: (Long) -> Unit
@@ -26,9 +26,9 @@ fun SuggestionsListItem(
 
 @Preview(showBackground = true)
 @Composable
-fun SuggestListItemPreview() {
+fun SuggestListItemUiComponentPreview() {
     FlightSearchAppTheme(dynamicColor = false) {
-        SuggestionsListItem(
+        SuggestionsListItemUiComponent(
             suggestionAirportModel = SuggestionAirportModel(
                 id = 1,
                 iataCode = "ABC",

@@ -20,7 +20,7 @@ fun SuggestionsListScreen(
     LazyColumn(modifier = modifier) {
         items(suggestionAirportModels)
         { searchedAirport ->
-            SuggestionsListItem(
+            SuggestionsListItemUiComponent(
                 suggestionAirportModel = searchedAirport,
                 modifier = Modifier
                     .fillMaxWidth()
