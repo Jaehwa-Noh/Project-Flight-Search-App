@@ -5,10 +5,10 @@ import com.example.flightsearchapp.data.database.Airport
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetArriveAirportsStreamUseCase @Inject constructor(
+class GetAirportsStreamUseCase @Inject constructor(
     private val airportsRepository: AirportsRepository,
 ) {
-    operator fun invoke(departureId: Long): Flow<List<Airport>> {
-        return airportsRepository.getArriveAirportsStream(departureId = departureId)
+    operator fun invoke(airportId: Long): Flow<List<Airport>> {
+        return airportsRepository.getAirportsStream(airportId = airportId)
     }
 }

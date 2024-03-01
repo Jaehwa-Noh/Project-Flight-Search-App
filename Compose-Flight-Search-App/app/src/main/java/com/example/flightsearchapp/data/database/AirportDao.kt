@@ -20,18 +20,18 @@ interface AirportDao {
         """
             SELECT *
               FROM airport
-             WHERE id = :departureId
+             WHERE id = :airportId
         """
     )
-    fun getDepartureAirportStream(departureId: Long): Flow<Airport?>
+    fun getAirportNullStream(airportId: Long): Flow<Airport?>
 
     @Query(
         """
         SELECT DISTINCT *
           FROM airport
-         WHERE id != :departureId
+         WHERE id != :airportId
          ORDER BY passengers DESC
     """
     )
-    fun getArriveAirportsStream(departureId: Long): Flow<List<Airport>>
+    fun getAirportsStream(airportId: Long): Flow<List<Airport>>
 }

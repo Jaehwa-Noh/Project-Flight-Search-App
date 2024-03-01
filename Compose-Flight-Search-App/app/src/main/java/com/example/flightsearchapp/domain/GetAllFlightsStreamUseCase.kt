@@ -12,19 +12,19 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class GetAllFlightsStreamUseCase @Inject constructor(
-    private val getArriveAirportsStreamUseCase: GetArriveAirportsStreamUseCase,
-    private val getDepartureAirportStreamUseCase: GetDepartureAirportStreamUseCase,
+    private val getAirportsStreamUseCase: GetAirportsStreamUseCase,
+    private val getAirportNullStreamUseCase: GetAirportNullStreamUseCase,
     private val getAllFavoritesStreamUseCase: GetAllFavoritesStreamUseCase,
     @DispatcherDefault private val defaultDispatcher: CoroutineDispatcher,
 ) {
     @OptIn(ExperimentalCoroutinesApi::class)
     operator fun invoke(departureId: Long): Flow<List<FlightModel>> {
-        return getDepartureAirportStreamUseCase(departureId = departureId).flatMapLatest { departureAirport ->
+        return getAirportNullStreamUseCase(airportId = departureId).flatMapLatest { departureAirport ->
             if (departureAirport == null) {
                 flowOf(emptyList())
             } else {
                 combine(
-                    getArriveAirportsStreamUseCase(departureId = departureId),
+                    getAirportsStreamUseCase(airportId = departureId),
                     getAllFavoritesStreamUseCase(),
                 ) { arriveAirports, favorites ->
                     withContext(defaultDispatcher) {
