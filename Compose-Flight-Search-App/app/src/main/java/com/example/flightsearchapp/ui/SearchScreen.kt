@@ -22,6 +22,8 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.flightsearchapp.ui.flight.FlightsListScreen
+import com.example.flightsearchapp.ui.suggestion.SuggestionsListScreen
 
 @Composable
 fun SearchScreen(modifier: Modifier = Modifier) {
