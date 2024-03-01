@@ -3,9 +3,11 @@ package com.example.flightsearchapp.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.flightsearchapp.data.database.Favorite
+import com.example.flightsearchapp.domain.DeleteFavoriteUseCase
 import com.example.flightsearchapp.domain.GetAllFlightsStreamUseCase
 import com.example.flightsearchapp.domain.GetSavedSearchTextStreamUseCase
 import com.example.flightsearchapp.domain.GetSuggestionsStreamUseCase
+import com.example.flightsearchapp.domain.InsertFavoriteUseCase
 import com.example.flightsearchapp.domain.SetSavedSearchTextUseCase
 import com.example.flightsearchapp.ui.model.FlightModel
 import com.example.flightsearchapp.ui.model.SuggestionAirportModel
@@ -30,6 +32,8 @@ class SearchScreenViewModel @Inject constructor(
     private val setSavedSearchTextUseCase: SetSavedSearchTextUseCase,
     private val getSuggestionsStreamUseCase: GetSuggestionsStreamUseCase,
     private val getAllFlightsStreamUseCase: GetAllFlightsStreamUseCase,
+    private val insertFavoriteUseCase: InsertFavoriteUseCase,
+    private val deleteFavoriteUseCase: DeleteFavoriteUseCase,
 ) : ViewModel() {
 
     private var _searchQuery = MutableStateFlow("")
@@ -101,6 +105,24 @@ class SearchScreenViewModel @Inject constructor(
     fun setDepartureId(departureId: Long) {
         departureIdStream.update {
             departureId
+        }
+    }
+
+    fun insertFavorite(departureCode: String, arriveCode: String) {
+        viewModelScope.launch {
+            insertFavoriteUseCase(
+                departureCode = departureCode,
+                arriveCode = arriveCode,
+            )
+        }
+    }
+
+    fun deleteFavorite(departureCode: String, arriveCode: String) {
+        viewModelScope.launch {
+            deleteFavoriteUseCase(
+                departureCode = departureCode,
+                arriveCode = arriveCode,
+            )
         }
     }
 }
