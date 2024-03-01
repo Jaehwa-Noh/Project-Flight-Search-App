@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-fun SearchFlightListScreen(
+fun FlightsListScreen(
     modifier: Modifier = Modifier,
     searchScreenUiState: SearchScreenUiState
 ) {

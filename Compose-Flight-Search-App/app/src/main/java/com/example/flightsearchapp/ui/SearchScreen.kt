@@ -88,7 +88,7 @@ fun SearchScreen(modifier: Modifier = Modifier) {
             }
 
             is ShowFlightUiState.SelectSuggest -> {
-                SearchFlightListScreen(
+                FlightsListScreen(
                     modifier = Modifier.fillMaxSize(),
                     showFlightUiState = showFlightUiState.value,
                 )
