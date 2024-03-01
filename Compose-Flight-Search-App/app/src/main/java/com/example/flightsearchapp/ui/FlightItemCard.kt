@@ -2,6 +2,7 @@ package com.example.flightsearchapp.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Star
@@ -26,10 +27,18 @@ fun FlightItemCard(
 ) {
     Card(
         onClick = { },
-        modifier = modifier,
+        modifier = modifier
+            .padding(8.dp)
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Column(modifier = Modifier.padding(8.dp)) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            Column(
+                modifier = Modifier
+                    .padding(8.dp)
+                    .weight(1f)
+            ) {
                 Text(
                     "DEPART",
                     style = MaterialTheme.typography.labelMedium,
@@ -51,7 +60,9 @@ fun FlightItemCard(
                 )
             }
 
-            IconButton(onClick = { }) {
+            IconButton(
+                onClick = { }
+            ) {
                 Icon(
                     imageVector = Icons.Rounded.Star,
 
