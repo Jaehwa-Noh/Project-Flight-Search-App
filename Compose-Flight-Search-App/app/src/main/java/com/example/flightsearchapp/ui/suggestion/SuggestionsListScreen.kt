@@ -1,4 +1,4 @@
-package com.example.flightsearchapp.ui
+package com.example.flightsearchapp.ui.suggestion
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding

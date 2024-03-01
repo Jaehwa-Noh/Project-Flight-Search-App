@@ -1,9 +1,10 @@
-package com.example.flightsearchapp.ui
+package com.example.flightsearchapp.ui.suggestion
 
 import androidx.compose.foundation.clickable
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.flightsearchapp.ui.AirportInfoUiComponent
 import com.example.flightsearchapp.ui.model.SuggestionAirportModel
 import com.example.flightsearchapp.ui.theme.FlightSearchAppTheme
 
