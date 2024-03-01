@@ -43,7 +43,7 @@ fun SuggestionsListItem(
 
 @Preview(showBackground = true)
 @Composable
-fun SuggestListItemCardPreview() {
+fun SuggestListItemPreview() {
     FlightSearchAppTheme(dynamicColor = false) {
         SuggestionsListItem(
             suggestionAirportModel = SuggestionAirportModel(
