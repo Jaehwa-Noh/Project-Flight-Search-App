@@ -22,8 +22,8 @@ interface FavoriteDao {
     @Query(
         """
             DELETE FROM favorite
-             WHERE id = :favoriteId
+             WHERE departure_code = :departureCode AND destination_code = :arriveCode
         """
     )
-    fun delete(favoriteId: Long)
+    fun delete(departureCode: String, arriveCode: String)
 }
