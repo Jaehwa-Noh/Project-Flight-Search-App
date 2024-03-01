@@ -50,13 +50,13 @@ And also you can bookmark the favorite routes.
 
 
 #### Additional requirements (추가 요구 사항)
-- [ ] • Search for autocomplete suggestions in the airport table. Keep in mind that the user might already know the airport code, so you need to check their input against the iata_code column, in addition to the name column, when searching for text. Remember that you can use the LIKE keyword to perform text searches.   
+- [x] • Search for autocomplete suggestions in the airport table. Keep in mind that the user might already know the airport code, so you need to check their input against the iata_code column, in addition to the name column, when searching for text. Remember that you can use the LIKE keyword to perform text searches.   
 (공항 테이블에서 자동완성 제안을 위한 공항을 찾습니다. 사용자는 이미 공항 코드를 알고 있다고 가정합니다. 그래서 당신은 iata_code 컬럼을 확인하면 됩니다. 추가적으로 사용자가 이름으로 검색할 때에는 이름 컬럼에서 찾습니다. 당신은 LIKE 단어를 사용하여 글 찾기를 수행할 수 있다는 것을 기억하세요.)   
 
-- [ ] • Show more frequently visited airports in descending order by sorting on the passengers column.   
+- [x] • Show more frequently visited airports in descending order by sorting on the passengers column.   
 (이용자가 많은 공항을 승객 칼럼의 수로 내림 차순 정렬하여 보여주세요.)   
 
-- [ ] • Assume that every airport has flights to every other airport in the database (except for itself).   
+- [x] • Assume that every airport has flights to every other airport in the database (except for itself).   
 (모든 공항은 다른 공항으로 가는 항공기를 데이터베이스에 저장되어 있다고 가정합니다. (출발 공항 제외))   
 
 - [ ] • When no text is in the search box, display a list of favorite flights, showing the departure and destination. As the favorite table only includes columns for the airport codes, you're not expected to show the airport names in this list.   
@@ -94,5 +94,5 @@ And also you can bookmark the favorite routes.
 
 ## Problem Solve (문제 해결)
 ### Compose (컴포즈)
-#### Using Room database LIKE with wildcard (룸 데이터베이스 LIKE 단어 와일드 카드와 같이 사용)
-• [Using Room database LIKE with wildcard (룸 데이터베이스 LIKE 단어 와일드 카드와 같이 사용)](https://shwoghk14.blogspot.com/2024/02/android-room-database-like-with-wildcard.html)
+#### [Using Room database LIKE with wildcard (룸 데이터베이스 LIKE 단어 와일드 카드와 같이 사용)](https://shwoghk14.blogspot.com/2024/02/android-room-database-like-with-wildcard.html)
+#### [Row child goes out of the screen (Row 자식이 화면 밖으로 나감)](https://shwoghk14.blogspot.com/2024/03/android-compose-row-child-goes-out-of.html)
