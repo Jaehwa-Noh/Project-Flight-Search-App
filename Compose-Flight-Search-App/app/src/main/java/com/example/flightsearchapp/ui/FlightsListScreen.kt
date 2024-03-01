@@ -11,7 +11,12 @@ import com.example.flightsearchapp.ui.theme.FlightSearchAppTheme
 @Composable
 fun FlightsListScreen(
     modifier: Modifier = Modifier,
-    showFlightUiState: ShowFlightUiState
+    showFlightUiState: ShowFlightUiState,
+    onFavoriteClick: (
+        departureIata: String,
+        arriveIata: String,
+        isBookmarked: Boolean,
+    ) -> Unit,
 ) {
     if (showFlightUiState is ShowFlightUiState.SelectSuggest) {
         LazyColumn(modifier = modifier) {
@@ -21,7 +26,10 @@ fun FlightsListScreen(
                     it.id
                 },
             ) { flight ->
-                FlightItemCardUiComponent(flight = flight)
+                FlightItemCardUiComponent(
+                    flight = flight,
+                    onFavoriteClick = onFavoriteClick
+                )
             }
         }
     }
@@ -52,7 +60,8 @@ fun FlightsListScreenPreview() {
                         isBookmarked = true,
                     ),
                 ),
-            )
+            ),
+            onFavoriteClick = { _, _, _ -> },
         )
     }
 }

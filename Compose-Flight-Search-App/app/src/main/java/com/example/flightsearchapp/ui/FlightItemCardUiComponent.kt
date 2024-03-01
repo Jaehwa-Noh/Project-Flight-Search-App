@@ -24,9 +24,13 @@ import com.example.flightsearchapp.ui.theme.FlightSearchAppTheme
 fun FlightItemCardUiComponent(
     modifier: Modifier = Modifier,
     flight: FlightModel,
+    onFavoriteClick: (
+        departureIata: String,
+        arriveIata: String,
+        isBookmarked: Boolean,
+    ) -> Unit,
 ) {
     Card(
-        onClick = { },
         modifier = modifier
             .padding(8.dp)
     ) {
@@ -61,7 +65,13 @@ fun FlightItemCardUiComponent(
             }
 
             IconButton(
-                onClick = { }
+                onClick = {
+                    onFavoriteClick(
+                        flight.departureIataCode,
+                        flight.arriveIataCode,
+                        flight.isBookmarked,
+                    )
+                }
             ) {
                 Icon(
                     imageVector = Icons.Rounded.Star,
@@ -91,7 +101,9 @@ fun FlightItemCardUiComponentPreview() {
                 arriveIataCode = "EFG",
                 arriveName = "Arrive Airport",
                 isBookmarked = false,
-            )
+            ),
+            onFavoriteClick = { _, _, _ ->
+            }
         )
     }
 }
