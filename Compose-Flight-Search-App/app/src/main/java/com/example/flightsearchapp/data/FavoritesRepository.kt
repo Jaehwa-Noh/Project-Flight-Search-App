@@ -6,8 +6,8 @@ import javax.inject.Inject
 
 interface FavoritesRepository {
     fun getFavoritesStream(): Flow<List<Favorite>>
-    fun insertFavorite(favorite: Favorite)
-    fun deleteFavorite(favoriteId: Long)
+    suspend fun insertFavorite(favorite: Favorite)
+    suspend fun deleteFavorite(departureCode: String, arriveCode: String)
 }
 
 class InDiskFavoritesRepository @Inject constructor(
@@ -17,11 +17,14 @@ class InDiskFavoritesRepository @Inject constructor(
         return favoritesDataSource.getFavoritesStream()
     }
 
-    override fun insertFavorite(favorite: Favorite) {
+    override suspend fun insertFavorite(favorite: Favorite) {
         favoritesDataSource.insertFavorite(favorite = favorite)
     }
 
-    override fun deleteFavorite(favoriteId: Long) {
-        favoritesDataSource.deleteFavorite(favoriteId = favoriteId)
+    override suspend fun deleteFavorite(departureCode: String, arriveCode: String) {
+        favoritesDataSource.deleteFavorite(
+            departureCode = departureCode,
+            arriveCode = arriveCode,
+        )
     }
 }
