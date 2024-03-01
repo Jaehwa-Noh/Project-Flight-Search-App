@@ -1,4 +1,4 @@
-package com.example.flightsearchapp.ui
+package com.example.flightsearchapp.ui.flight
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.flightsearchapp.ui.AirportInfoUiComponent
 import com.example.flightsearchapp.ui.model.FlightModel
 import com.example.flightsearchapp.ui.theme.FlightSearchAppTheme
 
