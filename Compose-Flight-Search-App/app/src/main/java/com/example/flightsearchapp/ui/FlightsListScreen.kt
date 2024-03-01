@@ -21,7 +21,7 @@ fun FlightsListScreen(
                     it.id
                 },
             ) { flight ->
-                FlightItemCard(flight = flight)
+                FlightItemCardUiComponent(flight = flight)
             }
         }
     }

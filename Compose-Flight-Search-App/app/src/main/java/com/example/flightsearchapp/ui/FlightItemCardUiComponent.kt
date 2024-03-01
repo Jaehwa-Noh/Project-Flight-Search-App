@@ -21,7 +21,7 @@ import com.example.flightsearchapp.ui.model.FlightModel
 import com.example.flightsearchapp.ui.theme.FlightSearchAppTheme
 
 @Composable
-fun FlightItemCard(
+fun FlightItemCardUiComponent(
     modifier: Modifier = Modifier,
     flight: FlightModel,
 ) {
@@ -81,9 +81,9 @@ fun FlightItemCard(
 
 @Preview(showBackground = true)
 @Composable
-fun FlightItemCardPreview() {
+fun FlightItemCardUiComponentPreview() {
     FlightSearchAppTheme(dynamicColor = false) {
-        FlightItemCard(
+        FlightItemCardUiComponent(
             flight = FlightModel(
                 id = "1",
                 departureIataCode = "ABC",
