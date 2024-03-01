@@ -15,7 +15,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
@@ -36,28 +35,32 @@ class SearchScreenViewModel @Inject constructor(
     private var _searchQuery = MutableStateFlow("")
     val searchQuery = _searchQuery.asStateFlow()
 
-    private var _showFlightUiState = MutableStateFlow<ShowFlightUiState>(ShowFlightUiState.Clear)
-    val showFlightUiState = _showFlightUiState.asStateFlow()
+    private var departureIdStream: MutableStateFlow<Long> = MutableStateFlow(-1)
 
-    init {
-        getInitSearchQuery()
-    }
-
-    private fun getInitSearchQuery() {
-        viewModelScope.launch {
-            _searchQuery.update { getSavedSearchTextStreamUseCase().firstOrNull() ?: "" }
+    @OptIn(ExperimentalCoroutinesApi::class)
+    val showFlightUiState: StateFlow<ShowFlightUiState> =
+        departureIdStream.flatMapLatest { departureId ->
+            getAllFlightsStreamUseCase(departureId = departureId).flatMapLatest { flightModels ->
+                if (flightModels.isEmpty()) {
+                    flowOf(ShowFlightUiState.Clear)
+                } else {
+                    flowOf(ShowFlightUiState.SelectSuggest(allFlights = flightModels))
+                }
+            }
         }
-    }
-
-    fun setSearchQuery(searchQuery: String) {
-        _searchQuery.update { searchQuery }
-    }
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(5_000),
+                initialValue = ShowFlightUiState.Clear
+            )
 
     @OptIn(ExperimentalCoroutinesApi::class)
     val searchScreenUiState: StateFlow<SearchScreenUiState> =
         getSavedSearchTextStreamUseCase()
             .flatMapLatest { savedSearchText ->
-                _showFlightUiState.value = ShowFlightUiState.Clear
+                departureIdStream.update {
+                    -1L
+                }
                 if (savedSearchText.isEmpty()) {
                     flowOf(SearchScreenUiState.ShowFavorite())
                 } else {
@@ -75,18 +78,29 @@ class SearchScreenViewModel @Inject constructor(
                 initialValue = SearchScreenUiState.Init
             )
 
+    init {
+        getInitSearchQuery()
+    }
+
+    private fun getInitSearchQuery() {
+        viewModelScope.launch {
+            _searchQuery.update { getSavedSearchTextStreamUseCase().firstOrNull() ?: "" }
+        }
+    }
+
+    fun setSearchQuery(searchQuery: String) {
+        _searchQuery.update { searchQuery }
+    }
+
     fun setSavedSearchText(searchText: String) {
         viewModelScope.launch {
             setSavedSearchTextUseCase(searchText = searchText)
         }
     }
 
-    fun getAllFlights(departureId: Long) {
-        viewModelScope.launch {
-            _showFlightUiState.value =
-                ShowFlightUiState.SelectSuggest(
-                    allFlights = getAllFlightsStreamUseCase(departureId = departureId).first()
-                )
+    fun setDepartureId(departureId: Long) {
+        departureIdStream.update {
+            departureId
         }
     }
 }
