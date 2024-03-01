@@ -13,13 +13,13 @@ import javax.inject.Inject
 
 class GetAllFlightsStreamUseCase @Inject constructor(
     private val getAirportsStreamUseCase: GetAirportsStreamUseCase,
-    private val getAirportNullStreamUseCase: GetAirportNullStreamUseCase,
+    private val getAirportNullByIdStreamUseCase: GetAirportNullByIdStreamUseCase,
     private val getAllFavoritesStreamUseCase: GetAllFavoritesStreamUseCase,
     @DispatcherDefault private val defaultDispatcher: CoroutineDispatcher,
 ) {
     @OptIn(ExperimentalCoroutinesApi::class)
     operator fun invoke(departureId: Long): Flow<List<FlightModel>> {
-        return getAirportNullStreamUseCase(airportId = departureId).flatMapLatest { departureAirport ->
+        return getAirportNullByIdStreamUseCase(airportId = departureId).flatMapLatest { departureAirport ->
             if (departureAirport == null) {
                 flowOf(emptyList())
             } else {
