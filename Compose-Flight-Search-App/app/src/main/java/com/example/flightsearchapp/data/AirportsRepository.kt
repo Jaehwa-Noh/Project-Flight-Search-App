@@ -9,7 +9,7 @@ import javax.inject.Singleton
 
 interface AirportsRepository {
     suspend fun getSuggestionsStream(query: String): Flow<List<SuggestionAirportModel>>
-    fun getAirportNullStream(airportId: Long): Flow<Airport?>
+    fun getAirportNullByIdStream(airportId: Long): Flow<Airport?>
     fun getAirportsStream(airportId: Long): Flow<List<Airport>>
 }
 
@@ -29,8 +29,8 @@ class InDiskAirportsRepository @Inject constructor(
         }
     }
 
-    override fun getAirportNullStream(airportId: Long): Flow<Airport?> {
-        return airportsDataSource.getAirportNullStream(airportId = airportId)
+    override fun getAirportNullByIdStream(airportId: Long): Flow<Airport?> {
+        return airportsDataSource.getAirportNullByIdStream(airportId = airportId)
     }
 
     override fun getAirportsStream(airportId: Long): Flow<List<Airport>> {

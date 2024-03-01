@@ -9,6 +9,6 @@ class GetAirportNullStreamUseCase @Inject constructor(
     private val airportsRepository: AirportsRepository,
 ) {
     operator fun invoke(airportId: Long): Flow<Airport?> {
-        return airportsRepository.getAirportNullStream(airportId)
+        return airportsRepository.getAirportNullByIdStream(airportId)
     }
 }

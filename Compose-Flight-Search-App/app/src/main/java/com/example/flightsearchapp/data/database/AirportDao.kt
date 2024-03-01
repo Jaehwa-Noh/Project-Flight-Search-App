@@ -23,7 +23,7 @@ interface AirportDao {
              WHERE id = :airportId
         """
     )
-    fun getAirportNullStream(airportId: Long): Flow<Airport?>
+    fun getAirportNullByIdStream(airportId: Long): Flow<Airport?>
 
     @Query(
         """
