@@ -105,6 +105,19 @@ fun SearchScreen(modifier: Modifier = Modifier) {
                 FlightsListScreen(
                     modifier = Modifier.fillMaxSize(),
                     showFlightUiState = showFlightUiState.value,
+                    onFavoriteClick = { departureIata, arriveIata, isBookmarked: Boolean ->
+                        if (isBookmarked) {
+                            searchScreenViewModel.deleteFavorite(
+                                departureCode = departureIata,
+                                arriveCode = arriveIata,
+                            )
+                        } else {
+                            searchScreenViewModel.insertFavorite(
+                                departureCode = departureIata,
+                                arriveCode = arriveIata,
+                            )
+                        }
+                    },
                 )
             }
         }
