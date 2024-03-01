@@ -1,5 +1,7 @@
 package com.example.flightsearchapp.ui
 
+import android.app.Activity
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,6 +14,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.SearchBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
@@ -41,6 +44,16 @@ fun SearchScreen(modifier: Modifier = Modifier) {
         keyboardController?.hide()
     }
 
+    val activity = (LocalContext.current as? Activity)
+
+    BackHandler {
+        if (showFlightUiState.value !is ShowFlightUiState.SelectSuggest) {
+            activity?.finish()
+            return@BackHandler
+        }
+        searchScreenViewModel.setDepartureId(-1)
+    }
+
     Column(modifier = modifier) {
         FlightSearchBar(
             modifier = Modifier.fillMaxWidth(),
@@ -60,7 +73,8 @@ fun SearchScreen(modifier: Modifier = Modifier) {
                         SuggestionsListScreen(
                             suggestionAirportModels = (searchScreenUiState.value as SearchScreenUiState.ShowSuggests).results,
                             onSuggestionClick = {
-                                searchScreenViewModel.getAllFlights(it)
+                                onSearch("")
+                                searchScreenViewModel.setDepartureId(it)
                             }
                         )
                     }
@@ -68,7 +82,6 @@ fun SearchScreen(modifier: Modifier = Modifier) {
                     is SearchScreenUiState.ShowFavorite -> {
 
                     }
-
 
                     else -> Unit
                 }
@@ -81,8 +94,6 @@ fun SearchScreen(modifier: Modifier = Modifier) {
                 )
             }
         }
-
-
     }
 }
 
