@@ -5,8 +5,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-fun AirportItemCard(modifier: Modifier = Modifier) {
+fun FlightItemCard(modifier: Modifier = Modifier) {
     Card(onClick = {  }) {
-        
+
     }
 }
