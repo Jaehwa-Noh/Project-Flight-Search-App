@@ -27,6 +27,15 @@ interface AirportDao {
 
     @Query(
         """
+            SELECT *
+              FROM airport
+             WHERE iata_code = :airportCode
+        """
+    )
+    suspend fun getAirportByCode(airportCode: String): Airport
+
+    @Query(
+        """
         SELECT DISTINCT *
           FROM airport
          WHERE id != :airportId
