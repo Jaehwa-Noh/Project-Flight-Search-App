@@ -2,8 +2,8 @@ package com.example.flightsearchapp.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.flightsearchapp.data.database.Favorite
 import com.example.flightsearchapp.domain.DeleteFavoriteUseCase
+import com.example.flightsearchapp.domain.GetAllFavoriteFlightsStreamUseCase
 import com.example.flightsearchapp.domain.GetAllFlightsStreamUseCase
 import com.example.flightsearchapp.domain.GetSavedSearchTextStreamUseCase
 import com.example.flightsearchapp.domain.GetSuggestionsStreamUseCase
@@ -34,6 +34,7 @@ class SearchScreenViewModel @Inject constructor(
     private val getAllFlightsStreamUseCase: GetAllFlightsStreamUseCase,
     private val insertFavoriteUseCase: InsertFavoriteUseCase,
     private val deleteFavoriteUseCase: DeleteFavoriteUseCase,
+    private val getAllFavoritesFlightsStreamUseCase: GetAllFavoriteFlightsStreamUseCase,
 ) : ViewModel() {
 
     private var _searchQuery = MutableStateFlow("")
@@ -66,7 +67,9 @@ class SearchScreenViewModel @Inject constructor(
                     -1L
                 }
                 if (savedSearchText.isEmpty()) {
-                    flowOf(SearchScreenUiState.ShowFavorite())
+                    getAllFavoritesFlightsStreamUseCase().flatMapLatest { favorites ->
+                        flowOf(SearchScreenUiState.ShowFavorite(results = favorites))
+                    }
                 } else {
                     getSuggestionsStreamUseCase(query = savedSearchText)
                         .mapLatest { searchedApi ->
@@ -128,7 +131,7 @@ class SearchScreenViewModel @Inject constructor(
 }
 
 sealed interface SearchScreenUiState {
-    data class ShowFavorite(val results: List<Favorite> = emptyList()) : SearchScreenUiState
+    data class ShowFavorite(val results: List<FlightModel>) : SearchScreenUiState
     data class ShowSuggests(val results: List<SuggestionAirportModel>) : SearchScreenUiState
     data object Init : SearchScreenUiState
 }
