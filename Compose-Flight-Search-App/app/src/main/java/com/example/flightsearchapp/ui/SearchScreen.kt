@@ -88,6 +88,24 @@ fun SearchScreen(modifier: Modifier = Modifier) {
                             "Favorite routes",
                             modifier = Modifier.padding(vertical = 8.dp)
                         )
+
+                        FlightsListScreen(
+                            modifier = Modifier.fillMaxSize(),
+                            searchScreenUiState = searchScreenUiState.value,
+                            onFavoriteClick = { departureIata, arriveIata, isBookmarked: Boolean ->
+                                if (isBookmarked) {
+                                    searchScreenViewModel.deleteFavorite(
+                                        departureCode = departureIata,
+                                        arriveCode = arriveIata,
+                                    )
+                                } else {
+                                    searchScreenViewModel.insertFavorite(
+                                        departureCode = departureIata,
+                                        arriveCode = arriveIata,
+                                    )
+                                }
+                            },
+                        )
                     }
 
                     else -> Unit
