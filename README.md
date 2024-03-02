@@ -96,3 +96,4 @@ And also you can bookmark the favorite routes.
 ### Compose (컴포즈)
 #### [Using Room database LIKE with wildcard (룸 데이터베이스 LIKE 단어 와일드 카드와 같이 사용)](https://shwoghk14.blogspot.com/2024/02/android-room-database-like-with-wildcard.html)
 #### [Row child goes out of the screen (Row 자식이 화면 밖으로 나감)](https://shwoghk14.blogspot.com/2024/03/android-compose-row-child-goes-out-of.html)
+#### [Improve time complexity, using HashMap, make big(O) 2N to N+1 (해쉬맵을 사용해서 시간 복잡도 개선, big(O) 2N을 N+1로 변경)](https://shwoghk14.blogspot.com/2024/03/android-improve-time-complexity-using.html)
