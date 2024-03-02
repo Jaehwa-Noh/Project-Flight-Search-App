@@ -36,13 +36,13 @@ And also you can bookmark the favorite routes.
 - [x] • Query the database to provide autocomplete suggestions as the user types.   
 (사용자 입력을 쿼리로 이용해서 데이터베이스의 자료를 불러와 자동완성 제안을 보여줍니다.)   
 
-- [ ] • When the user chooses a suggestion, generate a list of available flights from that airport, including the IATA identifier and airport name to other airports in the database.   
+- [x] • When the user chooses a suggestion, generate a list of available flights from that airport, including the IATA identifier and airport name to other airports in the database.   
 (사용자가 완성된 제안을 눌렀을 때, 해당 공항에서 이용 가능한 비행기를 보여주고, IATA 코드와 도착 공항 이름을 데이터베이스에서 불러와 보여줍니다.)   
 
-- [ ] • Let the user save favorite individual routes.   
+- [x] • Let the user save favorite individual routes.   
 (사용자가 개별 항로를 선호하는 경로로 저장 할 수 있습니다.)   
 
-- [ ] • When no search query is entered, display all the user-selected favorite routes in a list.   
+- [x] • When no search query is entered, display all the user-selected favorite routes in a list.   
 (검색 글자가 없을 때, 사용자가 저장한 선호 경로를 표시합니다.)    
 
 - [x] • Save the search text with Preferences DataStore. When the user reopens the app, the search text, if any, needs to prepopulate the text field with appropriate results from the database.   
@@ -59,10 +59,10 @@ And also you can bookmark the favorite routes.
 - [x] • Assume that every airport has flights to every other airport in the database (except for itself).   
 (모든 공항은 다른 공항으로 가는 항공기를 데이터베이스에 저장되어 있다고 가정합니다. (출발 공항 제외))   
 
-- [ ] • When no text is in the search box, display a list of favorite flights, showing the departure and destination. As the favorite table only includes columns for the airport codes, you're not expected to show the airport names in this list.   
+- [x] • When no text is in the search box, display a list of favorite flights, showing the departure and destination. As the favorite table only includes columns for the airport codes, you're not expected to show the airport names in this list.   
 (검색 상자에 글자가 없을 때에는 출발지, 목적지가 적힌 선호하는 항공편 목록을 보여줍니다. favorite 테이블은 airport codes 칼럼만 가지고 있습니다. 당신은 공항 이름을 선호 목록에 보여줄 필요가 없습니다.)   
 
-- [ ] • Perform all database querying with SQL and Room APIs. The whole point is to NOT load your entire database into memory at once, only to retrieve the required data as needed.  
+- [x] • Perform all database querying with SQL and Room APIs. The whole point is to NOT load your entire database into memory at once, only to retrieve the required data as needed.  
 (모든 데이터베이스 query 실행은 SQL과 Room APIs로 합니다. 모든 데이터베이스를 메모리에 한 번에 불러오지 않아야 합니다. 단지, 필요한 데이터만 찾아야 합니다.)   
 
 
