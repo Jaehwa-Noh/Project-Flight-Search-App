@@ -1,6 +1,6 @@
 package com.example.flightsearchapp.data
 
-import com.example.flightsearchapp.data.database.Airport
+import com.example.flightsearchapp.data.database.AirportEntity
 import com.example.flightsearchapp.di.DispatcherDefault
 import com.example.flightsearchapp.ui.model.SuggestionAirportModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -12,10 +12,10 @@ import javax.inject.Singleton
 
 interface AirportsRepository {
     suspend fun getSuggestionsStream(query: String): Flow<List<SuggestionAirportModel>>
-    fun getAirportsByCodeOrNameStream(query: String): Flow<List<Airport>>
-    fun getAirportNullByIdStream(airportId: Long): Flow<Airport?>
-    fun getAirportsStream(airportId: Long): Flow<List<Airport>>
-    suspend fun getAirportByCode(airportCode: String): Airport
+    fun getAirportsByCodeOrNameStream(query: String): Flow<List<AirportEntity>>
+    fun getAirportNullByIdStream(airportId: Long): Flow<AirportEntity?>
+    fun getAirportsStream(airportId: Long): Flow<List<AirportEntity>>
+    suspend fun getAirportByCode(airportCode: String): AirportEntity
 }
 
 @Singleton
@@ -37,19 +37,19 @@ class InDiskAirportsRepository @Inject constructor(
         }
     }
 
-    override fun getAirportsByCodeOrNameStream(query: String): Flow<List<Airport>> {
+    override fun getAirportsByCodeOrNameStream(query: String): Flow<List<AirportEntity>> {
         return airportsDataSource.getAirportsByCodeOrNameStream(query = query)
     }
 
-    override fun getAirportNullByIdStream(airportId: Long): Flow<Airport?> {
+    override fun getAirportNullByIdStream(airportId: Long): Flow<AirportEntity?> {
         return airportsDataSource.getAirportNullByIdStream(airportId = airportId)
     }
 
-    override fun getAirportsStream(airportId: Long): Flow<List<Airport>> {
+    override fun getAirportsStream(airportId: Long): Flow<List<AirportEntity>> {
         return airportsDataSource.getAirportsStream(airportId = airportId)
     }
 
-    override suspend fun getAirportByCode(airportCode: String): Airport {
+    override suspend fun getAirportByCode(airportCode: String): AirportEntity {
         return airportsDataSource.getAirportByCode(airportCode = airportCode)
     }
 }

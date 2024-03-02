@@ -14,7 +14,7 @@ interface AirportDao {
              ORDER BY passengers DESC
         """
     )
-    fun getAirportsByCodeOrNameStream(query: String): Flow<List<Airport>>
+    fun getAirportsByCodeOrNameStream(query: String): Flow<List<AirportEntity>>
 
     @Query(
         """
@@ -23,7 +23,7 @@ interface AirportDao {
              WHERE id = :airportId
         """
     )
-    fun getAirportNullByIdStream(airportId: Long): Flow<Airport?>
+    fun getAirportNullByIdStream(airportId: Long): Flow<AirportEntity?>
 
     @Query(
         """
@@ -32,7 +32,7 @@ interface AirportDao {
              WHERE iata_code = :airportCode
         """
     )
-    suspend fun getAirportByCode(airportCode: String): Airport
+    suspend fun getAirportByCode(airportCode: String): AirportEntity
 
     @Query(
         """
@@ -42,5 +42,5 @@ interface AirportDao {
          ORDER BY passengers DESC
     """
     )
-    fun getAirportsStream(airportId: Long): Flow<List<Airport>>
+    fun getAirportsStream(airportId: Long): Flow<List<AirportEntity>>
 }

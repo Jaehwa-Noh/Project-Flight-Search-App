@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 
 
 @Database(
-    entities = [Airport::class, Favorite::class],
+    entities = [AirportEntity::class, Favorite::class],
     version = 1,
 )
 abstract class AppDatabase : RoomDatabase() {
