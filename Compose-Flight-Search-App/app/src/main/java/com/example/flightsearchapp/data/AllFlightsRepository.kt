@@ -41,8 +41,6 @@ class AllFlightsRepository @Inject constructor(
                                     )
                                 arriveAirportsSet.add(favorite.destinationCode)
                                 favoriteHashMap[favorite.departureCode] = arriveAirportsSet
-
-                                favoriteHashMap[favorite.departureCode] = arriveAirportsSet
                             }
 
                             arriveAirports.forEach { arriveAirport ->
