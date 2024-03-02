@@ -5,6 +5,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.flightsearchapp.ui.SearchScreenUiState
 import com.example.flightsearchapp.ui.ShowFlightUiState
 import com.example.flightsearchapp.ui.model.FlightModel
 import com.example.flightsearchapp.ui.theme.FlightSearchAppTheme
@@ -12,7 +13,8 @@ import com.example.flightsearchapp.ui.theme.FlightSearchAppTheme
 @Composable
 fun FlightsListScreen(
     modifier: Modifier = Modifier,
-    showFlightUiState: ShowFlightUiState,
+    showFlightUiState: ShowFlightUiState = ShowFlightUiState.Clear,
+    searchScreenUiState: SearchScreenUiState = SearchScreenUiState.Init,
     onFavoriteClick: (
         departureIata: String,
         arriveIata: String,
@@ -30,6 +32,22 @@ fun FlightsListScreen(
                 FlightItemCardUiComponent(
                     flight = flight,
                     onFavoriteClick = onFavoriteClick
+                )
+            }
+        }
+    }
+
+    if (searchScreenUiState is SearchScreenUiState.ShowFavorite) {
+        LazyColumn(modifier = modifier) {
+            items(
+                searchScreenUiState.results,
+                key = {
+                    it.id
+                },
+            ) { flight ->
+                FlightItemCardUiComponent(
+                    flight = flight,
+                    onFavoriteClick = onFavoriteClick,
                 )
             }
         }
