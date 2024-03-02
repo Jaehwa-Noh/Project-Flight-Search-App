@@ -14,7 +14,7 @@ interface AirportDao {
              ORDER BY passengers DESC
         """
     )
-    fun getSuggestionsStream(query: String): Flow<List<Airport>>
+    fun getAirportsByCodeOrNameStream(query: String): Flow<List<Airport>>
 
     @Query(
         """
