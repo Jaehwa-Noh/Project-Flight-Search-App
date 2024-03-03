@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.flightsearchapp.ui.SearchScreenUiState
 import com.example.flightsearchapp.ui.ShowFlightUiState
-import com.example.flightsearchapp.ui.model.FlightModel
+import com.example.flightsearchapp.ui.model.Flight
 import com.example.flightsearchapp.ui.theme.FlightSearchAppTheme
 
 @Composable
@@ -62,7 +62,7 @@ fun FlightsListScreenPreview() {
         FlightsListScreen(
             showFlightUiState = ShowFlightUiState.SelectSuggest(
                 allFlights = listOf(
-                    FlightModel(
+                    Flight(
                         id = "1",
                         departureIataCode = "ABC",
                         departureName = "Departure Airport",
@@ -70,7 +70,7 @@ fun FlightsListScreenPreview() {
                         arriveName = "Arrive Airport",
                         isBookmarked = false,
                     ),
-                    FlightModel(
+                    Flight(
                         id = "2",
                         departureIataCode = "DEF",
                         departureName = "Departure Airport",

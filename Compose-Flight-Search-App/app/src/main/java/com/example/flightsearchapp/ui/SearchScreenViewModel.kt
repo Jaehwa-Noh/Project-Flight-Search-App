@@ -9,7 +9,7 @@ import com.example.flightsearchapp.domain.GetSavedSearchTextStreamUseCase
 import com.example.flightsearchapp.domain.GetSuggestionsStreamUseCase
 import com.example.flightsearchapp.domain.InsertFavoriteUseCase
 import com.example.flightsearchapp.domain.SetSavedSearchTextUseCase
-import com.example.flightsearchapp.ui.model.FlightModel
+import com.example.flightsearchapp.ui.model.Flight
 import com.example.flightsearchapp.ui.model.SuggestionAirportModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -131,12 +131,12 @@ class SearchScreenViewModel @Inject constructor(
 }
 
 sealed interface SearchScreenUiState {
-    data class ShowFavorite(val results: List<FlightModel>) : SearchScreenUiState
+    data class ShowFavorite(val results: List<Flight>) : SearchScreenUiState
     data class ShowSuggests(val results: List<SuggestionAirportModel>) : SearchScreenUiState
     data object Init : SearchScreenUiState
 }
 
 sealed interface ShowFlightUiState {
     data object Clear : ShowFlightUiState
-    data class SelectSuggest(val allFlights: List<FlightModel>) : ShowFlightUiState
+    data class SelectSuggest(val allFlights: List<Flight>) : ShowFlightUiState
 }

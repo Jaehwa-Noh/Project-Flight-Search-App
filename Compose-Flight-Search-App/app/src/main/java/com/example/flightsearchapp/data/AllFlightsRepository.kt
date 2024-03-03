@@ -1,7 +1,7 @@
 package com.example.flightsearchapp.data
 
 import com.example.flightsearchapp.di.DispatcherDefault
-import com.example.flightsearchapp.ui.model.FlightModel
+import com.example.flightsearchapp.ui.model.Flight
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
@@ -19,7 +19,7 @@ class AllFlightsRepository @Inject constructor(
     @DispatcherDefault private val defaultDispatcher: CoroutineDispatcher,
 ) {
     @OptIn(ExperimentalCoroutinesApi::class)
-    fun getAllFlightsStream(departureId: Long): Flow<List<FlightModel>> {
+    fun getAllFlightsStream(departureId: Long): Flow<List<Flight>> {
         return airportsRepository.getAirportNullByIdStream(airportId = departureId)
             .flatMapLatest { departureAirport ->
                 if (departureAirport == null) {
@@ -30,7 +30,7 @@ class AllFlightsRepository @Inject constructor(
                         favoritesRepository.getFavoritesStream()
                     ) { arriveAirports, favorites ->
                         withContext(defaultDispatcher) {
-                            val flightsModel = mutableListOf<FlightModel>()
+                            val flightsModel = mutableListOf<Flight>()
 
                             val favoriteHashMap: HashMap<String, MutableSet<String>> = hashMapOf()
                             favorites.forEach { favorite ->
@@ -45,7 +45,7 @@ class AllFlightsRepository @Inject constructor(
 
                             arriveAirports.forEach { arriveAirport ->
                                 flightsModel.add(
-                                    FlightModel(
+                                    Flight(
                                         id = "${departureAirport.id}_${arriveAirport.id}",
                                         departureIataCode = departureAirport.iataCode,
                                         departureName = departureAirport.name,
@@ -67,7 +67,7 @@ class AllFlightsRepository @Inject constructor(
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    fun getAllFavoriteFlightsStream(): Flow<List<FlightModel>> {
+    fun getAllFavoriteFlightsStream(): Flow<List<Flight>> {
         return favoritesRepository.getFavoritesStream().flatMapLatest { favorites ->
             if (favorites.isEmpty()) return@flatMapLatest flowOf(emptyList())
 
@@ -78,7 +78,7 @@ class AllFlightsRepository @Inject constructor(
                 val arriveAirport =
                     airportsRepository.getAirportByCode(airportCode = favorite.destinationCode)
 
-                FlightModel(
+                Flight(
                     id = "${departureAirport.id}_${arriveAirport.id}",
                     departureIataCode = departureAirport.iataCode,
                     departureName = departureAirport.name,

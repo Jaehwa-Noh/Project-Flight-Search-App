@@ -18,13 +18,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.flightsearchapp.ui.AirportInfoUiComponent
-import com.example.flightsearchapp.ui.model.FlightModel
+import com.example.flightsearchapp.ui.model.Flight
 import com.example.flightsearchapp.ui.theme.FlightSearchAppTheme
 
 @Composable
 fun FlightItemCardUiComponent(
     modifier: Modifier = Modifier,
-    flight: FlightModel,
+    flight: Flight,
     onFavoriteClick: (
         departureIata: String,
         arriveIata: String,
@@ -95,7 +95,7 @@ fun FlightItemCardUiComponent(
 fun FlightItemCardUiComponentPreview() {
     FlightSearchAppTheme(dynamicColor = false) {
         FlightItemCardUiComponent(
-            flight = FlightModel(
+            flight = Flight(
                 id = "1",
                 departureIataCode = "ABC",
                 departureName = "Departure Airport",

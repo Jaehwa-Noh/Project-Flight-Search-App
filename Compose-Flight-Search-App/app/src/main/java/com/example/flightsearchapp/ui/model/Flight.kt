@@ -1,6 +1,6 @@
 package com.example.flightsearchapp.ui.model
 
-data class FlightModel(
+data class Flight(
     val id: String,
     val departureIataCode: String,
     val departureName: String,
