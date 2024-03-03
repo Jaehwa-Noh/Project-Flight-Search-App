@@ -5,13 +5,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.flightsearchapp.ui.AirportInfoUiComponent
-import com.example.flightsearchapp.ui.model.SuggestionAirportModel
+import com.example.flightsearchapp.ui.model.SuggestionAirport
 import com.example.flightsearchapp.ui.theme.FlightSearchAppTheme
 
 @Composable
 fun SuggestionsListItemUiComponent(
     modifier: Modifier = Modifier,
-    suggestionAirportModel: SuggestionAirportModel,
+    suggestionAirportModel: SuggestionAirport,
     onItemClick: (Long) -> Unit
 ) {
 
@@ -30,7 +30,7 @@ fun SuggestionsListItemUiComponent(
 fun SuggestListItemUiComponentPreview() {
     FlightSearchAppTheme(dynamicColor = false) {
         SuggestionsListItemUiComponent(
-            suggestionAirportModel = SuggestionAirportModel(
+            suggestionAirportModel = SuggestionAirport(
                 id = 1,
                 iataCode = "ABC",
                 name = "Airport"

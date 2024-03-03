@@ -2,7 +2,7 @@ package com.example.flightsearchapp.data
 
 import com.example.flightsearchapp.data.database.AirportEntity
 import com.example.flightsearchapp.di.DispatcherDefault
-import com.example.flightsearchapp.ui.model.SuggestionAirportModel
+import com.example.flightsearchapp.ui.model.SuggestionAirport
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -11,7 +11,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 interface AirportsRepository {
-    suspend fun getSuggestionsStream(query: String): Flow<List<SuggestionAirportModel>>
+    suspend fun getSuggestionsStream(query: String): Flow<List<SuggestionAirport>>
     fun getAirportsByCodeOrNameStream(query: String): Flow<List<AirportEntity>>
     fun getAirportNullByIdStream(airportId: Long): Flow<AirportEntity?>
     fun getAirportsStream(airportId: Long): Flow<List<AirportEntity>>
@@ -23,11 +23,11 @@ class InDiskAirportsRepository @Inject constructor(
     private val airportsDataSource: AirportsDataSource,
     @DispatcherDefault private val defaultDispatcher: CoroutineDispatcher,
 ) : AirportsRepository {
-    override suspend fun getSuggestionsStream(query: String): Flow<List<SuggestionAirportModel>> {
+    override suspend fun getSuggestionsStream(query: String): Flow<List<SuggestionAirport>> {
         return getAirportsByCodeOrNameStream(query = query).map {
             withContext(defaultDispatcher) {
                 it.map { airport ->
-                    SuggestionAirportModel(
+                    SuggestionAirport(
                         id = airport.id,
                         iataCode = airport.iataCode,
                         name = airport.name,
