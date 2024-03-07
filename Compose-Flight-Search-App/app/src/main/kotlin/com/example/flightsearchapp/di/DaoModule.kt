@@ -17,7 +17,6 @@ class DaoModule {
     fun provideAirportDao(database: AppDatabase): AirportDao =
         database.airportDao()
 
-
     @Provides
     fun provideFavoriteDao(database: AppDatabase): FavoriteDao =
         database.favoriteDao()
