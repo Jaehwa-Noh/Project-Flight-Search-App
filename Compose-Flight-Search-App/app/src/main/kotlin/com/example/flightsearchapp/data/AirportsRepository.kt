@@ -39,21 +39,21 @@ class InDiskAirportsRepository @Inject constructor(
         }
     }
 
-    override fun getAirportsByCodeOrNameStream(query: String): Flow<List<AirportEntity>> {
-        return airportsDataSource.getAirportsByCodeOrNameStream(query = query)
-    }
+    override fun getAirportsByCodeOrNameStream(query: String): Flow<List<AirportEntity>> =
+        airportsDataSource.getAirportsByCodeOrNameStream(query = query)
 
-    override fun getAirportNullByIdStream(airportId: Long): Flow<AirportEntity?> {
-        return airportsDataSource.getAirportNullByIdStream(airportId = airportId)
-    }
 
-    override fun getAirportsStream(airportId: Long): Flow<List<AirportEntity>> {
-        return airportsDataSource.getAirportsStream(airportId = airportId)
-    }
+    override fun getAirportNullByIdStream(airportId: Long): Flow<AirportEntity?> =
+        airportsDataSource.getAirportNullByIdStream(airportId = airportId)
 
-    override suspend fun getAirportByCode(airportCode: String): AirportEntity {
-        return airportsDataSource.getAirportByCode(airportCode = airportCode)
-    }
+
+    override fun getAirportsStream(airportId: Long): Flow<List<AirportEntity>> =
+        airportsDataSource.getAirportsStream(airportId = airportId)
+
+
+    override suspend fun getAirportByCode(airportCode: String): AirportEntity =
+        airportsDataSource.getAirportByCode(airportCode = airportCode)
+
 
     override fun getAllAirportsStream(): Flow<List<AirportEntity>> =
         airportsDataSource.getAllAirportsStream()

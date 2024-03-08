@@ -22,21 +22,21 @@ class LocalAirportsDataSource @Inject constructor(
     private val airportDao: AirportDao,
     @DispatcherIO private val ioDispatcher: CoroutineDispatcher,
 ) : AirportsDataSource {
-    override fun getAirportsByCodeOrNameStream(query: String): Flow<List<AirportEntity>> {
-        return airportDao.getAirportsByCodeOrNameStream(query = query)
-    }
+    override fun getAirportsByCodeOrNameStream(query: String): Flow<List<AirportEntity>> =
+        airportDao.getAirportsByCodeOrNameStream(query = query)
 
-    override fun getAirportNullByIdStream(airportId: Long): Flow<AirportEntity?> {
-        return airportDao.getAirportNullByIdStream(airportId = airportId)
-    }
 
-    override fun getAirportsStream(airportId: Long): Flow<List<AirportEntity>> {
-        return airportDao.getAirportsStream(airportId = airportId)
-    }
+    override fun getAirportNullByIdStream(airportId: Long): Flow<AirportEntity?> =
+        airportDao.getAirportNullByIdStream(airportId = airportId)
 
-    override suspend fun getAirportByCode(airportCode: String): AirportEntity {
-        return withContext(ioDispatcher) { airportDao.getAirportByCode(airportCode = airportCode) }
-    }
+
+    override fun getAirportsStream(airportId: Long): Flow<List<AirportEntity>> =
+        airportDao.getAirportsStream(airportId = airportId)
+
+
+    override suspend fun getAirportByCode(airportCode: String): AirportEntity =
+        withContext(ioDispatcher) { airportDao.getAirportByCode(airportCode = airportCode) }
+
 
     override fun getAllAirportsStream(): Flow<List<AirportEntity>> =
         airportDao.getAllAirportsStream()
