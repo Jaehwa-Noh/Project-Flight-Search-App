@@ -16,6 +16,8 @@ interface AirportsRepository {
     fun getAirportNullByIdStream(airportId: Long): Flow<AirportEntity?>
     fun getAirportsStream(airportId: Long): Flow<List<AirportEntity>>
     suspend fun getAirportByCode(airportCode: String): AirportEntity
+
+    fun getAllAirportsStream(): Flow<List<AirportEntity>>
 }
 
 @Singleton
@@ -52,6 +54,9 @@ class InDiskAirportsRepository @Inject constructor(
     override suspend fun getAirportByCode(airportCode: String): AirportEntity {
         return airportsDataSource.getAirportByCode(airportCode = airportCode)
     }
+
+    override fun getAllAirportsStream(): Flow<List<AirportEntity>> =
+        airportsDataSource.getAllAirportsStream()
 }
 
 

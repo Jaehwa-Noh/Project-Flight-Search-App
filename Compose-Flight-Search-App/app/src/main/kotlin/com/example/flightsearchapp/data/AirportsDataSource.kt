@@ -1,7 +1,7 @@
 package com.example.flightsearchapp.data
 
-import com.example.flightsearchapp.data.database.AirportEntity
 import com.example.flightsearchapp.data.database.AirportDao
+import com.example.flightsearchapp.data.database.AirportEntity
 import com.example.flightsearchapp.di.DispatcherIO
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
@@ -14,6 +14,7 @@ interface AirportsDataSource {
     fun getAirportNullByIdStream(airportId: Long): Flow<AirportEntity?>
     fun getAirportsStream(airportId: Long): Flow<List<AirportEntity>>
     suspend fun getAirportByCode(airportCode: String): AirportEntity
+    fun getAllAirportsStream(): Flow<List<AirportEntity>>
 }
 
 @Singleton
@@ -36,4 +37,7 @@ class LocalAirportsDataSource @Inject constructor(
     override suspend fun getAirportByCode(airportCode: String): AirportEntity {
         return withContext(ioDispatcher) { airportDao.getAirportByCode(airportCode = airportCode) }
     }
+
+    override fun getAllAirportsStream(): Flow<List<AirportEntity>> =
+        airportDao.getAllAirportsStream()
 }

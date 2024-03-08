@@ -43,4 +43,12 @@ interface AirportDao {
     """
     )
     fun getAirportsStream(airportId: Long): Flow<List<AirportEntity>>
+
+    @Query(
+        """
+            SELECT DISTINCT *
+              FROM airport
+        """
+    )
+    fun getAllAirportsStream(): Flow<List<AirportEntity>>
 }
