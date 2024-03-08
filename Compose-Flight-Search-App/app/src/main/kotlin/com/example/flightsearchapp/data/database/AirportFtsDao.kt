@@ -12,7 +12,7 @@ interface AirportFtsDao {
 
     @Query(
         """
-        SELECT airportId
+        SELECT iata_code
           FROM airportFts
          WHERE airportFts MATCH '*' || :query || '*'
     """
