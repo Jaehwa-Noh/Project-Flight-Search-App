@@ -7,3 +7,6 @@ annotation class DispatcherIO
 
 @Qualifier
 annotation class DispatcherDefault
+
+@Qualifier
+annotation class ApplicationScope
