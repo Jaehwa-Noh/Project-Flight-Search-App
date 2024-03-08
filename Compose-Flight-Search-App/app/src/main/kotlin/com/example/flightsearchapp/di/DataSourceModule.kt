@@ -1,16 +1,17 @@
 package com.example.flightsearchapp.di
 
+import com.example.flightsearchapp.data.AirportsDataSource
 import com.example.flightsearchapp.data.FavoritesDataSource
+import com.example.flightsearchapp.data.LocalAirportsDataSource
 import com.example.flightsearchapp.data.LocalFavoritesDataSource
 import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import javax.inject.Inject
 import javax.inject.Singleton
 
-@Module
-@InstallIn(SingletonComponent::class)
-abstract class FavoritesDataSourceModule {
+abstract class DataSourceModule @Inject constructor() {
+    @Singleton
+    @Binds
+    abstract fun bindAirportsDataSourceModule(impl: LocalAirportsDataSource): AirportsDataSource
 
     @Singleton
     @Binds
