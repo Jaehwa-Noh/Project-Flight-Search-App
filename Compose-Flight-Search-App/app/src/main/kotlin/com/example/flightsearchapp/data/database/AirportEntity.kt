@@ -18,3 +18,8 @@ data class AirportEntity(
     @ColumnInfo
     val passengers: Long,
 )
+
+fun AirportEntity.asFtsEntity() = AirportFtsEntity(
+    iataCode = iataCode,
+    name = name,
+)
