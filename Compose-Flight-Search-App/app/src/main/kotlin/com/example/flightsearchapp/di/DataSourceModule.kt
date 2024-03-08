@@ -6,10 +6,14 @@ import com.example.flightsearchapp.data.FavoritesDataSource
 import com.example.flightsearchapp.data.LocalAirportsDataSource
 import com.example.flightsearchapp.data.LocalFavoritesDataSource
 import dagger.Binds
-import javax.inject.Inject
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-abstract class DataSourceModule @Inject constructor() {
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class DataSourceModule {
     @Singleton
     @Binds
     abstract fun bindAirportsDataSourceModule(impl: LocalAirportsDataSource): AirportsDataSource

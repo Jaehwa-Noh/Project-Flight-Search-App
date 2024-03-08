@@ -7,10 +7,14 @@ import com.example.flightsearchapp.data.InDiskAirportsFtsRepository
 import com.example.flightsearchapp.data.InDiskAirportsRepository
 import com.example.flightsearchapp.data.InDiskFavoritesRepository
 import dagger.Binds
-import javax.inject.Inject
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-abstract class RepositoryModule @Inject constructor() {
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class RepositoryModule {
     @Singleton
     @Binds
     abstract fun bindAirportsRepository(impl: InDiskAirportsRepository): AirportsRepository
