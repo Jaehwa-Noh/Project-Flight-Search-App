@@ -4,6 +4,7 @@ import com.example.flightsearchapp.data.AirportsDataSource
 import com.example.flightsearchapp.data.AirportsFtsDataSource
 import com.example.flightsearchapp.data.FavoritesDataSource
 import com.example.flightsearchapp.data.LocalAirportsDataSource
+import com.example.flightsearchapp.data.LocalAirportsFtsDataSource
 import com.example.flightsearchapp.data.LocalFavoritesDataSource
 import dagger.Binds
 import dagger.Module
@@ -24,5 +25,5 @@ abstract class DataSourceModule {
 
     @Singleton
     @Binds
-    abstract fun bindAirportsFtsDataSource(impl: AirportsFtsDataSource): AirportsFtsDataSource
+    abstract fun bindAirportsFtsDataSource(impl: LocalAirportsFtsDataSource): AirportsFtsDataSource
 }
