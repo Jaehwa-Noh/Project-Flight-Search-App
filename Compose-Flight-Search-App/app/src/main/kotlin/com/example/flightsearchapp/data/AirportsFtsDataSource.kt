@@ -11,7 +11,7 @@ import javax.inject.Singleton
 
 interface AirportsFtsDataSource {
     suspend fun upsertAirports(entities: List<AirportFtsEntity>)
-    fun searchAirports(query: String): Flow<List<String>>
+    fun searchAirportsStream(query: String): Flow<List<String>>
 }
 
 
@@ -26,8 +26,8 @@ class LocalAirportsFtsDataSource @Inject constructor(
         }
 
 
-    override fun searchAirports(query: String): Flow<List<String>> =
-        airportsFtsDao.searchAirports(query = query)
+    override fun searchAirportsStream(query: String): Flow<List<String>> =
+        airportsFtsDao.searchAirportsStream(query = query)
 
 }
 

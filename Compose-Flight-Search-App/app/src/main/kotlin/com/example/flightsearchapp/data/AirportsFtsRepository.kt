@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 interface AirportsFtsRepository {
     suspend fun upsertAirports(entities: List<AirportFtsEntity>)
-    fun searchAirports(query: String): Flow<List<String>>
+    fun searchAirportsStream(query: String): Flow<List<String>>
 }
 
 class InDiskAirportsFtsRepository @Inject constructor(
@@ -21,6 +21,6 @@ class InDiskAirportsFtsRepository @Inject constructor(
             airportsFtsDataSource.upsertAirports(entities = entities)
         }
 
-    override fun searchAirports(query: String): Flow<List<String>> =
-        airportsFtsDataSource.searchAirports(query = query)
+    override fun searchAirportsStream(query: String): Flow<List<String>> =
+        airportsFtsDataSource.searchAirportsStream(query = query)
 }
