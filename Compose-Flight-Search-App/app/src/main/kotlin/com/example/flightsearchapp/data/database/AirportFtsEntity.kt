@@ -7,9 +7,6 @@ import androidx.room.Fts4
 @Entity(tableName = "airportFts")
 @Fts4
 data class AirportFtsEntity(
-    @ColumnInfo
-    val airportId: String,
-
     @ColumnInfo(name = "iata_code")
     val iataCode: String,
 
