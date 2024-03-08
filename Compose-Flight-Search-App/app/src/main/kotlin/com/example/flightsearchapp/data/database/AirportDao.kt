@@ -50,5 +50,5 @@ interface AirportDao {
               FROM airport
         """
     )
-    fun getAllAirportsStream(): Flow<List<AirportEntity>>
+    suspend fun getAllAirportsEntities(): List<AirportEntity>
 }

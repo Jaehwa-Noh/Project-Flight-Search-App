@@ -14,7 +14,7 @@ interface AirportsDataSource {
     fun getAirportNullByIdStream(airportId: Long): Flow<AirportEntity?>
     fun getAirportsStream(airportId: Long): Flow<List<AirportEntity>>
     suspend fun getAirportByCode(airportCode: String): AirportEntity
-    fun getAllAirportsStream(): Flow<List<AirportEntity>>
+    suspend fun getAllAirportsEntities(): List<AirportEntity>
 }
 
 @Singleton
@@ -38,6 +38,6 @@ class LocalAirportsDataSource @Inject constructor(
         withContext(ioDispatcher) { airportDao.getAirportByCode(airportCode = airportCode) }
 
 
-    override fun getAllAirportsStream(): Flow<List<AirportEntity>> =
-        airportDao.getAllAirportsStream()
+    override suspend fun getAllAirportsEntities(): List<AirportEntity> =
+        airportDao.getAllAirportsEntities()
 }
