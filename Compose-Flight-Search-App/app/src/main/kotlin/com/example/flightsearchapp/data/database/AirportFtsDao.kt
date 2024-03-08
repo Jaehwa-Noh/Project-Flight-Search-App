@@ -14,7 +14,7 @@ interface AirportFtsDao {
         """
         SELECT airportId
           FROM airportFts
-         WHERE airportFts MATCH :query
+         WHERE airportFts MATCH '*' || :query || '*'
     """
     )
     fun searchAirports(query: String): Flow<List<String>>
