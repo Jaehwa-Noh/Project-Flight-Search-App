@@ -25,7 +25,7 @@ class SearchFlightApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         applicationScope.launch {
-            airportsFtsRepository.upsertAirports(
+            airportsFtsRepository.deleteAndInsertAll(
                 airportsRepository.getAllAirportsEntities().map { airportEntity ->
                     airportEntity.asFtsEntity()
                 }
