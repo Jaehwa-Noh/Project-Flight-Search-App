@@ -13,15 +13,15 @@ interface FavoritesRepository {
 class InDiskFavoritesRepository @Inject constructor(
     private val favoritesDataSource: FavoritesDataSource,
 ) : FavoritesRepository {
-    override fun getFavoritesStream(): Flow<List<FavoriteEntity>> {
-        return favoritesDataSource.getFavoritesStream()
-    }
+    override fun getFavoritesStream(): Flow<List<FavoriteEntity>> =
+        favoritesDataSource.getFavoritesStream()
 
-    override suspend fun insertFavorite(favorite: FavoriteEntity) {
+
+    override suspend fun insertFavorite(favorite: FavoriteEntity) =
         favoritesDataSource.insertFavorite(favorite = favorite)
-    }
 
-    override suspend fun deleteFavorite(departureCode: String, arriveCode: String) {
+
+    override suspend fun deleteFavorite(departureCode: String, arriveCode: String) =
         favoritesDataSource.deleteFavorite(
             departureCode = departureCode,
             arriveCode = arriveCode,
