@@ -1,5 +1,6 @@
 package com.example.flightsearchapp.data
 
+import com.example.flightsearchapp.data.database.asFlight
 import com.example.flightsearchapp.di.DispatcherDefault
 import com.example.flightsearchapp.ui.model.Flight
 import kotlinx.coroutines.CoroutineDispatcher
@@ -8,6 +9,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -67,30 +69,11 @@ class AllFlightsRepository @Inject constructor(
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    fun getAllFavoriteFlightsStream(): Flow<List<Flight>> {
-        return favoritesRepository.getFavoritesStream().flatMapLatest { favorites ->
-            if (favorites.isEmpty()) return@flatMapLatest flowOf(emptyList())
-
-            val flightsStream = favorites.map { favorite ->
-                val departureAirport =
-                    airportsRepository.getAirportByCode(airportCode = favorite.departureCode)
-
-                val arriveAirport =
-                    airportsRepository.getAirportByCode(airportCode = favorite.destinationCode)
-
-                Flight(
-                    id = "${departureAirport.id}_${arriveAirport.id}",
-                    departureIataCode = departureAirport.iataCode,
-                    departureName = departureAirport.name,
-                    arriveIataCode = arriveAirport.iataCode,
-                    arriveName = arriveAirport.name,
-                    isBookmarked =
-                    favorite.departureCode == departureAirport.iataCode
-                            && favorite.destinationCode == arriveAirport.iataCode
-                )
+    fun getAllFavoriteFlightsStream(): Flow<List<Flight>> =
+        favoritesRepository.getFavoriteWithAirports().mapLatest { favoriteWithAirports ->
+            favoriteWithAirports.map { favoriteWithAirport ->
+                favoriteWithAirport.asFlight()
             }
-
-            flowOf(flightsStream)
         }
-    }
+
 }
