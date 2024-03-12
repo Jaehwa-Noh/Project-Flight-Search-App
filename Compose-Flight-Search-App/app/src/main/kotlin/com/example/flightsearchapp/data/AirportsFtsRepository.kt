@@ -18,7 +18,7 @@ class InDiskAirportsFtsRepository @Inject constructor(
 ) : AirportsFtsRepository {
     override suspend fun upsertAirports(entities: List<AirportFtsEntity>) =
         withContext(defaultDispatcher) {
-            airportsFtsDataSource.upsertAirports(entities = entities)
+            airportsFtsDataSource.deleteAndInsertAll(entities = entities)
         }
 
     override fun searchAirportsStream(query: String): Flow<List<String>> =
