@@ -1,7 +1,8 @@
 package com.example.flightsearchapp.data
 
-import com.example.flightsearchapp.data.database.FavoriteEntity
 import com.example.flightsearchapp.data.database.FavoriteDao
+import com.example.flightsearchapp.data.database.FavoriteEntity
+import com.example.flightsearchapp.data.database.FavoriteWithAirports
 import com.example.flightsearchapp.di.DispatcherIO
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
@@ -13,6 +14,7 @@ interface FavoritesDataSource {
     fun getFavoritesStream(): Flow<List<FavoriteEntity>>
     suspend fun insertFavorite(favorite: FavoriteEntity)
     suspend fun deleteFavorite(departureCode: String, arriveCode: String)
+    fun getFavoriteWithAirports(): Flow<List<FavoriteWithAirports>>
 }
 
 @Singleton
@@ -38,4 +40,8 @@ class LocalFavoritesDataSource @Inject constructor(
             )
         }
     }
+
+    override fun getFavoriteWithAirports(): Flow<List<FavoriteWithAirports>> =
+        favoriteDao.getFavoriteWithAirports()
+
 }

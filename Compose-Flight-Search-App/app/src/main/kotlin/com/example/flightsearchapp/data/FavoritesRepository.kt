@@ -1,6 +1,7 @@
 package com.example.flightsearchapp.data
 
 import com.example.flightsearchapp.data.database.FavoriteEntity
+import com.example.flightsearchapp.data.database.FavoriteWithAirports
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -8,6 +9,7 @@ interface FavoritesRepository {
     fun getFavoritesStream(): Flow<List<FavoriteEntity>>
     suspend fun insertFavorite(favorite: FavoriteEntity)
     suspend fun deleteFavorite(departureCode: String, arriveCode: String)
+    fun getFavoriteWithAirports(): Flow<List<FavoriteWithAirports>>
 }
 
 class InDiskFavoritesRepository @Inject constructor(
@@ -26,5 +28,9 @@ class InDiskFavoritesRepository @Inject constructor(
             departureCode = departureCode,
             arriveCode = arriveCode,
         )
-    }
+
+
+    override fun getFavoriteWithAirports(): Flow<List<FavoriteWithAirports>> =
+        favoritesDataSource.getFavoriteWithAirports()
+
 }
