@@ -4,9 +4,7 @@ import com.example.flightsearchapp.data.database.FavoriteEntity
 
 val favoriteEntitiesTestData: List<FavoriteEntity> = listOf(
     testFavoriteEntity(1, "ABC", "CDE"),
-    testFavoriteEntity(2, "BCD", "DEF"),
-    testFavoriteEntity(3, "CDE", "EFG"),
-    testFavoriteEntity(4, "EFG", "GHI"),
+    testFavoriteEntity(2, "EFG", "GHI"),
 )
 
 private fun testFavoriteEntity(
