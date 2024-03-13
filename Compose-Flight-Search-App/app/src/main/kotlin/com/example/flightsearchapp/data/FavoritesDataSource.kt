@@ -22,24 +22,23 @@ class LocalFavoritesDataSource @Inject constructor(
     private val favoriteDao: FavoriteDao,
     @DispatcherIO private val ioDispatcher: CoroutineDispatcher,
 ) : FavoritesDataSource {
-    override fun getFavoritesStream(): Flow<List<FavoriteEntity>> {
-        return favoriteDao.getAllFavoritesStream()
-    }
+    override fun getFavoritesStream(): Flow<List<FavoriteEntity>> =
+        favoriteDao.getAllFavoritesStream()
 
-    override suspend fun insertFavorite(favorite: FavoriteEntity) {
+
+    override suspend fun insertFavorite(favorite: FavoriteEntity) =
         withContext(ioDispatcher) {
             favoriteDao.insert(favorite = favorite)
         }
-    }
 
-    override suspend fun deleteFavorite(departureCode: String, arriveCode: String) {
+
+    override suspend fun deleteFavorite(departureCode: String, arriveCode: String) =
         withContext(ioDispatcher) {
             favoriteDao.delete(
                 departureCode = departureCode,
                 arriveCode = arriveCode,
             )
         }
-    }
 
     override fun getFavoriteWithAirports(): Flow<List<FavoriteWithAirports>> =
         favoriteDao.getFavoriteWithAirports()
