@@ -1,8 +1,10 @@
 package com.example.flightsearchapp.data.database
 
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
+import org.jetbrains.annotations.TestOnly
 
 @Dao
 interface AirportDao {
@@ -51,4 +53,8 @@ interface AirportDao {
         """
     )
     suspend fun getAllAirportsEntities(): List<AirportEntity>
+
+    @TestOnly
+    @Insert
+    suspend fun insertAll(entities: List<AirportEntity>)
 }
