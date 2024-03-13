@@ -18,7 +18,7 @@ interface FavoriteDao {
     fun getAllFavoritesStream(): Flow<List<FavoriteEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(favorite: FavoriteEntity)
+    suspend fun insert(favorite: FavoriteEntity)
 
     @Query(
         """
