@@ -3,10 +3,10 @@ package com.example.flightsearchapp.testing.database
 import com.example.flightsearchapp.data.database.FavoriteEntity
 
 val favoriteEntitiesTestData: List<FavoriteEntity> = listOf(
-    testFavoriteEntity(0),
     testFavoriteEntity(1),
     testFavoriteEntity(2),
     testFavoriteEntity(3),
+    testFavoriteEntity(4),
 )
 
 private fun testFavoriteEntity(id: Long) = FavoriteEntity(
