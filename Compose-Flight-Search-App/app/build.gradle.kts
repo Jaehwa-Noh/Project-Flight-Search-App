@@ -76,7 +76,7 @@ dependencies {
     ksp("com.google.dagger:hilt-android-compiler:2.51")
 
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.51")
-    androidTestAnnotationProcessor("com.google.dagger:hilt-compiler:2.51")
+    kspAndroidTest("com.google.dagger:hilt-compiler:2.51")
 
 
     implementation("androidx.core:core-ktx:1.12.0")
