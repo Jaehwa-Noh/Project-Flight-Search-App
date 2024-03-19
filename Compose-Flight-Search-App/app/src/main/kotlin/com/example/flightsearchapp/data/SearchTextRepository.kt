@@ -20,12 +20,12 @@ interface SearchTextRepository {
 @Singleton
 class InDiskSearchTextRepository @Inject constructor(
     private val dataStore: DataStore<Preferences>
-) {
+): SearchTextRepository {
     private companion object {
         val SEARCH_TEXT = stringPreferencesKey("search_text")
     }
 
-    val savedSearchText: Flow<String> = dataStore.data
+    override val savedSearchText: Flow<String> = dataStore.data
         .catch {
             if (it is IOException) {
                 emit(emptyPreferences())
@@ -37,7 +37,7 @@ class InDiskSearchTextRepository @Inject constructor(
             preferences[SEARCH_TEXT] ?: ""
         }
 
-    suspend fun saveSearchText(searchText: String) {
+    override suspend fun saveSearchText(searchText: String) {
         dataStore.edit { preferences ->
             preferences[SEARCH_TEXT] = searchText
         }
