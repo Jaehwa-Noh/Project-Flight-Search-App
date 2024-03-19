@@ -12,6 +12,11 @@ import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
 
+interface SearchTextRepository {
+    val savedSearchText: Flow<String>
+    suspend fun saveSearchText(searchText: String)
+}
+
 @Singleton
 class SearchTextRepository @Inject constructor(
     private val dataStore: DataStore<Preferences>
