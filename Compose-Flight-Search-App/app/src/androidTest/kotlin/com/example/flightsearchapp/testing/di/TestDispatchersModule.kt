@@ -8,10 +8,8 @@ import dagger.Provides
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestDispatcher
 
-@OptIn(ExperimentalCoroutinesApi::class)
 @Module
 @TestInstallIn(
     components = [SingletonComponent::class],
@@ -21,9 +19,11 @@ object TestDispatchersModule {
 
     @DispatcherIO
     @Provides
-    fun provideCoroutineDispatcherIO(testDispatcher: TestDispatcher): CoroutineDispatcher = testDispatcher
+    fun provideCoroutineDispatcherIO(testDispatcher: TestDispatcher): CoroutineDispatcher =
+        testDispatcher
 
     @DispatcherDefault
     @Provides
-    fun provideCoroutineDispatcherDefault(testDispatcher: TestDispatcher): CoroutineDispatcher = testDispatcher
+    fun provideCoroutineDispatcherDefault(testDispatcher: TestDispatcher): CoroutineDispatcher =
+        testDispatcher
 }
