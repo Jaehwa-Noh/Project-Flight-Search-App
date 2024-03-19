@@ -18,7 +18,7 @@ interface SearchTextRepository {
 }
 
 @Singleton
-class SearchTextRepository @Inject constructor(
+class InDiskSearchTextRepository @Inject constructor(
     private val dataStore: DataStore<Preferences>
 ) {
     private companion object {
