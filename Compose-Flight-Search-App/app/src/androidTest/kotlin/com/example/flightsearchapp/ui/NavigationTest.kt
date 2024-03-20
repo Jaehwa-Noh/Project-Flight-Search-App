@@ -11,6 +11,7 @@ import androidx.compose.ui.test.performImeAction
 import androidx.compose.ui.test.performTextClearance
 import androidx.compose.ui.test.performTextInput
 import androidx.test.espresso.Espresso
+import androidx.test.espresso.NoActivityResumedException
 import com.example.flightsearchapp.MainActivity
 import com.example.flightsearchapp.data.AirportsFtsRepository
 import com.example.flightsearchapp.testing.database.airportFtsEntitiesTestData
@@ -134,6 +135,41 @@ class NavigationTest {
             Espresso.pressBack()
             onNodeWithText("Hamburg Airport")
                 .assertIsDisplayed()
+        }
+    }
+
+    @OptIn(ExperimentalTestApi::class)
+    @Test(expected = NoActivityResumedException::class)
+    fun whenSearchHAMAndClickAndTwiceBack_ExitApp()  {
+        composeTestRule.apply {
+            onNodeWithContentDescription("Search").apply {
+                performClick()
+                performTextClearance()
+                performTextInput("HAM")
+                performImeAction()
+            }
+
+            /**
+             * There are two "HAM" on the screen.
+             * First is in the search bar
+             * Another is in the suggestions.
+             */
+            waitUntilNodeCount(hasText("HAM"), 2, 10_000)
+            onNodeWithText("Hamburg Airport").apply {
+                performClick()
+            }
+
+            onNodeWithText("Flights from HAM")
+                .assertIsDisplayed()
+
+            onNodeWithText("SVO")
+                .assertIsDisplayed()
+
+            Espresso.pressBack()
+            onNodeWithText("Hamburg Airport")
+                .assertIsDisplayed()
+
+            Espresso.pressBack()
         }
     }
 }
