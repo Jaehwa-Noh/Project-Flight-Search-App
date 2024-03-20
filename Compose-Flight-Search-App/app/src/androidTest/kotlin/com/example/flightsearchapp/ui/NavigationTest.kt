@@ -16,7 +16,6 @@ import com.example.flightsearchapp.data.AirportsFtsRepository
 import com.example.flightsearchapp.testing.database.airportFtsEntitiesTestData
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Rule
@@ -105,7 +104,7 @@ class NavigationTest {
         }
     }
 
-    @OptIn(ExperimentalTestApi::class, ExperimentalCoroutinesApi::class)
+    @OptIn(ExperimentalTestApi::class)
     @Test
     fun whenSearchHAMAndClickAndBack_ShowSuggestion()  {
         composeTestRule.apply {
