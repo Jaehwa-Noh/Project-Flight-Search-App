@@ -52,22 +52,89 @@ class NavigationTest {
         }
     }
 
+    @OptIn(ExperimentalTestApi::class)
     @Test
     fun whenSearchHAM_ShowSuggestions() {
         composeTestRule.apply {
+
             onNodeWithContentDescription("Search").apply {
                 performClick()
+                performTextClearance()
+                performTextInput("HAM")
+            }
+
+            /**
+             * There are two "HAM" on the screen.
+             * First is in the search bar
+             * Another is in the suggestions.
+             */
+            waitUntilNodeCount(hasText("HAM"), 2, 10_000)
+            onNodeWithText("Hamburg Airport").apply {
+                performClick()
+            }
+
+        }
+    }
+
+    @OptIn(ExperimentalTestApi::class)
+    @Test
+    fun whenSearchHAMAndClick_ShowFlights() {
+        composeTestRule.apply {
+            waitForIdle()
+            onNodeWithContentDescription("Search").apply {
+                performClick()
+                performTextClearance()
+                performTextInput("HAM")
+            }
+
+            /**
+             * There are two "HAM" on the screen.
+             * First is in the search bar
+             * Another is in the suggestions.
+             */
+            waitUntilNodeCount(hasText("HAM"), 2, 10_000)
+            onNodeWithText("Hamburg Airport").apply {
+                performClick()
+            }
+
+            onNodeWithText("Flights from HAM")
+                .assertIsDisplayed()
+
+            onNodeWithText("SVO")
+                .assertIsDisplayed()
+        }
+    }
+
+    @OptIn(ExperimentalTestApi::class, ExperimentalCoroutinesApi::class)
+    @Test
+    fun whenSearchHAMAndClickAndBack_ShowSuggestion()  {
+        composeTestRule.apply {
+            onNodeWithContentDescription("Search").apply {
+                performClick()
+                performTextClearance()
                 performTextInput("HAM")
                 performImeAction()
             }
 
             /**
              * There are two "HAM" on the screen.
-             * One is in the search bar
+             * First is in the search bar
              * Another is in the suggestions.
              */
-            onAllNodesWithText("HAM").assertCountEquals(2)
+            waitUntilNodeCount(hasText("HAM"), 2, 10_000)
+            onNodeWithText("Hamburg Airport").apply {
+                performClick()
+            }
 
+            onNodeWithText("Flights from HAM")
+                .assertIsDisplayed()
+
+            onNodeWithText("SVO")
+                .assertIsDisplayed()
+
+            Espresso.pressBack()
+            onNodeWithText("Hamburg Airport")
+                .assertIsDisplayed()
         }
     }
 }
