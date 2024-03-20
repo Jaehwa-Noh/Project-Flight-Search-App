@@ -1,4 +1,4 @@
-package com.example.flightsearchapp.testing.database.entityextension
+package com.example.flightsearchapp.testing.model.database.entityextension
 
 import com.example.flightsearchapp.data.database.AirportEntity
 

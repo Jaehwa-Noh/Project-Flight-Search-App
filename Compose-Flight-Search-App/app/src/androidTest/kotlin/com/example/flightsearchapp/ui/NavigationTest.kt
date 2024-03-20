@@ -14,7 +14,7 @@ import androidx.test.espresso.Espresso
 import androidx.test.espresso.NoActivityResumedException
 import com.example.flightsearchapp.MainActivity
 import com.example.flightsearchapp.data.AirportsFtsRepository
-import com.example.flightsearchapp.testing.database.airportFtsEntitiesTestData
+import com.example.flightsearchapp.testing.model.database.airportFtsEntitiesTestData
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.test.runTest

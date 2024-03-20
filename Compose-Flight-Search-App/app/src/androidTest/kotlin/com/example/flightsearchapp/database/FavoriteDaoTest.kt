@@ -6,8 +6,8 @@ import androidx.test.core.app.ApplicationProvider
 import com.example.flightsearchapp.data.database.AirportDao
 import com.example.flightsearchapp.data.database.AppDatabase
 import com.example.flightsearchapp.data.database.FavoriteDao
-import com.example.flightsearchapp.testing.database.airportEntitiesTestData
-import com.example.flightsearchapp.testing.database.favoriteEntitiesTestData
+import com.example.flightsearchapp.testing.model.database.airportEntitiesTestData
+import com.example.flightsearchapp.testing.model.database.favoriteEntitiesTestData
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.advanceUntilIdle

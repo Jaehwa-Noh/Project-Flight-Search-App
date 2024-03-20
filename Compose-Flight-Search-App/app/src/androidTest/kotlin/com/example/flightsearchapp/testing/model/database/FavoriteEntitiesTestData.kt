@@ -1,4 +1,4 @@
-package com.example.flightsearchapp.testing.database
+package com.example.flightsearchapp.testing.model.database
 
 import com.example.flightsearchapp.data.database.FavoriteEntity
 
