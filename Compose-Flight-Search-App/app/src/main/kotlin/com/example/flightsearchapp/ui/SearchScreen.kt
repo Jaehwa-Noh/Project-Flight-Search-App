@@ -88,7 +88,9 @@ fun SearchScreen(modifier: Modifier = Modifier) {
                     is SearchScreenUiState.ShowFavorite -> {
                         Text(
                             "Favorite routes",
-                            modifier = Modifier.padding(vertical = 8.dp)
+                            modifier = Modifier
+                                .padding(vertical = 8.dp)
+                                .semantics { heading() },
                         )
 
                         FlightsListScreen(
