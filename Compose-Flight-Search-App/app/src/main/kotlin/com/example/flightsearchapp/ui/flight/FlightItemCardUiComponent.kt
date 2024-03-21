@@ -85,17 +85,13 @@ fun FlightItemCardUiComponent(
             ) {
                 Icon(
                     imageVector = Icons.Rounded.Star,
-
                     contentDescription = null,
-//                    if (flight.isBookmarked) "Favorite"
-//                    else "Not Favorite",
-
                     tint =
                     if (flight.isBookmarked) Color.Green
                     else Color.LightGray,
                     modifier = Modifier
                         .clearAndSetSemantics {
-                            contentDescription = favoriteActionLabel
+                            contentDescription = favoriteStateLabel
                         },
                 )
             }
