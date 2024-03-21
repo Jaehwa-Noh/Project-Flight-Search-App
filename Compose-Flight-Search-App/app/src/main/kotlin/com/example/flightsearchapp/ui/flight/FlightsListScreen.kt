@@ -31,7 +31,14 @@ fun FlightsListScreen(
             ) { flight ->
                 FlightItemCardUiComponent(
                     flight = flight,
-                    onFavoriteClick = onFavoriteClick
+                    onFavoriteClickAction = {
+                        onFavoriteClick(
+                            flight.departureIataCode,
+                            flight.arriveIataCode,
+                            flight.isBookmarked
+                        )
+                        true
+                    },
                 )
             }
         }
@@ -47,7 +54,14 @@ fun FlightsListScreen(
             ) { flight ->
                 FlightItemCardUiComponent(
                     flight = flight,
-                    onFavoriteClick = onFavoriteClick,
+                    onFavoriteClickAction = {
+                        onFavoriteClick(
+                            flight.departureIataCode,
+                            flight.arriveIataCode,
+                            flight.isBookmarked
+                        )
+                        true
+                    },
                 )
             }
         }

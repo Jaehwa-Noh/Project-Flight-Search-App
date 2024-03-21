@@ -15,6 +15,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.CustomAccessibilityAction
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.customActions
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.flightsearchapp.ui.AirportInfoUiComponent
@@ -25,15 +31,22 @@ import com.example.flightsearchapp.ui.theme.FlightSearchAppTheme
 fun FlightItemCardUiComponent(
     modifier: Modifier = Modifier,
     flight: Flight,
-    onFavoriteClick: (
-        departureIata: String,
-        arriveIata: String,
-        isBookmarked: Boolean,
-    ) -> Unit,
+    onFavoriteClickAction: () -> Boolean,
 ) {
+    val favoriteActionLabel = if (flight.isBookmarked) "Remove Favorite" else "Add Favorite"
+    val favoriteStateLabel = if (flight.isBookmarked) "Favorite" else "Is not Favorite"
+
     Card(
         modifier = modifier
             .padding(8.dp)
+            .semantics(mergeDescendants = true) {
+                customActions = listOf(
+                    CustomAccessibilityAction(favoriteActionLabel, onFavoriteClickAction)
+                )
+
+                stateDescription = favoriteStateLabel
+
+            }
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -67,23 +80,23 @@ fun FlightItemCardUiComponent(
 
             IconButton(
                 onClick = {
-                    onFavoriteClick(
-                        flight.departureIataCode,
-                        flight.arriveIataCode,
-                        flight.isBookmarked,
-                    )
+                    onFavoriteClickAction()
                 }
             ) {
                 Icon(
                     imageVector = Icons.Rounded.Star,
 
-                    contentDescription =
-                    if (flight.isBookmarked) "Favorite"
-                    else null,
+                    contentDescription = null,
+//                    if (flight.isBookmarked) "Favorite"
+//                    else "Not Favorite",
 
                     tint =
                     if (flight.isBookmarked) Color.Green
                     else Color.LightGray,
+                    modifier = Modifier
+                        .clearAndSetSemantics {
+                            contentDescription = favoriteActionLabel
+                        },
                 )
             }
         }
@@ -103,8 +116,7 @@ fun FlightItemCardUiComponentPreview() {
                 arriveName = "Arrive Airport",
                 isBookmarked = false,
             ),
-            onFavoriteClick = { _, _, _ ->
-            }
+            onFavoriteClickAction = { true },
         )
     }
 }
