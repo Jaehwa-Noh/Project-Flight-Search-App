@@ -9,10 +9,10 @@ import javax.inject.Inject
 
 class TestSearchTextRepository @Inject constructor(): SearchTextRepository {
 
-    private val _mySearchText = MutableStateFlow("")
+    private val mySearchText = MutableStateFlow("")
 
-    override val savedSearchText: Flow<String> = _mySearchText.asStateFlow()
+    override val savedSearchText: Flow<String> = mySearchText.asStateFlow()
     override suspend fun saveSearchText(searchText: String) {
-        _mySearchText.update { searchText }
+        mySearchText.update { searchText }
     }
 }

@@ -69,7 +69,7 @@ fun SearchScreen(modifier: Modifier = Modifier) {
         )
 
         Spacer(
-            modifier = Modifier.height(8.dp)
+            modifier = Modifier.height(8.dp),
         )
 
         when (showFlightUiState.value) {
@@ -77,11 +77,12 @@ fun SearchScreen(modifier: Modifier = Modifier) {
                 when (searchScreenUiState.value) {
                     is SearchScreenUiState.ShowSuggests -> {
                         SuggestionsListScreen(
-                            suggestionAirportModels = (searchScreenUiState.value as SearchScreenUiState.ShowSuggests).results,
+                            suggestionAirportModels =
+                            (searchScreenUiState.value as SearchScreenUiState.ShowSuggests).results,
                             onSuggestionClick = {
                                 onSearch("")
                                 searchScreenViewModel.setDepartureId(it)
-                            }
+                            },
                         )
                     }
 
@@ -128,7 +129,7 @@ fun SearchScreen(modifier: Modifier = Modifier) {
                         .padding(vertical = 8.dp)
                         .semantics {
                             heading()
-                        }
+                        },
                 )
                 FlightsListScreen(
                     modifier = Modifier.fillMaxSize(),
