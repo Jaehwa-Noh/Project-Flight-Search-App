@@ -6,6 +6,19 @@ plugins {
     id("com.diffplug.spotless")
 }
 
+val ktlintVersion = "1.2.1"
+
+spotless {
+    kotlin {
+        target("**/*.kt")
+        ktlint(ktlintVersion)
+    }
+    kotlinGradle {
+        target("**/*.gradle.kts")
+        ktlint(ktlintVersion)
+    }
+}
+
 android {
     namespace = "com.example.flightsearchapp"
     compileSdk = 34
@@ -28,7 +41,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
