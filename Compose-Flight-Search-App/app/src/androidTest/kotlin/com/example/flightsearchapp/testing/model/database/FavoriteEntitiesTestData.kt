@@ -7,12 +7,9 @@ val favoriteEntitiesTestData: List<FavoriteEntity> = listOf(
     testFavoriteEntity(2, "EFG", "GHI"),
 )
 
-private fun testFavoriteEntity(
-    id: Long,
-    departureCode: String,
-    destinationCode: String,
-) = FavoriteEntity(
-    id = id,
-    departureCode = departureCode,
-    destinationCode = destinationCode,
-)
+private fun testFavoriteEntity(id: Long, departureCode: String, destinationCode: String) =
+    FavoriteEntity(
+        id = id,
+        departureCode = departureCode,
+        destinationCode = destinationCode,
+    )

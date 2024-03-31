@@ -8,7 +8,7 @@ val flightTestData = Flight(
     departureName = "Incheon",
     arriveIataCode = "CDG",
     arriveName = "Paris airport",
-    isBookmarked = false
+    isBookmarked = false,
 )
 
 fun Flight.bookMarkToggle() = Flight(
@@ -19,4 +19,3 @@ fun Flight.bookMarkToggle() = Flight(
     arriveName,
     !isBookmarked,
 )
-

@@ -3,18 +3,17 @@ package com.example.flightsearchapp.data
 import com.example.flightsearchapp.data.database.AirportFtsDao
 import com.example.flightsearchapp.data.database.AirportFtsEntity
 import com.example.flightsearchapp.di.DispatcherIO
+import javax.inject.Inject
+import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
-import javax.inject.Singleton
 
 interface AirportsFtsDataSource {
     suspend fun upsertAirports(entities: List<AirportFtsEntity>)
     suspend fun deleteAndInsertAll(entities: List<AirportFtsEntity>)
     fun searchAirportsStream(query: String): Flow<List<String>>
 }
-
 
 @Singleton
 class LocalAirportsFtsDataSource @Inject constructor(
@@ -33,6 +32,4 @@ class LocalAirportsFtsDataSource @Inject constructor(
 
     override fun searchAirportsStream(query: String): Flow<List<String>> =
         airportsFtsDao.searchAirportsStream(query = query)
-
 }
-

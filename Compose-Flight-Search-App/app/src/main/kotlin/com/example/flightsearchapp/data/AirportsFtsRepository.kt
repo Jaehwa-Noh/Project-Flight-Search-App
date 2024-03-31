@@ -2,10 +2,10 @@ package com.example.flightsearchapp.data
 
 import com.example.flightsearchapp.data.database.AirportFtsEntity
 import com.example.flightsearchapp.di.DispatcherDefault
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
 interface AirportsFtsRepository {
     suspend fun upsertAirports(entities: List<AirportFtsEntity>)

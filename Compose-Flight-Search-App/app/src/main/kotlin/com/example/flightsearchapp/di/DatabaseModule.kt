@@ -21,7 +21,7 @@ object DatabaseModule {
             Room.databaseBuilder(
                 context,
                 AppDatabase::class.java,
-                "app_database"
+                "app_database",
             )
                 .createFromAsset("database/flight_search.db")
                 .build()

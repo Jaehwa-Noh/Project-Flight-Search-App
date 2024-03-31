@@ -3,7 +3,6 @@ package com.example.flightsearchapp.data.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 
-
 @Database(
     entities = [
         AirportEntity::class,

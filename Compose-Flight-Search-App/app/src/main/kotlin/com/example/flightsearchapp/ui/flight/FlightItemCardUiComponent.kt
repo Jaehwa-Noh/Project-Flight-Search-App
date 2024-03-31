@@ -41,12 +41,11 @@ fun FlightItemCardUiComponent(
             .padding(8.dp)
             .semantics(mergeDescendants = true) {
                 customActions = listOf(
-                    CustomAccessibilityAction(favoriteActionLabel, onFavoriteClickAction)
+                    CustomAccessibilityAction(favoriteActionLabel, onFavoriteClickAction),
                 )
 
                 stateDescription = favoriteStateLabel
-
-            }
+            },
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -55,7 +54,7 @@ fun FlightItemCardUiComponent(
             Column(
                 modifier = Modifier
                     .padding(8.dp)
-                    .weight(1f)
+                    .weight(1f),
             ) {
                 Text(
                     "DEPART",
@@ -81,14 +80,17 @@ fun FlightItemCardUiComponent(
             IconButton(
                 onClick = {
                     onFavoriteClickAction()
-                }
+                },
             ) {
                 Icon(
                     imageVector = Icons.Rounded.Star,
                     contentDescription = null,
                     tint =
-                    if (flight.isBookmarked) Color.Green
-                    else Color.LightGray,
+                    if (flight.isBookmarked) {
+                        Color.Green
+                    } else {
+                        Color.LightGray
+                    },
                     modifier = Modifier
                         .clearAndSetSemantics {
                             contentDescription = favoriteStateLabel

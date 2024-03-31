@@ -175,6 +175,5 @@ fun FlightSearchBar(
         },
         modifier = modifier,
     ) {
-
     }
 }

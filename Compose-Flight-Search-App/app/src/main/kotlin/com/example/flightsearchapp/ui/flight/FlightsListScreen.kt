@@ -35,7 +35,7 @@ fun FlightsListScreen(
                         onFavoriteClick(
                             flight.departureIataCode,
                             flight.arriveIataCode,
-                            flight.isBookmarked
+                            flight.isBookmarked,
                         )
                         true
                     },
@@ -58,7 +58,7 @@ fun FlightsListScreen(
                         onFavoriteClick(
                             flight.departureIataCode,
                             flight.arriveIataCode,
-                            flight.isBookmarked
+                            flight.isBookmarked,
                         )
                         true
                     },
@@ -67,7 +67,6 @@ fun FlightsListScreen(
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable

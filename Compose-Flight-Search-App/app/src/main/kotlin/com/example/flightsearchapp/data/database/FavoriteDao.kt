@@ -13,7 +13,7 @@ interface FavoriteDao {
         """
             SELECT *
               FROM favorite
-        """
+        """,
     )
     fun getAllFavoritesStream(): Flow<List<FavoriteEntity>>
 
@@ -24,7 +24,7 @@ interface FavoriteDao {
         """
             DELETE FROM favorite
              WHERE departure_code = :departureCode AND destination_code = :arriveCode
-        """
+        """,
     )
     fun delete(departureCode: String, arriveCode: String)
 
@@ -33,7 +33,7 @@ interface FavoriteDao {
         """
             SELECT *
               FROM favorite
-        """
+        """,
     )
     fun getFavoriteWithAirports(): Flow<List<FavoriteWithAirports>>
 }

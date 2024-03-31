@@ -12,6 +12,7 @@ import com.example.flightsearchapp.domain.SetSavedSearchTextUseCase
 import com.example.flightsearchapp.ui.model.Flight
 import com.example.flightsearchapp.ui.model.SuggestionAirport
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -24,7 +25,6 @@ import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
 class SearchScreenViewModel @Inject constructor(
@@ -56,7 +56,7 @@ class SearchScreenViewModel @Inject constructor(
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(5_000),
-                initialValue = ShowFlightUiState.Clear
+                initialValue = ShowFlightUiState.Clear,
             )
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -74,7 +74,7 @@ class SearchScreenViewModel @Inject constructor(
                     getSuggestionsStreamUseCase(query = savedSearchText)
                         .mapLatest { searchedApi ->
                             SearchScreenUiState.ShowSuggests(
-                                results = searchedApi
+                                results = searchedApi,
                             )
                         }
                 }
@@ -82,7 +82,7 @@ class SearchScreenViewModel @Inject constructor(
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(5_000),
-                initialValue = SearchScreenUiState.Init
+                initialValue = SearchScreenUiState.Init,
             )
 
     init {

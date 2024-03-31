@@ -27,7 +27,5 @@ fun FavoriteWithAirports.asFlight(): Flight = Flight(
     departureName = departureAirport.name,
     arriveIataCode = arriveAirport.iataCode,
     arriveName = arriveAirport.name,
-    isBookmarked = true
+    isBookmarked = true,
 )
-
-

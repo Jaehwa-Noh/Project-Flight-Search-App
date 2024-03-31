@@ -15,17 +15,16 @@ import com.example.flightsearchapp.ui.theme.FlightSearchAppTheme
 fun SuggestionsListScreen(
     modifier: Modifier = Modifier,
     suggestionAirportModels: List<SuggestionAirport>,
-    onSuggestionClick: (Long) -> Unit
+    onSuggestionClick: (Long) -> Unit,
 ) {
     LazyColumn(modifier = modifier) {
-        items(suggestionAirportModels)
-        { searchedAirport ->
+        items(suggestionAirportModels) { searchedAirport ->
             SuggestionsListItemUiComponent(
                 suggestionAirportModel = searchedAirport,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 4.dp),
-                onItemClick = onSuggestionClick
+                onItemClick = onSuggestionClick,
             )
         }
     }
@@ -40,15 +39,15 @@ fun SuggestListScreenPreview() {
                 SuggestionAirport(
                     id = 1,
                     iataCode = "ABC",
-                    name = "Airport"
+                    name = "Airport",
                 ),
                 SuggestionAirport(
                     id = 2,
                     iataCode = "DEF",
-                    name = "Airport2"
+                    name = "Airport2",
                 ),
             ),
-            onSuggestionClick = {}
+            onSuggestionClick = {},
         )
     }
 }

@@ -5,17 +5,16 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.example.flightsearchapp.data.database.AirportDao
 import com.example.flightsearchapp.data.database.AppDatabase
+import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
-
 
 class AirportDaoTest {
 
@@ -83,7 +82,7 @@ class AirportDaoTest {
             emptyList(),
             searchedAirport.map {
                 it.name
-            }
+            },
         )
     }
 

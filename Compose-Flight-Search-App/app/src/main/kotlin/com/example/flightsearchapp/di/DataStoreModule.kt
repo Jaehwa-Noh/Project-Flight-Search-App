@@ -13,10 +13,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
-import javax.inject.Singleton
 
 private const val SEARCH_TEXT = "search_text"
 
@@ -26,14 +26,16 @@ object DataStoreModule {
 
     @Singleton
     @Provides
-    fun provideDataStoreModule(@ApplicationContext applicationContext: Context): DataStore<Preferences> {
+    fun provideDataStoreModule(
+        @ApplicationContext applicationContext: Context,
+    ): DataStore<Preferences> {
         return PreferenceDataStoreFactory.create(
             corruptionHandler = ReplaceFileCorruptionHandler(
-                produceNewData = { emptyPreferences() }
+                produceNewData = { emptyPreferences() },
             ),
             migrations = listOf(SharedPreferencesMigration(applicationContext, SEARCH_TEXT)),
             scope = CoroutineScope(Dispatchers.IO + SupervisorJob()),
-            produceFile = { applicationContext.preferencesDataStoreFile(SEARCH_TEXT) }
+            produceFile = { applicationContext.preferencesDataStoreFile(SEARCH_TEXT) },
         )
     }
 }

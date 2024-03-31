@@ -12,18 +12,17 @@ import com.example.flightsearchapp.ui.theme.FlightSearchAppTheme
 fun SuggestionsListItemUiComponent(
     modifier: Modifier = Modifier,
     suggestionAirportModel: SuggestionAirport,
-    onItemClick: (Long) -> Unit
+    onItemClick: (Long) -> Unit,
 ) {
-
-    AirportInfoUiComponent(iataCode = suggestionAirportModel.iataCode,
+    AirportInfoUiComponent(
+        iataCode = suggestionAirportModel.iataCode,
         name = suggestionAirportModel.name,
         modifier = modifier
             .clickable {
                 onItemClick(suggestionAirportModel.id)
-            }
+            },
     )
 }
-
 
 @Preview(showBackground = true)
 @Composable
@@ -33,7 +32,7 @@ fun SuggestListItemUiComponentPreview() {
             suggestionAirportModel = SuggestionAirport(
                 id = 1,
                 iataCode = "ABC",
-                name = "Airport"
+                name = "Airport",
             ),
             onItemClick = {},
         )

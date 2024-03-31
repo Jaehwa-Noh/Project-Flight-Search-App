@@ -17,11 +17,11 @@ import com.example.flightsearchapp.data.AirportsFtsRepository
 import com.example.flightsearchapp.testing.model.database.airportFtsEntitiesTestData
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import javax.inject.Inject
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import javax.inject.Inject
 
 @HiltAndroidTest
 class NavigationTest {
@@ -39,7 +39,7 @@ class NavigationTest {
         hiltRule.inject()
         runTest {
             airportsFtsRepository.deleteAndInsertAll(
-                airportFtsEntitiesTestData
+                airportFtsEntitiesTestData,
             )
         }
     }
@@ -56,7 +56,6 @@ class NavigationTest {
     @Test
     fun whenSearchHAM_ShowSuggestions() {
         composeTestRule.apply {
-
             onNodeWithContentDescription("Search").apply {
                 performClick()
                 performTextClearance()
@@ -72,7 +71,6 @@ class NavigationTest {
             onNodeWithText("Hamburg Airport").apply {
                 performClick()
             }
-
         }
     }
 
@@ -107,7 +105,7 @@ class NavigationTest {
 
     @OptIn(ExperimentalTestApi::class)
     @Test
-    fun whenSearchHAMAndClickAndBack_ShowSuggestion()  {
+    fun whenSearchHAMAndClickAndBack_ShowSuggestion() {
         composeTestRule.apply {
             onNodeWithContentDescription("Search").apply {
                 performClick()
@@ -140,7 +138,7 @@ class NavigationTest {
 
     @OptIn(ExperimentalTestApi::class)
     @Test(expected = NoActivityResumedException::class)
-    fun whenSearchHAMAndClickAndTwiceBack_ExitApp()  {
+    fun whenSearchHAMAndClickAndTwiceBack_ExitApp() {
         composeTestRule.apply {
             onNodeWithContentDescription("Search").apply {
                 performClick()

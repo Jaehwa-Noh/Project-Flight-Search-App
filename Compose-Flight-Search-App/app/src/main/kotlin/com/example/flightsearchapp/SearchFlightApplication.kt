@@ -6,9 +6,9 @@ import com.example.flightsearchapp.data.AirportsRepository
 import com.example.flightsearchapp.data.database.asFtsEntity
 import com.example.flightsearchapp.di.ApplicationScope
 import dagger.hilt.android.HiltAndroidApp
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltAndroidApp
 class SearchFlightApplication : Application() {
@@ -28,10 +28,8 @@ class SearchFlightApplication : Application() {
             airportsFtsRepository.deleteAndInsertAll(
                 airportsRepository.getAllAirportsEntities().map { airportEntity ->
                     airportEntity.asFtsEntity()
-                }
+                },
             )
         }
     }
 }
-
-

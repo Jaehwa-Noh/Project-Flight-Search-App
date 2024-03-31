@@ -2,9 +2,9 @@ package com.example.flightsearchapp.domain
 
 import com.example.flightsearchapp.data.FavoritesRepository
 import com.example.flightsearchapp.di.DispatcherDefault
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
 class DeleteFavoriteUseCase @Inject constructor(
     private val favoritesRepository: FavoritesRepository,

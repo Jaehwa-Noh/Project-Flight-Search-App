@@ -15,12 +15,12 @@ fun FlightSearchApp(modifier: Modifier = Modifier) {
         modifier = modifier,
         topBar = {
             FlightSearchAppTopBar()
-        }
+        },
     ) { contentPadding ->
         SearchScreen(
             modifier
                 .padding(contentPadding)
-                .padding(horizontal = 8.dp)
+                .padding(horizontal = 8.dp),
         )
     }
 }

@@ -14,7 +14,7 @@ interface AirportFtsDao {
     @Query(
         """
             DELETE FROM airportFts
-        """
+        """,
     )
     fun deleteAll()
 
@@ -29,9 +29,7 @@ interface AirportFtsDao {
             SELECT iata_code
               FROM airportFts
              WHERE airportFts MATCH '*' || :query || '*'
-        """
+        """,
     )
     fun searchAirportsStream(query: String): Flow<List<String>>
 }
-
-

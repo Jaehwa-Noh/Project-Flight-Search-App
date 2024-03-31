@@ -3,11 +3,11 @@ package com.example.flightsearchapp.data
 import com.example.flightsearchapp.data.database.AirportDao
 import com.example.flightsearchapp.data.database.AirportEntity
 import com.example.flightsearchapp.di.DispatcherIO
+import javax.inject.Inject
+import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
-import javax.inject.Singleton
 
 interface AirportsDataSource {
     fun getAirportsByCodeOrNameStream(query: String): Flow<List<AirportEntity>>
@@ -25,18 +25,14 @@ class LocalAirportsDataSource @Inject constructor(
     override fun getAirportsByCodeOrNameStream(query: String): Flow<List<AirportEntity>> =
         airportDao.getAirportsByCodeOrNameStream(query = query)
 
-
     override fun getAirportNullByIdStream(airportId: Long): Flow<AirportEntity?> =
         airportDao.getAirportNullByIdStream(airportId = airportId)
-
 
     override fun getAirportsStream(airportId: Long): Flow<List<AirportEntity>> =
         airportDao.getAirportsStream(airportId = airportId)
 
-
     override suspend fun getAirportByCode(airportCode: String): AirportEntity =
         withContext(ioDispatcher) { airportDao.getAirportByCode(airportCode = airportCode) }
-
 
     override suspend fun getAllAirportsEntities(): List<AirportEntity> =
         airportDao.getAllAirportsEntities()

@@ -12,11 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun AirportInfoUiComponent(
-    modifier: Modifier = Modifier,
-    iataCode: String,
-    name: String,
-) {
+fun AirportInfoUiComponent(modifier: Modifier = Modifier, iataCode: String, name: String) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
