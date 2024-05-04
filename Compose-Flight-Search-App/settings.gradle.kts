@@ -15,4 +15,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "Flight Search App"
 include(":app")
- 
