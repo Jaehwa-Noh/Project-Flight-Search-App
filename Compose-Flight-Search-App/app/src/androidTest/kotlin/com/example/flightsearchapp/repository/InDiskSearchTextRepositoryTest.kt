@@ -12,6 +12,9 @@ import org.junit.Test
 import javax.inject.Inject
 import kotlin.test.assertEquals
 
+/**
+ * Instrumented test for [InDiskSearchTextRepository][SearchTextRepository]
+ */
 @HiltAndroidTest
 class InDiskSearchTextRepositoryTest {
     @get:Rule
