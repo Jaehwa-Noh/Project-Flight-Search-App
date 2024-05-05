@@ -16,6 +16,9 @@ import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
+/**
+ * Instrumented test for [AirportDao]
+ */
 class AirportDaoTest {
 
     private lateinit var airportDao: AirportDao

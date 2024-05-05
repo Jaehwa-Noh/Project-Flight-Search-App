@@ -23,6 +23,9 @@ import org.junit.Rule
 import org.junit.Test
 import javax.inject.Inject
 
+/**
+ * UI test for Navigation
+ */
 @HiltAndroidTest
 class NavigationTest {
     @get:Rule(order = 0)

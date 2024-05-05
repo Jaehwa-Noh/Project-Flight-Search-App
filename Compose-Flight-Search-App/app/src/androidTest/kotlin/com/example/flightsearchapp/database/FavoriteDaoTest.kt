@@ -18,6 +18,9 @@ import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
+/**
+ * Instrumented test for [FavoriteDao]
+ */
 class FavoriteDaoTest {
 
     private lateinit var airportDao: AirportDao

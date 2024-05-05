@@ -12,6 +12,9 @@ import com.example.flightsearchapp.ui.flight.FlightItemCardUiComponent
 import org.junit.Rule
 import org.junit.Test
 
+/**
+ * UI test for [FlightItemCardUiComponent]
+ */
 class FlightItemCardUiComponentTest {
     @get:Rule
     val composeTestRule = createAndroidComposeRule<ComponentActivity>()
