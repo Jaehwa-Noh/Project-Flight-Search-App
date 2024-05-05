@@ -8,8 +8,6 @@ import com.example.flightsearchapp.data.database.AppDatabase
 import com.example.flightsearchapp.data.database.FavoriteDao
 import com.example.flightsearchapp.testing.model.database.airportEntitiesTestData
 import com.example.flightsearchapp.testing.model.database.favoriteEntitiesTestData
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.advanceUntilIdle
@@ -17,6 +15,8 @@ import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class FavoriteDaoTest {
 
@@ -41,7 +41,7 @@ class FavoriteDaoTest {
     }
 
     @Test
-    fun whenGetAllFavorites_AllFavorites() = runTest {
+    fun favorite_getAllFavorites_allFavorites() = runTest {
         insertAllData()
 
         val allFavorites = favoriteDao.getAllFavoritesStream().first()
@@ -50,7 +50,7 @@ class FavoriteDaoTest {
     }
 
     @Test
-    fun whenDeleteOneFavorite_ThreeRemain() = runTest {
+    fun favorite_deleteOneFavorite_matchFavorite() = runTest {
         insertAllData()
 
         val deleteFavorite = favoriteEntitiesTestData.first()
@@ -66,7 +66,7 @@ class FavoriteDaoTest {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun whenSearchFavorite_FavoriteWithAirports() = runTest {
+    fun searchQuery_searchFavorite_matchCount() = runTest {
         airportDao.insertAll(airportEntitiesTestData)
         advanceUntilIdle()
         insertAllData()

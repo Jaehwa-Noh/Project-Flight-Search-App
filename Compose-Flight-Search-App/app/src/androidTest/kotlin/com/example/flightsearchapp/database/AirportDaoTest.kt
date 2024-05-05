@@ -5,16 +5,16 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.example.flightsearchapp.data.database.AirportDao
 import com.example.flightsearchapp.data.database.AppDatabase
-import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 class AirportDaoTest {
 
@@ -38,7 +38,7 @@ class AirportDaoTest {
     }
 
     @Test
-    fun whenSearch_HAM_FoundHAMAirport() = runTest {
+    fun searchQuery_searchHAM_foundHAMAirport() = runTest {
         val searchedAirport = airportDao.getAirportsByCodeOrNameStream(query = "HAM").first()
 
         assertEquals(
@@ -50,7 +50,7 @@ class AirportDaoTest {
     }
 
     @Test
-    fun whenSearch_KOR_NotFoundKORAirport() = runTest {
+    fun searchQuery_searchKOR_notFoundKORAirport() = runTest {
         val searchedAirport = airportDao.getAirportsByCodeOrNameStream(query = "KOR").first()
 
         assertEquals(
@@ -62,7 +62,7 @@ class AirportDaoTest {
     }
 
     @Test
-    fun whenSearch_Paris_FoundParisAirport() = runTest {
+    fun searchQuery_searchParis_foundParisAirport() = runTest {
         val searchedAirport = airportDao.getAirportsByCodeOrNameStream(query = "paris").first()
 
         assertTrue {
@@ -75,7 +75,7 @@ class AirportDaoTest {
     }
 
     @Test
-    fun whenSearch_Korea_NotFoundKoreaAirport() = runTest {
+    fun searchQuery_searchKorea_notFoundKoreaAirport() = runTest {
         val searchedAirport = airportDao.getAirportsByCodeOrNameStream(query = "Korea").first()
 
         assertEquals(
@@ -87,7 +87,7 @@ class AirportDaoTest {
     }
 
     @Test
-    fun airportId_WhenRightAirportId_AllAirportsBesidesIt() = runTest {
+    fun searchQuery_rightAirportId_allAirportsBesidesIt() = runTest {
         val allAirportsExceptItself = airportDao.getAirportsStream(airportId = 1L).first()
 
         allAirportsExceptItself.forEach { airportEntity ->
@@ -98,14 +98,14 @@ class AirportDaoTest {
     }
 
     @Test
-    fun airportId_WhenWrongAirportId_Null() = runTest {
+    fun searchQuery_wrongAirportId_null() = runTest {
         val airport = airportDao.getAirportNullByIdStream(airportId = -1L).firstOrNull()
 
         assertNull(airport)
     }
 
     @Test
-    fun airportId_WhenRightAirportId_FoundAirport() = runTest {
+    fun searchQuery_rightAirportId_foundAirport() = runTest {
         val airport = airportDao.getAirportNullByIdStream(airportId = 1L).firstOrNull()
 
         assertNotNull(airport)
