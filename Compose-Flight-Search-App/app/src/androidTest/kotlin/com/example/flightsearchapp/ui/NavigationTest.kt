@@ -17,11 +17,11 @@ import com.example.flightsearchapp.data.AirportsFtsRepository
 import com.example.flightsearchapp.testing.model.database.airportFtsEntitiesTestData
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
-import javax.inject.Inject
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import javax.inject.Inject
 
 @HiltAndroidTest
 class NavigationTest {
@@ -45,7 +45,7 @@ class NavigationTest {
     }
 
     @Test
-    fun whenOpenApp_FirstScreenIsSearchScreen() {
+    fun screen_openApp_firstScreenIsSearchScreen() {
         composeTestRule.apply {
             onNodeWithText("Flight Search")
                 .assertIsDisplayed()
@@ -54,7 +54,7 @@ class NavigationTest {
 
     @OptIn(ExperimentalTestApi::class)
     @Test
-    fun whenSearchHAM_ShowSuggestions() {
+    fun searchQuery_searchHAM_showSuggestions() {
         composeTestRule.apply {
             onNodeWithContentDescription("Search").apply {
                 performClick()
@@ -62,7 +62,7 @@ class NavigationTest {
                 performTextInput("HAM")
             }
 
-            /**
+            /*
              * There are two "HAM" on the screen.
              * First is in the search bar
              * Another is in the suggestions.
@@ -76,7 +76,7 @@ class NavigationTest {
 
     @OptIn(ExperimentalTestApi::class)
     @Test
-    fun whenSearchHAMAndClick_ShowFlights() {
+    fun searchQuery_searchHAMAndClick_showFlights() {
         composeTestRule.apply {
             waitForIdle()
             onNodeWithContentDescription("Search").apply {
@@ -85,7 +85,7 @@ class NavigationTest {
                 performTextInput("HAM")
             }
 
-            /**
+            /*
              * There are two "HAM" on the screen.
              * First is in the search bar
              * Another is in the suggestions.
@@ -105,7 +105,7 @@ class NavigationTest {
 
     @OptIn(ExperimentalTestApi::class)
     @Test
-    fun whenSearchHAMAndClickAndBack_ShowSuggestion() {
+    fun searchQuery_searchHAMAndClickAndBack_showSuggestion() {
         composeTestRule.apply {
             onNodeWithContentDescription("Search").apply {
                 performClick()
@@ -138,7 +138,7 @@ class NavigationTest {
 
     @OptIn(ExperimentalTestApi::class)
     @Test(expected = NoActivityResumedException::class)
-    fun whenSearchHAMAndClickAndTwiceBack_ExitApp() {
+    fun searchQuery_searchHAMAndClickAndTwiceBack_exitApp() {
         composeTestRule.apply {
             onNodeWithContentDescription("Search").apply {
                 performClick()

@@ -17,7 +17,7 @@ class FlightItemCardUiComponentTest {
     val composeTestRule = createAndroidComposeRule<ComponentActivity>()
 
     @Test
-    fun flight_WhenNoFavorite_NoFavorite() {
+    fun flight_noFavorite_emptyFavorite() {
         composeTestRule.apply {
             setContent {
                 FlightItemCardUiComponent(
@@ -36,7 +36,7 @@ class FlightItemCardUiComponentTest {
     }
 
     @Test
-    fun flight_WhenFavorite_Favorite() {
+    fun flight_favoriteExist_showFavorites() {
         composeTestRule.apply {
             setContent {
                 FlightItemCardUiComponent(
