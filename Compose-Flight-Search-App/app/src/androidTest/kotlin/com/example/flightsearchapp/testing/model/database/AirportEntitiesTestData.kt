@@ -3,6 +3,9 @@ package com.example.flightsearchapp.testing.model.database
 import com.example.flightsearchapp.data.database.AirportEntity
 import com.example.flightsearchapp.testing.model.database.entityextension.testAirportEntity
 
+/**
+ * Test data for List<[AirportEntity]>
+ */
 val airportEntitiesTestData: List<AirportEntity> = listOf(
     testAirportEntity(1, "ABC"),
     testAirportEntity(2, "CDE"),
