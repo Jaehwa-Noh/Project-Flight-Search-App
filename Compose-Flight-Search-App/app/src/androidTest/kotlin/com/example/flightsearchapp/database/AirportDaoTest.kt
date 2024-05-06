@@ -5,6 +5,7 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.example.flightsearchapp.data.database.AirportDao
 import com.example.flightsearchapp.data.database.AppDatabase
+import com.example.flightsearchapp.testing.model.database.airportEntitiesTestData
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.test.runTest
@@ -28,11 +29,14 @@ class AirportDaoTest {
     fun createDB() {
         val context = ApplicationProvider.getApplicationContext<Context>()
 
-        appDatabase = Room.databaseBuilder(context, AppDatabase::class.java, "test_database")
-            .createFromAsset("database/flight_search.db")
+        appDatabase = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java)
             .build()
 
         airportDao = appDatabase.airportDao()
+
+        runTest {
+            airportDao.insertAll(airportEntitiesTestData)
+        }
     }
 
     @After
