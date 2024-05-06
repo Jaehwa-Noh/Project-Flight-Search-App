@@ -45,11 +45,11 @@ class AirportDaoTest {
     }
 
     @Test
-    fun searchQuery_searchHAM_foundHAMAirport() = runTest {
-        val searchedAirport = airportDao.getAirportsByCodeOrNameStream(query = "HAM").first()
+    fun searchQuery_searchName1_matchIataCode() = runTest {
+        val searchedAirport = airportDao.getAirportsByCodeOrNameStream(query = "name1").first()
 
         assertEquals(
-            listOf("HAM"),
+            listOf("ABC"),
             searchedAirport.map {
                 it.iataCode
             },
@@ -69,15 +69,15 @@ class AirportDaoTest {
     }
 
     @Test
-    fun searchQuery_searchParis_foundParisAirport() = runTest {
-        val searchedAirport = airportDao.getAirportsByCodeOrNameStream(query = "paris").first()
+    fun searchQuery_searchName2_matchName() = runTest {
+        val searchedAirport = airportDao.getAirportsByCodeOrNameStream(query = "name2").first()
 
         assertTrue {
             searchedAirport
                 .first()
                 .name
                 .lowercase()
-                .contains("paris")
+                .contains("name2")
         }
     }
 
@@ -94,7 +94,7 @@ class AirportDaoTest {
     }
 
     @Test
-    fun searchQuery_rightAirportId_allAirportsBesidesIt() = runTest {
+    fun searchQuery_rightAirportId_allAirportsBesidesItself() = runTest {
         val allAirportsExceptItself = airportDao.getAirportsStream(airportId = 1L).first()
 
         allAirportsExceptItself.forEach { airportEntity ->
@@ -112,7 +112,7 @@ class AirportDaoTest {
     }
 
     @Test
-    fun searchQuery_rightAirportId_foundAirport() = runTest {
+    fun searchQuery_rightAirportId_notNUll() = runTest {
         val airport = airportDao.getAirportNullByIdStream(airportId = 1L).firstOrNull()
 
         assertNotNull(airport)
