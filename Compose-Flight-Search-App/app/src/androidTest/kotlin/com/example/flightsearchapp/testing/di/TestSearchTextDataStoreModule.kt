@@ -11,8 +11,8 @@ import dagger.Provides
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
-import kotlinx.coroutines.test.TestScope
 import javax.inject.Singleton
+import kotlinx.coroutines.test.TestScope
 
 private const val TEST_SEARCH_TEXT = "test_search_text"
 
@@ -31,6 +31,6 @@ object TestSearchTextDataStoreModule {
         scope = testScope,
         produceFile = {
             applicationContext.preferencesDataStoreFile(TEST_SEARCH_TEXT)
-        }
+        },
     )
 }

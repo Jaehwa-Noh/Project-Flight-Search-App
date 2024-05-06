@@ -3,14 +3,14 @@ package com.example.flightsearchapp.repository
 import com.example.flightsearchapp.data.SearchTextRepository
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import javax.inject.Inject
+import kotlin.test.assertEquals
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import javax.inject.Inject
-import kotlin.test.assertEquals
 
 /**
  * Instrumented test for [InDiskSearchTextRepository][SearchTextRepository]

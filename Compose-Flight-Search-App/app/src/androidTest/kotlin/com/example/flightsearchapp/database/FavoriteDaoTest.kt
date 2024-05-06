@@ -8,6 +8,8 @@ import com.example.flightsearchapp.data.database.AppDatabase
 import com.example.flightsearchapp.data.database.FavoriteDao
 import com.example.flightsearchapp.testing.model.database.airportEntitiesTestData
 import com.example.flightsearchapp.testing.model.database.favoriteEntitiesTestData
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.advanceUntilIdle
@@ -15,8 +17,6 @@ import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 
 /**
  * Instrumented test for [FavoriteDao]

@@ -85,7 +85,6 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.hilt.android)
 
-
     testImplementation(kotlin("test"))
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
