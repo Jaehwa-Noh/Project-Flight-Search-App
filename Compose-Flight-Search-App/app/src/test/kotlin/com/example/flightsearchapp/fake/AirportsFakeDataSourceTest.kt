@@ -2,10 +2,8 @@ package com.example.flightsearchapp.fake
 
 import com.example.flightsearchapp.data.AirportsDataSource
 import com.example.flightsearchapp.testing.model.database.airportEntitiesTestData
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
-import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
@@ -23,14 +21,13 @@ class AirportsFakeDataSourceTest {
         airportsDataSource = AirportsFakeDataSource()
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun fakeData_run_allMethodDone() = runTest {
         (airportsDataSource as AirportsFakeDataSource).insertAirportsEntities(
             airportEntitiesTestData)
 
         val getAirportByCode = airportsDataSource.getAirportByCode("GHI")
-        advanceUntilIdle()
+
         assertTrue { getAirportByCode.iataCode == "GHI" }
 
         val getAirportsStream = airportsDataSource.getAirportsStream(1)
