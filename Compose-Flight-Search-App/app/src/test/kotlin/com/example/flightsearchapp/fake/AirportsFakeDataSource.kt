@@ -19,6 +19,7 @@ class AirportsFakeDataSource : AirportsDataSource {
         replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST,
     )
     val airportEntityFlow: Flow<List<AirportEntity>> = _airportEntityFlow.asSharedFlow()
+    private val airports = mutableListOf<AirportEntity>()
 
     @OptIn(ExperimentalCoroutinesApi::class)
     override fun getAirportsByCodeOrNameStream(query: String): Flow<List<AirportEntity>> =
@@ -65,6 +66,9 @@ class AirportsFakeDataSource : AirportsDataSource {
         airportEntityFlow.first()
 
     fun insertAirportsEntities(airportsEntities: List<AirportEntity>) {
-        _airportEntityFlow.tryEmit(airportsEntities)
+        val distinctAirports = airports.toMutableSet()
+        distinctAirports.addAll(airportsEntities)
+
+        _airportEntityFlow.tryEmit(distinctAirports.toMutableList())
     }
 }
