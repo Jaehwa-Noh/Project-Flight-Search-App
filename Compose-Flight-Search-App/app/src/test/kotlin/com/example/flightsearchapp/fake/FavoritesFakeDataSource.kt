@@ -3,18 +3,17 @@ package com.example.flightsearchapp.fake
 import com.example.flightsearchapp.data.FavoritesDataSource
 import com.example.flightsearchapp.data.database.FavoriteEntity
 import com.example.flightsearchapp.data.database.FavoriteWithAirports
-import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.combine
 
 class FavoritesFakeDataSource(private val airportsFakeDataSource: AirportsFakeDataSource) :
     FavoritesDataSource {
 
-    private val _favoriteEntitiesStream: MutableSharedFlow<List<FavoriteEntity>> =
-        MutableSharedFlow(
-            replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST,
+    private val _favoriteEntitiesStream: MutableStateFlow<List<FavoriteEntity>> =
+        MutableStateFlow(
+            emptyList()
         )
 
     val favoriteEntitiesStream: Flow<List<FavoriteEntity>> = _favoriteEntitiesStream.asSharedFlow()
