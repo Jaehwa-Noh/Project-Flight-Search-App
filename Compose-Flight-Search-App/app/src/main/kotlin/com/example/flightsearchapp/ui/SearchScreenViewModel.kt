@@ -89,7 +89,8 @@ class SearchScreenViewModel @Inject constructor(
         getInitSearchQuery()
     }
 
-    private fun getInitSearchQuery() {
+    @VisibleForTesting
+    fun getInitSearchQuery() {
         viewModelScope.launch {
             _searchQuery.update { getSavedSearchTextStreamUseCase().firstOrNull() ?: "" }
         }
