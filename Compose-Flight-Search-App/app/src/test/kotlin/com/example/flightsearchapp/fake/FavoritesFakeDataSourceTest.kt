@@ -2,13 +2,13 @@ package com.example.flightsearchapp.fake
 
 import com.example.flightsearchapp.testing.model.database.airportEntitiesTestData
 import com.example.flightsearchapp.testing.model.database.favoriteEntitiesTestData
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.withTimeoutOrNull
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.withTimeoutOrNull
 
 class FavoritesFakeDataSourceTest {
     private lateinit var favoritesFakeDataSource: FavoritesFakeDataSource

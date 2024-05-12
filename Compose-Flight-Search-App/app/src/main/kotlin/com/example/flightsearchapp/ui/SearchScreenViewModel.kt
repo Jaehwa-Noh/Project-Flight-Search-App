@@ -1,5 +1,6 @@
 package com.example.flightsearchapp.ui
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.flightsearchapp.domain.DeleteFavoriteUseCase
@@ -12,7 +13,6 @@ import com.example.flightsearchapp.domain.SetSavedSearchTextUseCase
 import com.example.flightsearchapp.ui.model.Flight
 import com.example.flightsearchapp.ui.model.SuggestionAirport
 import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -25,6 +25,7 @@ import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
 class SearchScreenViewModel @Inject constructor(

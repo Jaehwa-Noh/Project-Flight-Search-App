@@ -2,13 +2,13 @@ package com.example.flightsearchapp.fake
 
 import com.example.flightsearchapp.data.AirportsDataSource
 import com.example.flightsearchapp.testing.model.database.airportEntitiesTestData
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 
 /**
  * Instrumented test for [AirportsFakeDataSource].
@@ -24,7 +24,8 @@ class AirportsFakeDataSourceTest {
     @Test
     fun fakeData_run_allMethodDone() = runTest {
         (airportsDataSource as AirportsFakeDataSource).insertAirportsEntities(
-            airportEntitiesTestData)
+            airportEntitiesTestData,
+        )
 
         val getAirportByCode = airportsDataSource.getAirportByCode("GHI")
 

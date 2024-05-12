@@ -16,7 +16,8 @@ import kotlinx.coroutines.flow.mapLatest
  */
 class AirportsFakeDataSource : AirportsDataSource {
     private val _airportEntityStream: MutableSharedFlow<List<AirportEntity>> = MutableSharedFlow(
-        replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST,
+        replay = 1,
+        onBufferOverflow = BufferOverflow.DROP_OLDEST,
     )
     val airportEntityStream: Flow<List<AirportEntity>> = _airportEntityStream.asSharedFlow()
     private val airports = mutableListOf<AirportEntity>()
@@ -28,7 +29,6 @@ class AirportsFakeDataSource : AirportsDataSource {
                 airportEntity.name == query || airportEntity.iataCode == query
             }
         }
-
 
     @OptIn(ExperimentalCoroutinesApi::class)
     override fun getAirportNullByIdStream(airportId: Long): Flow<AirportEntity?> =
@@ -44,14 +44,12 @@ class AirportsFakeDataSource : AirportsDataSource {
             filteredAirport.first()
         }
 
-
     override fun getAirportsStream(airportId: Long): Flow<List<AirportEntity>> =
         airportEntityStream.map { airportsEntities ->
             airportsEntities.filter { airportEntity ->
                 airportEntity.id == airportId
             }
         }
-
 
     override suspend fun getAirportByCode(airportCode: String): AirportEntity =
         airportEntityStream.map { airportsEntities ->
@@ -61,9 +59,7 @@ class AirportsFakeDataSource : AirportsDataSource {
             filteredAirportsEntities
         }.first().first()
 
-
-    override suspend fun getAllAirportsEntities(): List<AirportEntity> =
-        airportEntityStream.first()
+    override suspend fun getAllAirportsEntities(): List<AirportEntity> = airportEntityStream.first()
 
     fun insertAirportsEntities(airportsEntities: List<AirportEntity>) {
         val distinctAirports = airports.toMutableSet()

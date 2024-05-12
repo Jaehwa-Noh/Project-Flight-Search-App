@@ -11,8 +11,8 @@ import org.junit.runner.Description
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class MainTestDispatcherRule(
-    val testDispatcher: TestDispatcher = UnconfinedTestDispatcher()
-): TestWatcher() {
+    val testDispatcher: TestDispatcher = UnconfinedTestDispatcher(),
+) : TestWatcher() {
     override fun starting(description: Description?) {
         Dispatchers.setMain(testDispatcher)
     }

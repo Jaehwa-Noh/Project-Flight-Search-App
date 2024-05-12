@@ -17,11 +17,11 @@ import com.example.flightsearchapp.data.AirportsFtsRepository
 import com.example.flightsearchapp.testing.model.database.airportFtsEntitiesTestData
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import javax.inject.Inject
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import javax.inject.Inject
 
 /**
  * UI test for Navigation

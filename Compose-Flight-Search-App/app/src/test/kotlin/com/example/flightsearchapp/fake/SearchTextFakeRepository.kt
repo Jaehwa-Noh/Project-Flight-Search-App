@@ -1,10 +1,10 @@
 package com.example.flightsearchapp.fake
 
 import com.example.flightsearchapp.data.SearchTextRepository
+import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 
 class SearchTextFakeRepository() : SearchTextRepository {
 

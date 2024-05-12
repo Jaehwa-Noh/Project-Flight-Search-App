@@ -4,14 +4,14 @@ import com.example.flightsearchapp.data.AirportsRepository
 import com.example.flightsearchapp.data.InDiskAirportsRepository
 import com.example.flightsearchapp.fake.AirportsFakeDataSource
 import com.example.flightsearchapp.testing.model.database.airportEntitiesTestData
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
-import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.runTest
 
 /**
  * Instrumented test for [AirportsRepository]

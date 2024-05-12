@@ -13,7 +13,7 @@ class FavoritesFakeDataSource(private val airportsFakeDataSource: AirportsFakeDa
 
     private val _favoriteEntitiesStream: MutableStateFlow<List<FavoriteEntity>> =
         MutableStateFlow(
-            emptyList()
+            emptyList(),
         )
 
     val favoriteEntitiesStream: Flow<List<FavoriteEntity>> = _favoriteEntitiesStream.asSharedFlow()
@@ -35,7 +35,9 @@ class FavoritesFakeDataSource(private val airportsFakeDataSource: AirportsFakeDa
     }
 
     override fun getFavoriteWithAirports(): Flow<List<FavoriteWithAirports>> {
-        return favoriteEntitiesStream.combine(airportsFakeDataSource.airportEntityStream) { favorites, airports ->
+        return favoriteEntitiesStream.combine(
+            airportsFakeDataSource.airportEntityStream,
+        ) { favorites, airports ->
             if (favorites.isEmpty()) return@combine emptyList()
             if (airports.isEmpty()) return@combine emptyList()
 
@@ -49,7 +51,11 @@ class FavoritesFakeDataSource(private val airportsFakeDataSource: AirportsFakeDa
                     favorite.destinationCode == airport.iataCode
                 }
 
-                if (departureAirport.isEmpty() || arriveAirport.isEmpty()) return@combine emptyList()
+                if (departureAirport.isEmpty() ||
+                    arriveAirport.isEmpty()
+                ) {
+                    return@combine emptyList()
+                }
 
                 FavoriteWithAirports(
                     favoriteEntity = favorite,
