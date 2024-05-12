@@ -8,8 +8,11 @@ import kotlinx.coroutines.flow.update
 
 class SearchTextFakeRepository() : SearchTextRepository {
 
-    private val _searchTextStream = MutableStateFlow("")
-    val searchTextStream = _searchTextStream.asStateFlow()
+    private val _searchTextStream = MutableSharedFlow<String>(
+        replay = 1,
+        onBufferOverflow = BufferOverflow.DROP_OLDEST,
+    )
+    val searchTextStream = _searchTextStream.asSharedFlow()
 
     override val savedSearchText: Flow<String> = searchTextStream
 
@@ -18,6 +21,6 @@ class SearchTextFakeRepository() : SearchTextRepository {
     }
 
     override suspend fun saveSearchText(searchText: String) {
-        _searchTextStream.update { searchText }
+        _searchTextStream.tryEmit(searchText)
     }
 }
