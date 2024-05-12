@@ -45,11 +45,11 @@ class SearchScreenViewModel @Inject constructor(
     @OptIn(ExperimentalCoroutinesApi::class)
     val showFlightUiState: StateFlow<ShowFlightUiState> =
         departureIdStream.flatMapLatest { departureId ->
-            getAllFlightsStreamUseCase(departureId = departureId).flatMapLatest { flightModels ->
+            getAllFlightsStreamUseCase(departureId = departureId).mapLatest { flightModels ->
                 if (flightModels.isEmpty()) {
-                    flowOf(ShowFlightUiState.Clear)
+                    ShowFlightUiState.Clear
                 } else {
-                    flowOf(ShowFlightUiState.SelectSuggest(allFlights = flightModels))
+                    ShowFlightUiState.SelectSuggest(allFlights = flightModels)
                 }
             }
         }
