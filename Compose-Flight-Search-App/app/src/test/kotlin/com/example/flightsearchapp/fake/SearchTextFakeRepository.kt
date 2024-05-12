@@ -13,6 +13,10 @@ class SearchTextFakeRepository() : SearchTextRepository {
 
     override val savedSearchText: Flow<String> = searchTextStream
 
+    init {
+        _searchTextStream.tryEmit("")
+    }
+
     override suspend fun saveSearchText(searchText: String) {
         _searchTextStream.update { searchText }
     }
