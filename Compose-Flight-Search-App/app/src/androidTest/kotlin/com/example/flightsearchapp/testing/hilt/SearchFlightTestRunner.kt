@@ -1,4 +1,4 @@
-package com.example.flightsearchapp.testing
+package com.example.flightsearchapp.testing.hilt
 
 import android.app.Application
 import android.content.Context
