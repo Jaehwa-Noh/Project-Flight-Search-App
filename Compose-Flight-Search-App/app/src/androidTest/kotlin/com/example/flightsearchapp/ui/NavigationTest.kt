@@ -4,7 +4,8 @@ import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import androidx.compose.ui.test.onNodeWithContentDescription
+import androidx.compose.ui.test.onChild
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performImeAction
@@ -59,7 +60,7 @@ class NavigationTest {
     @Test
     fun searchQuery_searchHAM_showSuggestions() {
         composeTestRule.apply {
-            onNodeWithContentDescription("Search").apply {
+            onNodeWithTag("Search bar").onChild().apply {
                 performClick()
                 performTextClearance()
                 performTextInput("HAM")
@@ -82,7 +83,7 @@ class NavigationTest {
     fun searchQuery_searchHAMAndClick_showFlights() {
         composeTestRule.apply {
             waitForIdle()
-            onNodeWithContentDescription("Search").apply {
+            onNodeWithTag("Search bar").onChild().apply {
                 performClick()
                 performTextClearance()
                 performTextInput("HAM")
@@ -110,7 +111,7 @@ class NavigationTest {
     @Test
     fun searchQuery_searchHAMAndClickAndBack_showSuggestion() {
         composeTestRule.apply {
-            onNodeWithContentDescription("Search").apply {
+            onNodeWithTag("Search bar").onChild().apply {
                 performClick()
                 performTextClearance()
                 performTextInput("HAM")
@@ -143,7 +144,7 @@ class NavigationTest {
     @Test(expected = NoActivityResumedException::class)
     fun searchQuery_searchHAMAndClickAndTwiceBack_exitApp() {
         composeTestRule.apply {
-            onNodeWithContentDescription("Search").apply {
+            onNodeWithTag("Search bar").onChild().apply {
                 performClick()
                 performTextClearance()
                 performTextInput("HAM")
