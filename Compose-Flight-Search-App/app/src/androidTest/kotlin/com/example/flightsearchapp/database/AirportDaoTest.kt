@@ -6,16 +6,16 @@ import androidx.test.core.app.ApplicationProvider
 import com.example.flightsearchapp.data.database.AirportDao
 import com.example.flightsearchapp.data.database.AppDatabase
 import com.example.flightsearchapp.testing.model.database.airportEntitiesTestData
+import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
-import kotlin.test.assertNull
-import kotlin.test.assertTrue
 
 /**
  * Instrumented test for [AirportDao]

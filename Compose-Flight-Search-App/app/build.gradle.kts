@@ -28,7 +28,9 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "com.example.flightsearchapp.testing.hilt.SearchFlightTestRunner"
+        testInstrumentationRunner =
+            "com.example.flightsearchapp.testing.hilt.SearchFlightTestRunner"
+
         vectorDrawables {
             useSupportLibrary = true
         }

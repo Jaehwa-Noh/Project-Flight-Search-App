@@ -15,7 +15,8 @@ import kotlinx.coroutines.flow.mapLatest
 class AirportsFtsFakeDataSource : AirportsFtsDataSource {
     private val _airportFtsEntitiesStream: MutableSharedFlow<List<AirportFtsEntity>> =
         MutableSharedFlow(
-            replay = 1, onBufferOverflow = BufferOverflow.DROP_OLDEST,
+            replay = 1,
+            onBufferOverflow = BufferOverflow.DROP_OLDEST,
         )
 
     val airportFtsEntitiesStream: Flow<List<AirportFtsEntity>> =
