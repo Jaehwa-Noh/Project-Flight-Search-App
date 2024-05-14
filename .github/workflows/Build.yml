@@ -53,14 +53,12 @@ jobs:
           chmod +x ./gradlew
 
       - name: Check spotless
-        run: |
-          working-directory: ./Compose-Flight-Search-App
-          ./gradlew spotlessApply
+        working-directory: ./Compose-Flight-Search-App
+        run: ./gradlew spotlessApply
 
       - name: Run unit test
-        run: |
-          working-directory: ./Compose-Flight-Search-App
-          .gradlew test
+        working-directory: ./Compose-Flight-Search-App
+        run: .gradlew test
 
       - name: Run instrumentation test
         uses: ReactiveCircus/android-emulator-runner@v2.30.1
