@@ -48,9 +48,8 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
 
       - name: Make gradlew executable
-        run: |
-          working-directory: ./Compose-Flight-Search-App
-          chmod +x ./gradlew
+        working-directory: ./Compose-Flight-Search-App
+        run: chmod +x ./gradlew
 
       - name: Check spotless
         working-directory: ./Compose-Flight-Search-App
