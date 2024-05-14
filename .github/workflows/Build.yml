@@ -24,10 +24,19 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Enable KVM group perms
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+    
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Gradle Wrapper Validation
+        uses: gradle/wrapper-validation-action@v3.3.2
+          
       - name: SetUp Java
         uses: actions/setup-java@v4
         with:
@@ -37,4 +46,17 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
+      - name: Check spotless
+        run: ./gradlew spotlessApply
+
+      - name: Run unit test
+        run: ./gradlew test
+
+      - name: Run instrumentation test
+        uses: ReactiveCircus/android-emulator-runner@v2.30.1
+        with:
+          api-level: 34
+          script: ./gradlew connectedAndroidTest
+
+  
       
