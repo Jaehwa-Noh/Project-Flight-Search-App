@@ -48,6 +48,9 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
+      - name: Make gradlew executable
+        run: chmod +x ./Compose-Flight-Search-App/gradlew
+
       - name: Check spotless
         run: ./Compose-Flight-Search-App/gradlew spotlessApply
 
