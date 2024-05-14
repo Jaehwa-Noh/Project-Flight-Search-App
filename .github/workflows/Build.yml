@@ -102,7 +102,7 @@ jobs:
             disable-animations: true
             disk-size: 6000M
             heap-size: 600M
-            script: ./gradlew connectedDemoDebugAndroidTest --daemon
+            script: ./gradlew connectedAndroidTest --daemon
         
         # - name: Run instrumentation test
         #   uses: ReactiveCircus/android-emulator-runner@v2.30.1
