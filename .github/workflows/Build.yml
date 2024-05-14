@@ -49,16 +49,16 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
 
       - name: Check spotless
-        run: ./gradlew spotlessApply
+        run: ./Compose-Flight-Search-App/gradlew spotlessApply
 
       - name: Run unit test
-        run: ./gradlew test
+        run: ./Compose-Flight-Search-App/gradlew test
 
       - name: Run instrumentation test
         uses: ReactiveCircus/android-emulator-runner@v2.30.1
         with:
           api-level: 34
-          script: ./gradlew connectedAndroidTest
+          script: ./Compose-Flight-Search-App/gradlew connectedAndroidTest
 
   
       
