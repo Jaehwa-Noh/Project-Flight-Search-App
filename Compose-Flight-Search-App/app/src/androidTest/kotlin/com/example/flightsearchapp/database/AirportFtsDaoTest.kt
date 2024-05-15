@@ -8,12 +8,12 @@ import com.example.flightsearchapp.data.database.AirportFtsDao
 import com.example.flightsearchapp.data.database.AppDatabase
 import com.example.flightsearchapp.data.database.asFtsEntity
 import com.example.flightsearchapp.testing.model.database.airportEntitiesTestData
+import kotlin.test.assertEquals
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import kotlin.test.assertEquals
 
 /**
  * Instrumented test for [AirportFtsDao]
