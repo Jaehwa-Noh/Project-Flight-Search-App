@@ -35,10 +35,6 @@ class AirportFtsDaoTest {
 
         airportDao = appDatabase.airportDao()
         airportFtsDao = appDatabase.airportFtsDao()
-
-        runTest {
-            airportDao.insertAll(airportEntitiesTestData)
-        }
     }
 
     @After
@@ -46,6 +42,7 @@ class AirportFtsDaoTest {
 
     @Test
     fun airportEntities_searchNotExist_empty() = runTest {
+        initDb()
         upsertEntities(this)
         val result = airportFtsDao.searchAirportsStream(" ").first()
 
@@ -54,6 +51,7 @@ class AirportFtsDaoTest {
 
     @Test
     fun airportEntities_searchABC_matchResult() = runTest {
+        initDb()
         upsertEntities(this)
         val result = airportFtsDao.searchAirportsStream("ABC").first()
 
@@ -62,6 +60,7 @@ class AirportFtsDaoTest {
 
     @Test
     fun airportEntities_delete_empty() = runTest {
+        initDb()
         upsertEntities(this)
         var result = airportFtsDao.searchAirportsStream("ABC").first()
 
@@ -75,6 +74,7 @@ class AirportFtsDaoTest {
 
     @Test
     fun airportEntities_deleteAndUpsert_matchResult() = runTest {
+        initDb()
         upsertEntities(this)
         var result = airportFtsDao.searchAirportsStream("ABC").first()
 
@@ -100,5 +100,9 @@ class AirportFtsDaoTest {
         testScope.launch {
             airportFtsDao.upsertAirports(ftsEntities)
         }
+    }
+
+    private suspend fun initDb() {
+        airportDao.insertAll(airportEntitiesTestData)
     }
 }
