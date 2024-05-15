@@ -8,7 +8,6 @@ import com.example.flightsearchapp.data.database.AirportFtsDao
 import com.example.flightsearchapp.data.database.AppDatabase
 import com.example.flightsearchapp.data.database.asFtsEntity
 import com.example.flightsearchapp.testing.model.database.airportEntitiesTestData
-import kotlin.test.assertEquals
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -16,6 +15,7 @@ import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
+import kotlin.test.assertEquals
 
 /**
  * Instrumented test for [AirportFtsDao]
@@ -57,7 +57,7 @@ class AirportFtsDaoTest {
         upsertEntities(this)
         val result = airportFtsDao.searchAirportsStream("ABC").first()
 
-        assertEquals("ABC", result.firstOrNull())
+        assertEquals("ABC", result.first())
     }
 
     @Test
@@ -65,7 +65,7 @@ class AirportFtsDaoTest {
         upsertEntities(this)
         var result = airportFtsDao.searchAirportsStream("ABC").first()
 
-        assertEquals("ABC", result.firstOrNull())
+        assertEquals("ABC", result.first())
 
         airportFtsDao.deleteAll()
         result = airportFtsDao.searchAirportsStream("ABC").first()
@@ -78,7 +78,7 @@ class AirportFtsDaoTest {
         upsertEntities(this)
         var result = airportFtsDao.searchAirportsStream("ABC").first()
 
-        assertEquals("ABC", result.firstOrNull())
+        assertEquals("ABC", result.first())
 
         airportFtsDao.deleteAll()
         result = airportFtsDao.searchAirportsStream("ABC").first()
@@ -88,7 +88,7 @@ class AirportFtsDaoTest {
         airportFtsDao.deleteAndInsertAll(getAirportFtsEntities())
         result = airportFtsDao.searchAirportsStream("ABC").first()
 
-        assertEquals("ABC", result.firstOrNull())
+        assertEquals("ABC", result.first())
     }
 
     private fun getAirportFtsEntities() = airportEntitiesTestData.map {
