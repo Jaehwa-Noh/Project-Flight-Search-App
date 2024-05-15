@@ -52,6 +52,7 @@ jobs:
         run: ./gradlew test
 
       - name: Build
+        if: ${{ always() }}
         working-directory: ./Compose-Flight-Search-App
         run: ./gradlew assemble
 
@@ -94,6 +95,7 @@ jobs:
           run: chmod +x ./gradlew
         
         - name: Run instrumentation test
+          if: ${{ always() }}
           uses: ReactiveCircus/android-emulator-runner@v2.30.1
           with:
             working-directory: ./Compose-Flight-Search-App
