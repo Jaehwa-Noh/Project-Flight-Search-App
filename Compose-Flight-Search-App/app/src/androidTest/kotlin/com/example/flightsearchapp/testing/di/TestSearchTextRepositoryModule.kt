@@ -2,7 +2,7 @@ package com.example.flightsearchapp.testing.di
 
 import com.example.flightsearchapp.data.SearchTextRepository
 import com.example.flightsearchapp.di.SearchTextRepositoryModule
-import com.example.flightsearchapp.testing.repository.TestSearchTextRepository
+import com.example.flightsearchapp.testing.repository.SearchTextFakeRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.components.SingletonComponent
@@ -17,5 +17,5 @@ import javax.inject.Singleton
 abstract class TestSearchTextRepositoryModule {
     @Binds
     @Singleton
-    abstract fun bindSearchTextRepository(impl: TestSearchTextRepository): SearchTextRepository
+    abstract fun bindSearchTextRepository(impl: SearchTextFakeRepository): SearchTextRepository
 }
