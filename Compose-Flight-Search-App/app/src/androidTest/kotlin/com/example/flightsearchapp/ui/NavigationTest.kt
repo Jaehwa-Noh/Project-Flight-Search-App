@@ -121,6 +121,9 @@ class NavigationTest {
                 .assertIsDisplayed()
 
             Espresso.pressBack()
+
+            waitUntilNodeCount(hasText("Hamburg Airport"), 1)
+            
             onNodeWithText("Hamburg Airport")
                 .assertIsDisplayed()
         }
