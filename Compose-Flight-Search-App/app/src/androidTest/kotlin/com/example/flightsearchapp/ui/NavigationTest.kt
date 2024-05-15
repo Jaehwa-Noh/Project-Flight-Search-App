@@ -15,11 +15,9 @@ import androidx.test.espresso.Espresso
 import androidx.test.espresso.NoActivityResumedException
 import com.example.flightsearchapp.MainActivity
 import com.example.flightsearchapp.data.AirportsFtsRepository
-import com.example.flightsearchapp.testing.model.database.airportFtsEntitiesTestData
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import javax.inject.Inject
-import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -39,14 +37,7 @@ class NavigationTest {
     lateinit var airportsFtsRepository: AirportsFtsRepository
 
     @Before
-    fun setUp() {
-        hiltRule.inject()
-        runTest {
-            airportsFtsRepository.deleteAndInsertAll(
-                airportFtsEntitiesTestData,
-            )
-        }
-    }
+    fun setUp() = hiltRule.inject()
 
     @Test
     fun screen_openApp_firstScreenIsSearchScreen() {
