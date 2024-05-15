@@ -22,7 +22,11 @@ abstract class RepositoryModule {
     @Singleton
     @Binds
     abstract fun bindFavoritesRepository(impl: InDiskFavoritesRepository): FavoritesRepository
+}
 
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class AirportsFtsRepositoryModule {
     @Singleton
     @Binds
     abstract fun bindAirportsFtsRepository(impl: InDiskAirportsFtsRepository): AirportsFtsRepository
