@@ -98,6 +98,7 @@ jobs:
           with:
             working-directory: ./Compose-Flight-Search-App
             api-level: 34
+            arch: x86_64
             script: ./gradlew connectedAndroidTest
 
         - name: Upload android test reports
