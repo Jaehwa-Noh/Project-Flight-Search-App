@@ -14,10 +14,8 @@ import androidx.compose.ui.test.performTextInput
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.NoActivityResumedException
 import com.example.flightsearchapp.MainActivity
-import com.example.flightsearchapp.data.AirportsFtsRepository
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
-import javax.inject.Inject
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -32,9 +30,6 @@ class NavigationTest {
 
     @get:Rule(order = 1)
     val composeTestRule = createAndroidComposeRule<MainActivity>()
-
-    @Inject
-    lateinit var airportsFtsRepository: AirportsFtsRepository
 
     @Before
     fun setUp() = hiltRule.inject()
