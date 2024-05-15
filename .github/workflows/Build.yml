@@ -94,7 +94,7 @@ jobs:
           run: chmod +x ./gradlew
 
         - name: Build projects and run instrumentation tests
-          uses: reactivecircus/android-emulator-runner@v2
+          uses: reactivecircus/android-emulator-runner@v2.30.1
           with:
             working-directory: ./Compose-Flight-Search-App
             api-level: 34
