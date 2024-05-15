@@ -8,9 +8,7 @@ import com.example.flightsearchapp.data.database.AirportFtsDao
 import com.example.flightsearchapp.data.database.AppDatabase
 import com.example.flightsearchapp.data.database.asFtsEntity
 import com.example.flightsearchapp.testing.model.database.airportEntitiesTestData
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
@@ -43,7 +41,6 @@ class AirportFtsDaoTest {
     @Test
     fun airportEntities_searchNotExist_empty() = runTest {
         initDb()
-        upsertEntities(this)
         val result = airportFtsDao.searchAirportsStream(" ").first()
 
         assertEquals(emptyList(), result)
@@ -52,7 +49,6 @@ class AirportFtsDaoTest {
     @Test
     fun airportEntities_searchABC_matchResult() = runTest {
         initDb()
-        upsertEntities(this)
         val result = airportFtsDao.searchAirportsStream("ABC").first()
 
         assertEquals("ABC", result.first())
@@ -61,7 +57,6 @@ class AirportFtsDaoTest {
     @Test
     fun airportEntities_delete_empty() = runTest {
         initDb()
-        upsertEntities(this)
         var result = airportFtsDao.searchAirportsStream("ABC").first()
 
         assertEquals("ABC", result.first())
@@ -75,7 +70,6 @@ class AirportFtsDaoTest {
     @Test
     fun airportEntities_deleteAndUpsert_matchResult() = runTest {
         initDb()
-        upsertEntities(this)
         var result = airportFtsDao.searchAirportsStream("ABC").first()
 
         assertEquals("ABC", result.first())
@@ -95,14 +89,13 @@ class AirportFtsDaoTest {
         it.asFtsEntity()
     }
 
-    private fun upsertEntities(testScope: CoroutineScope) {
+    private suspend fun upsertEntities() {
         val ftsEntities = getAirportFtsEntities()
-        testScope.launch {
-            airportFtsDao.upsertAirports(ftsEntities)
-        }
+        airportFtsDao.upsertAirports(ftsEntities)
     }
 
     private suspend fun initDb() {
         airportDao.insertAll(airportEntitiesTestData)
+        upsertEntities()
     }
 }
