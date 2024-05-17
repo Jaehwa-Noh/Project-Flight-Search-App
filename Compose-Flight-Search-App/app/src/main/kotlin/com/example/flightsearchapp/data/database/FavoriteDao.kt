@@ -26,7 +26,7 @@ interface FavoriteDao {
              WHERE departure_code = :departureCode AND destination_code = :arriveCode
         """,
     )
-    fun delete(departureCode: String, arriveCode: String)
+    suspend fun delete(departureCode: String, arriveCode: String)
 
     @Transaction
     @Query(

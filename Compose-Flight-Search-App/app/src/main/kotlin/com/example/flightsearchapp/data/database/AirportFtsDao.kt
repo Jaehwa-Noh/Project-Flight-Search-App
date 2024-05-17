@@ -16,7 +16,7 @@ interface AirportFtsDao {
             DELETE FROM airportFts
         """,
     )
-    fun deleteAll()
+    suspend fun deleteAll()
 
     @Transaction
     suspend fun deleteAndInsertAll(entities: List<AirportFtsEntity>) {
