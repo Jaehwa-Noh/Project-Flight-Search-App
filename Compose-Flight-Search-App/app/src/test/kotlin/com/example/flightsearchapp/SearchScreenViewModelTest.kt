@@ -198,7 +198,7 @@ class SearchScreenViewModelTest {
         )
 
         searchScreenViewModel.setSavedSearchText("")
-        searchScreenUiState = searchScreenViewModel.searchScreenUiState.value
+        searchScreenUiState = searchScreenViewModel.searchScreenUiState.first()
 
         assertIs<SearchScreenUiState.ShowFavorite>(searchScreenUiState)
         assertEquals(searchScreenUiState.results.count(), 1)
@@ -223,7 +223,7 @@ class SearchScreenViewModelTest {
         )
 
         searchScreenViewModel.setSavedSearchText("")
-        searchScreenUiState = searchScreenViewModel.searchScreenUiState.value
+        searchScreenUiState = searchScreenViewModel.searchScreenUiState.first()
 
         assertIs<SearchScreenUiState.ShowFavorite>(searchScreenUiState)
         assertEquals(searchScreenUiState.results.count(), 1)
@@ -234,7 +234,7 @@ class SearchScreenViewModelTest {
         )
 
         searchScreenViewModel.setSavedSearchText("")
-        searchScreenUiState = searchScreenViewModel.searchScreenUiState.value
+        searchScreenUiState = searchScreenViewModel.searchScreenUiState.first()
 
         assertIs<SearchScreenUiState.ShowFavorite>(searchScreenUiState)
         assertEquals(searchScreenUiState.results.count(), 0)
