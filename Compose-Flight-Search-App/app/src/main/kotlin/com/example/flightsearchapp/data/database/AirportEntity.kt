@@ -29,4 +29,5 @@ fun AirportEntity.asSuggestionAirport() = SuggestionAirport(
     id = id,
     iataCode = iataCode,
     name = name,
+    passengers = passengers,
 )
