@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Flight Search App</string>
+    <string name="search_bar_placeholder">Enter departure airport</string>
 </resources>
