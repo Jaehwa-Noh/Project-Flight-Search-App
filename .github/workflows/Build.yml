@@ -2,7 +2,7 @@
 
 name: Build Demo
 
-run-name: ${{ github.actor }}''s ${{ github.ref_name }}
+run-name: ${{ github.actor''s github.head_ref}}
 
 # Controls when the workflow will run
 on:
