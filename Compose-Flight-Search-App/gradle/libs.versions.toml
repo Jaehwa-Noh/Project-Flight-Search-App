@@ -14,6 +14,7 @@ kotlinxCoroutinesTest = "1.8.1-Beta"
 ksp = "1.9.22-1.0.18"
 ktlint = "1.2.1"
 lifecycleVersion = "2.7.0"
+robolectric = "4.12"
 roomVersion = "2.6.1"
 spotless = "6.25.0"
 
@@ -44,6 +45,7 @@ hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testi
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hiltAndroid" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
+robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidApplication" }

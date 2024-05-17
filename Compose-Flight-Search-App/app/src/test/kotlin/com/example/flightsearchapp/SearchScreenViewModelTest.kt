@@ -21,10 +21,6 @@ import com.example.flightsearchapp.testing.model.database.favoriteEntitiesTestDa
 import com.example.flightsearchapp.ui.SearchScreenUiState
 import com.example.flightsearchapp.ui.SearchScreenViewModel
 import com.example.flightsearchapp.ui.ShowFlightUiState
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertIs
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
@@ -32,15 +28,19 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.Rule
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertIs
 
 /**
  * Unit test for [SearchScreenViewModel]
  */
 class SearchScreenViewModelTest {
-    private lateinit var searchScreenViewModel: SearchScreenViewModel
-
     @get:Rule
     val mainTestDispatcherRule = MainTestDispatcherRule()
+
+    private lateinit var searchScreenViewModel: SearchScreenViewModel
 
     private val searchTextFakeRepository = SearchTextFakeRepository()
 
