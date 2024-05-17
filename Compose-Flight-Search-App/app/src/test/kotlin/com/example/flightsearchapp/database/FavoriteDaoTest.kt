@@ -61,6 +61,7 @@ class FavoriteDaoTest {
         insertAllData()
 
         val deleteFavorite = favoriteEntitiesTestData.first()
+
         favoriteDao.delete(
             departureCode = deleteFavorite.departureCode,
             arriveCode = deleteFavorite.destinationCode,
