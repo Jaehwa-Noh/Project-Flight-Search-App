@@ -2,7 +2,7 @@
 
 name: Build Demo
 
-run-name: ${{ github.actor }} is learning GitHub Actions
+run-name: ${{ github.actor }}''s ${{ github.ref_name }}
 
 # Controls when the workflow will run
 on:
