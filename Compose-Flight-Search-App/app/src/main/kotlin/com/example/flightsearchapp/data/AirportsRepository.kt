@@ -3,12 +3,12 @@ package com.example.flightsearchapp.data
 import com.example.flightsearchapp.data.database.AirportEntity
 import com.example.flightsearchapp.di.DispatcherDefault
 import com.example.flightsearchapp.ui.model.SuggestionAirport
-import javax.inject.Inject
-import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
 interface AirportsRepository {
     suspend fun getSuggestionsStream(query: String): Flow<List<SuggestionAirport>>
@@ -33,6 +33,7 @@ class InDiskAirportsRepository @Inject constructor(
                         id = airport.id,
                         iataCode = airport.iataCode,
                         name = airport.name,
+                        passengers = airport.passengers,
                     )
                 }
             }

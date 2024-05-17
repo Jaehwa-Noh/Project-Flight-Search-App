@@ -40,11 +40,13 @@ fun SuggestListScreenPreview() {
                     id = 1,
                     iataCode = "ABC",
                     name = "Airport",
+                    passengers = 1,
                 ),
                 SuggestionAirport(
                     id = 2,
                     iataCode = "DEF",
                     name = "Airport2",
+                    passengers = 2,
                 ),
             ),
             onSuggestionClick = {},
