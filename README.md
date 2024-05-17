@@ -92,6 +92,13 @@ And also you can bookmark the favorite routes.
 ### Database (데이터베이스)
 [flight_search.db](https://github.com/google-developer-training/android-basics-kotlin-sql-basics-app/blob/project/flight_search.db)
 
+# My Result (내 결과물)
+## Apps on device (프로젝트 실행 이미지)
+### Compose (컴포즈)
+|Search (검색)|Select (선택)|Empty (빈)|
+|------------|-------------|----------|
+|<img width="250" alt="Search (검색)" src="https://github.com/Jaehwa-Noh/Project-Flight-Search-App/assets/48680511/86eb6222-1116-47f7-b359-38455f763897">|<img width="250" alt="Select (선택)" src="https://github.com/Jaehwa-Noh/Project-Flight-Search-App/assets/48680511/e219776e-5ec9-4a76-8d9a-e9de0a11d475">|<img width="250" alt="Empty (빈)" src="https://github.com/Jaehwa-Noh/Project-Flight-Search-App/assets/48680511/bec64734-4b49-44a6-b99a-63e4f4b4f315">|
+
 ## Problem Solve (문제 해결)
 ### Compose (컴포즈)
 #### • [Using Room database LIKE with wildcard (룸 데이터베이스 LIKE 단어 와일드 카드와 같이 사용)](https://shwoghk14.blogspot.com/2024/02/android-room-database-like-with-wildcard.html)
