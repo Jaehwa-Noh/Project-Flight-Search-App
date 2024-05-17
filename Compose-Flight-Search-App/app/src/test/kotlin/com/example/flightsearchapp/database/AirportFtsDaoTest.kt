@@ -1,8 +1,6 @@
 package com.example.flightsearchapp.database
 
-import android.content.Context
 import androidx.room.Room
-import androidx.test.core.app.ApplicationProvider
 import com.example.flightsearchapp.data.database.AirportDao
 import com.example.flightsearchapp.data.database.AirportFtsDao
 import com.example.flightsearchapp.data.database.AppDatabase
@@ -14,10 +12,14 @@ import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.RuntimeEnvironment
 
 /**
  * Instrumented test for [AirportFtsDao]
  */
+@RunWith(RobolectricTestRunner::class)
 class AirportFtsDaoTest {
 
     private lateinit var airportFtsDao: AirportFtsDao
@@ -26,7 +28,9 @@ class AirportFtsDaoTest {
 
     @Before
     fun createDB() {
-        val context: Context = ApplicationProvider.getApplicationContext()
+        val context = RuntimeEnvironment
+            .getApplication()
+            .applicationContext
 
         appDatabase = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java)
             .build()
