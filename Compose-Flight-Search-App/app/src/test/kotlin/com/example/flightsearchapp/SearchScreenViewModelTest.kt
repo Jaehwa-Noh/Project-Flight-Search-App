@@ -4,6 +4,7 @@ import com.example.flightsearchapp.data.AllFlightsRepository
 import com.example.flightsearchapp.data.InDiskAirportsFtsRepository
 import com.example.flightsearchapp.data.InDiskAirportsRepository
 import com.example.flightsearchapp.data.InDiskFavoritesRepository
+import com.example.flightsearchapp.data.database.asFtsEntity
 import com.example.flightsearchapp.domain.DeleteFavoriteUseCase
 import com.example.flightsearchapp.domain.GetAllFavoriteFlightsStreamUseCase
 import com.example.flightsearchapp.domain.GetAllFlightsStreamUseCase
@@ -149,6 +150,30 @@ class SearchScreenViewModelTest {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
+    fun searchQuery_find_matchOrder() = runTest {
+        initDb()
+        backgroundScope.launch(UnconfinedTestDispatcher()) {
+            searchScreenViewModel.showFlightUiState.collect()
+            searchScreenViewModel.searchScreenUiState.collect()
+        }
+
+        var searchScreenUiState = searchScreenViewModel.searchScreenUiState.first()
+        assertIs<SearchScreenUiState.ShowFavorite>(searchScreenUiState)
+        assertEquals(searchScreenUiState.results.count(), 0)
+
+        searchScreenViewModel.setSearchQuery("C")
+        searchScreenViewModel.setSavedSearchText("C")
+        searchScreenUiState = searchScreenViewModel.searchScreenUiState.first()
+
+        assertIs<SearchScreenUiState.ShowSuggests>(searchScreenUiState)
+        val expectOrder = listOf<Long>(9, 8)
+        searchScreenUiState.results.forEachIndexed { index, suggestionAirport ->
+            assertEquals(expectOrder[index], suggestionAirport.passengers)
+        }
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test
     fun departureId_notIn_matchUiState() = runTest {
         backgroundScope.launch(UnconfinedTestDispatcher()) {
             searchScreenViewModel.showFlightUiState.collect()
@@ -198,7 +223,7 @@ class SearchScreenViewModelTest {
         )
 
         searchScreenViewModel.setSavedSearchText("")
-        searchScreenUiState = searchScreenViewModel.searchScreenUiState.value
+        searchScreenUiState = searchScreenViewModel.searchScreenUiState.first()
 
         assertIs<SearchScreenUiState.ShowFavorite>(searchScreenUiState)
         assertEquals(searchScreenUiState.results.count(), 1)
@@ -223,7 +248,7 @@ class SearchScreenViewModelTest {
         )
 
         searchScreenViewModel.setSavedSearchText("")
-        searchScreenUiState = searchScreenViewModel.searchScreenUiState.value
+        searchScreenUiState = searchScreenViewModel.searchScreenUiState.first()
 
         assertIs<SearchScreenUiState.ShowFavorite>(searchScreenUiState)
         assertEquals(searchScreenUiState.results.count(), 1)
@@ -234,9 +259,18 @@ class SearchScreenViewModelTest {
         )
 
         searchScreenViewModel.setSavedSearchText("")
-        searchScreenUiState = searchScreenViewModel.searchScreenUiState.value
+        searchScreenUiState = searchScreenViewModel.searchScreenUiState.first()
 
         assertIs<SearchScreenUiState.ShowFavorite>(searchScreenUiState)
         assertEquals(searchScreenUiState.results.count(), 0)
+    }
+
+    private fun getAirportFtsEntities() = airportEntitiesTestData.map {
+        it.asFtsEntity()
+    }
+
+    private suspend fun initDb() {
+        val ftsEntities = getAirportFtsEntities()
+        airportsFtsRepository.deleteAndInsertAll(ftsEntities)
     }
 }

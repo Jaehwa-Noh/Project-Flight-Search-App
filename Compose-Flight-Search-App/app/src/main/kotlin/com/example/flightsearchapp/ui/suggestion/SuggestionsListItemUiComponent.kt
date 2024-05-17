@@ -33,6 +33,7 @@ fun SuggestListItemUiComponentPreview() {
                 id = 1,
                 iataCode = "ABC",
                 name = "Airport",
+                passengers = 10,
             ),
             onItemClick = {},
         )

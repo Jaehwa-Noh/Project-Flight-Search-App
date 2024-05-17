@@ -33,6 +33,7 @@ class InDiskAirportsRepository @Inject constructor(
                         id = airport.id,
                         iataCode = airport.iataCode,
                         name = airport.name,
+                        passengers = airport.passengers,
                     )
                 }
             }
