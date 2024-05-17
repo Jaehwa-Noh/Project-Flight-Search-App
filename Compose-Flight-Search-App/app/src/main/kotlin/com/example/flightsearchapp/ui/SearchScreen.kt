@@ -20,11 +20,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.flightsearchapp.R
 import com.example.flightsearchapp.ui.flight.FlightsListScreen
 import com.example.flightsearchapp.ui.suggestion.SuggestionsListScreen
 
@@ -173,6 +175,9 @@ fun FlightSearchBar(
                 imageVector = Icons.Rounded.Search,
                 contentDescription = null,
             )
+        },
+        placeholder = {
+            Text(text = stringResource(id = R.string.search_bar_placeholder))
         },
         modifier = modifier
             .testTag("Search bar"),
