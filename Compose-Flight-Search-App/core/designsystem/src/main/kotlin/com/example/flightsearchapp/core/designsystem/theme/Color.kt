@@ -1,4 +1,4 @@
-package com.example.flightsearchapp.ui.theme
+package com.example.flightsearchapp.core.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 
