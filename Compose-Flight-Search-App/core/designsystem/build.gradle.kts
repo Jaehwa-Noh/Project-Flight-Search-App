@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.flightsearchapp.designsystem"
+    namespace = "com.example.flightsearchapp.core.designsystem"
     compileSdk = 34
 
     defaultConfig {

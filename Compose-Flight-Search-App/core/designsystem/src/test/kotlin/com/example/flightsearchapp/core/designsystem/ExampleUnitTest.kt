@@ -1,4 +1,4 @@
-package com.example.flightsearchapp.designsystem
+package com.example.flightsearchapp.core.designsystem
 
 import org.junit.Test
 
