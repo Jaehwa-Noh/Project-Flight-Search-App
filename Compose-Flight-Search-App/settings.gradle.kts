@@ -19,3 +19,4 @@ plugins {
 
 rootProject.name = "Flight Search App"
 include(":app")
+include(":core:designsystem")
