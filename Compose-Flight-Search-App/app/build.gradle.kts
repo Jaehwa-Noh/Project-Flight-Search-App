@@ -91,7 +91,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.hilt.android)
 
-    implementation(project(":core:designsystem"))
+    implementation(projects.core.designsystem)
 
     testImplementation(kotlin("test"))
     testImplementation(libs.junit)
