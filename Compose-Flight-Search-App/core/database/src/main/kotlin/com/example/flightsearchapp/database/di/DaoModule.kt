@@ -10,11 +10,11 @@ import dagger.hilt.components.SingletonComponent
 class DaoModule {
 
     @Provides
-    fun provideAirportDao(database: com.example.flightsearchapp.database.database.AppDatabase): com.example.flightsearchapp.database.database.AirportDao = database.airportDao()
+    fun provideAirportDao(database: com.example.flightsearchapp.database.dao.AppDatabase): com.example.flightsearchapp.database.dao.AirportDao = database.airportDao()
 
     @Provides
-    fun provideFavoriteDao(database: com.example.flightsearchapp.database.database.AppDatabase): com.example.flightsearchapp.database.database.FavoriteDao = database.favoriteDao()
+    fun provideFavoriteDao(database: com.example.flightsearchapp.database.dao.AppDatabase): com.example.flightsearchapp.database.dao.FavoriteDao = database.favoriteDao()
 
     @Provides
-    fun provideAirportFtsDao(database: com.example.flightsearchapp.database.database.AppDatabase): com.example.flightsearchapp.database.database.AirportFtsDao = database.airportFtsDao()
+    fun provideAirportFtsDao(database: com.example.flightsearchapp.database.dao.AppDatabase): com.example.flightsearchapp.database.dao.AirportFtsDao = database.airportFtsDao()
 }

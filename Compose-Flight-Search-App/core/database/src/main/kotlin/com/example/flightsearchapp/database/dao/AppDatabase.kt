@@ -1,4 +1,4 @@
-package com.example.flightsearchapp.database.database
+package com.example.flightsearchapp.database.dao
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

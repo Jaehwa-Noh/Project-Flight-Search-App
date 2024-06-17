@@ -15,11 +15,11 @@ object DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideDatabase(@ApplicationContext context: Context): com.example.flightsearchapp.database.database.AppDatabase {
+    fun provideDatabase(@ApplicationContext context: Context): com.example.flightsearchapp.database.dao.AppDatabase {
         return synchronized(this) {
             Room.databaseBuilder(
                 context,
-                com.example.flightsearchapp.database.database.AppDatabase::class.java,
+                com.example.flightsearchapp.database.dao.AppDatabase::class.java,
                 "app_database",
             )
                 .createFromAsset("database/flight_search.db")
