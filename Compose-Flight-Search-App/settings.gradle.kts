@@ -21,6 +21,7 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 rootProject.name = "Flight-Search-App"
 include(":app")
+include(":core:data")
 include(":core:database")
 include(":core:designsystem")
 include(":core:ui")
