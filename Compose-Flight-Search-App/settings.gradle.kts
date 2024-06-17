@@ -21,5 +21,6 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 rootProject.name = "Flight-Search-App"
 include(":app")
-include(":feature:searchscreen")
 include(":core:designsystem")
+include(":core:ui")
+include(":feature:searchscreen")
