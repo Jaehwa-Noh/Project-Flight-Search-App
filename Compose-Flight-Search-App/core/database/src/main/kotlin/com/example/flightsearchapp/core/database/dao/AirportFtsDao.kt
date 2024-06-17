@@ -1,10 +1,10 @@
-package com.example.flightsearchapp.database.dao
+package com.example.flightsearchapp.core.database.dao
 
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Upsert
-import com.example.flightsearchapp.database.model.AirportFtsEntity
+import com.example.flightsearchapp.core.database.model.AirportFtsEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

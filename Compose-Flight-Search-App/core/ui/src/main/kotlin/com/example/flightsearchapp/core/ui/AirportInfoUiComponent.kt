@@ -1,4 +1,4 @@
-package com.example.flightsearchapp.ui
+package com.example.flightsearchapp.core.ui
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer

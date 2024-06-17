@@ -1,4 +1,4 @@
-package com.example.flightsearchapp.ui.model
+package com.example.flightsearchapp.core.ui.model
 
 data class Flight(
     val id: String,

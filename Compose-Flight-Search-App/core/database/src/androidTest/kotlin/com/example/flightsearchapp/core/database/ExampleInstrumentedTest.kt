@@ -1,4 +1,4 @@
-package com.example.flightsearchapp.database
+package com.example.flightsearchapp.core.database
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

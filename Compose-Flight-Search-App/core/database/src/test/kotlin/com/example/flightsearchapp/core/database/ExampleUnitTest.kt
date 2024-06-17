@@ -1,4 +1,4 @@
-package com.example.flightsearchapp.database
+package com.example.flightsearchapp.core.database
 
 import org.junit.Test
 
