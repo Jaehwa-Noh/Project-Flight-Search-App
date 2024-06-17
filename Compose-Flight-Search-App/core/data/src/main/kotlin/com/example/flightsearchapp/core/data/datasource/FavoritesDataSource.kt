@@ -1,14 +1,14 @@
-package com.example.flightsearchapp.data
+package com.example.flightsearchapp.core.data.datasource
 
-import com.example.flightsearchapp.data.database.FavoriteDao
-import com.example.flightsearchapp.data.database.FavoriteEntity
-import com.example.flightsearchapp.data.database.FavoriteWithAirports
-import com.example.flightsearchapp.di.DispatcherIO
-import javax.inject.Inject
-import javax.inject.Singleton
+import com.example.flightsearchapp.core.data.di.DispatcherIO
+import com.example.flightsearchapp.core.database.dao.FavoriteDao
+import com.example.flightsearchapp.core.database.model.FavoriteEntity
+import com.example.flightsearchapp.core.database.model.FavoriteWithAirports
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
 interface FavoritesDataSource {
     fun getFavoritesStream(): Flow<List<FavoriteEntity>>

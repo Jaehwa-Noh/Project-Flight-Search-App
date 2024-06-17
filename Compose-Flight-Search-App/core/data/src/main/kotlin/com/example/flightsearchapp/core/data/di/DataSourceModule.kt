@@ -1,11 +1,11 @@
-package com.example.flightsearchapp.di
+package com.example.flightsearchapp.core.data.di
 
-import com.example.flightsearchapp.data.AirportsDataSource
-import com.example.flightsearchapp.data.AirportsFtsDataSource
-import com.example.flightsearchapp.data.FavoritesDataSource
-import com.example.flightsearchapp.data.LocalAirportsDataSource
-import com.example.flightsearchapp.data.LocalAirportsFtsDataSource
-import com.example.flightsearchapp.data.LocalFavoritesDataSource
+import com.example.flightsearchapp.core.data.datasource.AirportsDataSource
+import com.example.flightsearchapp.core.data.datasource.AirportsFtsDataSource
+import com.example.flightsearchapp.core.data.datasource.FavoritesDataSource
+import com.example.flightsearchapp.core.data.datasource.LocalAirportsDataSource
+import com.example.flightsearchapp.core.data.datasource.LocalAirportsFtsDataSource
+import com.example.flightsearchapp.core.data.datasource.LocalFavoritesDataSource
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

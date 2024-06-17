@@ -1,4 +1,4 @@
-package com.example.flightsearchapp.data
+package com.example.flightsearchapp.core.data.repository
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences

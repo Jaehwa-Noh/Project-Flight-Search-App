@@ -1,11 +1,11 @@
-package com.example.flightsearchapp.di
+package com.example.flightsearchapp.core.data.di
 
-import com.example.flightsearchapp.data.AirportsFtsRepository
-import com.example.flightsearchapp.data.AirportsRepository
-import com.example.flightsearchapp.data.FavoritesRepository
-import com.example.flightsearchapp.data.InDiskAirportsFtsRepository
-import com.example.flightsearchapp.data.InDiskAirportsRepository
-import com.example.flightsearchapp.data.InDiskFavoritesRepository
+import com.example.flightsearchapp.core.data.repository.AirportsFtsRepository
+import com.example.flightsearchapp.core.data.repository.AirportsRepository
+import com.example.flightsearchapp.core.data.repository.FavoritesRepository
+import com.example.flightsearchapp.core.data.repository.InDiskAirportsFtsRepository
+import com.example.flightsearchapp.core.data.repository.InDiskAirportsRepository
+import com.example.flightsearchapp.core.data.repository.InDiskFavoritesRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

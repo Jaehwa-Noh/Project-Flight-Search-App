@@ -1,8 +1,9 @@
-package com.example.flightsearchapp.data
+package com.example.flightsearchapp.core.data.repository
 
-import com.example.flightsearchapp.data.database.AirportEntity
-import com.example.flightsearchapp.di.DispatcherDefault
-import com.example.flightsearchapp.ui.model.SuggestionAirport
+import com.example.flightsearchapp.core.data.datasource.AirportsDataSource
+import com.example.flightsearchapp.core.data.di.DispatcherDefault
+import com.example.flightsearchapp.core.database.model.AirportEntity
+import com.example.flightsearchapp.core.database.model.SuggestionAirport
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher

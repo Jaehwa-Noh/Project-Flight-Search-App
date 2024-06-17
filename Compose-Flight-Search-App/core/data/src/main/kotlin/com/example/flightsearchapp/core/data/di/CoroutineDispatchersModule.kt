@@ -1,4 +1,4 @@
-package com.example.flightsearchapp.di
+package com.example.flightsearchapp.core.data.di
 
 import dagger.Module
 import dagger.Provides

@@ -1,9 +1,10 @@
-package com.example.flightsearchapp.data
+package com.example.flightsearchapp.core.data.repository
 
-import com.example.flightsearchapp.data.database.FavoriteEntity
-import com.example.flightsearchapp.data.database.FavoriteWithAirports
-import javax.inject.Inject
+import com.example.flightsearchapp.core.data.datasource.FavoritesDataSource
+import com.example.flightsearchapp.core.database.model.FavoriteEntity
+import com.example.flightsearchapp.core.database.model.FavoriteWithAirports
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
 interface FavoritesRepository {
     fun getFavoritesStream(): Flow<List<FavoriteEntity>>

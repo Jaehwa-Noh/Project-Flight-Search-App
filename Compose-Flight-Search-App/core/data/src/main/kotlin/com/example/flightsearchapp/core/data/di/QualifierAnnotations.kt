@@ -1,4 +1,4 @@
-package com.example.flightsearchapp.di
+package com.example.flightsearchapp.core.data.di
 
 import javax.inject.Qualifier
 

@@ -1,10 +1,8 @@
-package com.example.flightsearchapp.data
+package com.example.flightsearchapp.core.data.repository
 
-import com.example.flightsearchapp.data.database.asFlight
-import com.example.flightsearchapp.di.DispatcherDefault
-import com.example.flightsearchapp.ui.model.Flight
-import javax.inject.Inject
-import javax.inject.Singleton
+import com.example.flightsearchapp.core.data.di.DispatcherDefault
+import com.example.flightsearchapp.core.data.model.Flight
+import com.example.flightsearchapp.core.data.model.asFlight
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
@@ -13,6 +11,8 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
 @Singleton
 class AllFlightsRepository @Inject constructor(

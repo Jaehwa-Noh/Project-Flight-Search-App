@@ -1,13 +1,13 @@
-package com.example.flightsearchapp.data
+package com.example.flightsearchapp.core.data.datasource
 
-import com.example.flightsearchapp.data.database.AirportFtsDao
-import com.example.flightsearchapp.data.database.AirportFtsEntity
-import com.example.flightsearchapp.di.DispatcherIO
-import javax.inject.Inject
-import javax.inject.Singleton
+import com.example.flightsearchapp.core.data.di.DispatcherIO
+import com.example.flightsearchapp.core.database.dao.AirportFtsDao
+import com.example.flightsearchapp.core.database.model.AirportFtsEntity
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
 interface AirportsFtsDataSource {
     suspend fun upsertAirports(entities: List<AirportFtsEntity>)

@@ -1,7 +1,7 @@
-package com.example.flightsearchapp.di
+package com.example.flightsearchapp.core.data.di
 
-import com.example.flightsearchapp.data.InDiskSearchTextRepository
-import com.example.flightsearchapp.data.SearchTextRepository
+import com.example.flightsearchapp.core.data.repository.InDiskSearchTextRepository
+import com.example.flightsearchapp.core.data.repository.SearchTextRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
