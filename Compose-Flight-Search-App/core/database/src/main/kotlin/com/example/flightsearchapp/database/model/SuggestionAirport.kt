@@ -1,4 +1,4 @@
-package com.example.flightsearchapp.ui.model
+package com.example.flightsearchapp.database.model
 
 data class SuggestionAirport(
     val id: Long,

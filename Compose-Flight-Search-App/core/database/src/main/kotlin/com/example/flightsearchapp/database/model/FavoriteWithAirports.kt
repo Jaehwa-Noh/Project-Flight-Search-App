@@ -1,8 +1,7 @@
-package com.example.flightsearchapp.data.database
+package com.example.flightsearchapp.database.model
 
 import androidx.room.Embedded
 import androidx.room.Relation
-import com.example.flightsearchapp.ui.model.Flight
 
 data class FavoriteWithAirports(
     @Embedded
@@ -19,13 +18,4 @@ data class FavoriteWithAirports(
         entityColumn = "iata_code",
     )
     val arriveAirport: AirportEntity,
-)
-
-fun FavoriteWithAirports.asFlight(): Flight = Flight(
-    id = "${departureAirport.id}_${arriveAirport.id}",
-    departureIataCode = departureAirport.iataCode,
-    departureName = departureAirport.name,
-    arriveIataCode = arriveAirport.iataCode,
-    arriveName = arriveAirport.name,
-    isBookmarked = true,
 )

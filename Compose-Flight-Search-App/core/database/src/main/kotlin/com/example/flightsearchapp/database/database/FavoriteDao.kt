@@ -1,10 +1,12 @@
-package com.example.flightsearchapp.data.database
+package com.example.flightsearchapp.database.database
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
+import com.example.flightsearchapp.database.model.FavoriteEntity
+import com.example.flightsearchapp.database.model.FavoriteWithAirports
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -1,8 +1,7 @@
-package com.example.flightsearchapp.di
+package com.example.flightsearchapp.database.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.flightsearchapp.data.database.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,11 +15,11 @@ object DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideDatabase(@ApplicationContext context: Context): AppDatabase {
+    fun provideDatabase(@ApplicationContext context: Context): com.example.flightsearchapp.database.database.AppDatabase {
         return synchronized(this) {
             Room.databaseBuilder(
                 context,
-                AppDatabase::class.java,
+                com.example.flightsearchapp.database.database.AppDatabase::class.java,
                 "app_database",
             )
                 .createFromAsset("database/flight_search.db")

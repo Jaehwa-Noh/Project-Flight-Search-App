@@ -1,8 +1,9 @@
-package com.example.flightsearchapp.data.database
+package com.example.flightsearchapp.database.database
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.example.flightsearchapp.database.model.AirportEntity
 import kotlinx.coroutines.flow.Flow
 import org.jetbrains.annotations.TestOnly
 

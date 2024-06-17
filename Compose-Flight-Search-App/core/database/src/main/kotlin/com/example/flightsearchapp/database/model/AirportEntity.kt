@@ -1,9 +1,8 @@
-package com.example.flightsearchapp.data.database
+package com.example.flightsearchapp.database.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.flightsearchapp.ui.model.SuggestionAirport
 
 @Entity(tableName = "airport")
 data class AirportEntity(
@@ -25,9 +24,10 @@ fun AirportEntity.asFtsEntity() = AirportFtsEntity(
     name = name,
 )
 
-fun AirportEntity.asSuggestionAirport() = SuggestionAirport(
-    id = id,
-    iataCode = iataCode,
-    name = name,
-    passengers = passengers,
-)
+fun AirportEntity.asSuggestionAirport() =
+    SuggestionAirport(
+        id = id,
+        iataCode = iataCode,
+        name = name,
+        passengers = passengers,
+    )

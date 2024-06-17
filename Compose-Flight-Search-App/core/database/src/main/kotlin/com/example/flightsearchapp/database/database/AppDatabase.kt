@@ -1,7 +1,10 @@
-package com.example.flightsearchapp.data.database
+package com.example.flightsearchapp.database.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.example.flightsearchapp.database.model.AirportEntity
+import com.example.flightsearchapp.database.model.AirportFtsEntity
+import com.example.flightsearchapp.database.model.FavoriteEntity
 
 @Database(
     entities = [
