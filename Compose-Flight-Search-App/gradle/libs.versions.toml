@@ -1,6 +1,6 @@
 [versions]
 activityCompose = "1.9.0"
-androidApplication = "8.4.0"
+androidApplication = "8.5.0"
 androidxComposeUiTest = "1.7.0-beta03"
 composeBom = "2024.06.00"
 coreKtx = "1.13.1"
