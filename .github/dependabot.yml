@@ -19,3 +19,8 @@ updates:
       interval: "weekly"
     registries:
       - maven-google
+    groups:
+      kotlin-ksp:
+        patterns:
+          - "org.jetbrains.kotlin:*"
+          - "com.google.devtools.ksp"
