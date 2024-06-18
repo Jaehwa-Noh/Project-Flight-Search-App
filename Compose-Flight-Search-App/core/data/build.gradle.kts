@@ -24,10 +24,10 @@ android {
 dependencies {
     ksp(libs.hilt.android.compiler)
 
+    api(projects.core.database)
+
     implementation(libs.hilt.android)
     implementation(libs.androidx.datastore.preferences)
-
-    implementation(projects.core.database)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
