@@ -3,6 +3,7 @@ package com.example.flightsearchapp.core.database.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.flightsearchapp.core.model.SuggestionAirport
 
 @Entity(tableName = "airport")
 data class AirportEntity(
