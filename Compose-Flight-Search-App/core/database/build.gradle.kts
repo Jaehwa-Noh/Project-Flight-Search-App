@@ -24,6 +24,8 @@ android {
 dependencies {
     ksp(libs.hilt.android.compiler)
 
+    api(projects.core.model)
+
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
     implementation(libs.hilt.android)
