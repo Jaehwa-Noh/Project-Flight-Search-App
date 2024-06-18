@@ -1,4 +1,4 @@
-package com.example.flightsearchapp.ui.flight
+package com.example.flightsearchapp.core.ui.flight
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,9 +23,9 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.flightsearchapp.ui.AirportInfoUiComponent
-import com.example.flightsearchapp.ui.model.Flight
-import com.example.flightsearchapp.ui.theme.FlightSearchAppTheme
+import com.example.flightsearchapp.core.designsystem.theme.FlightSearchAppTheme
+import com.example.flightsearchapp.core.model.Flight
+import com.example.flightsearchapp.core.ui.AirportInfoUiComponent
 
 @Composable
 fun FlightItemCardUiComponent(

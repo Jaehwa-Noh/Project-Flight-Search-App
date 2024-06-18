@@ -1,12 +1,12 @@
-package com.example.flightsearchapp.ui.suggestion
+package com.example.flightsearchapp.core.ui.suggestion
 
 import androidx.compose.foundation.clickable
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.flightsearchapp.ui.AirportInfoUiComponent
-import com.example.flightsearchapp.ui.model.SuggestionAirport
-import com.example.flightsearchapp.ui.theme.FlightSearchAppTheme
+import com.example.flightsearchapp.core.designsystem.theme.FlightSearchAppTheme
+import com.example.flightsearchapp.core.model.SuggestionAirport
+import com.example.flightsearchapp.core.ui.AirportInfoUiComponent
 
 @Composable
 fun SuggestionsListItemUiComponent(

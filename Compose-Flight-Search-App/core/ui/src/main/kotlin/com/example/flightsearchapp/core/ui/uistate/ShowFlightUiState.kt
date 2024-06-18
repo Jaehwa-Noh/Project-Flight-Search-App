@@ -1,6 +1,6 @@
 package com.example.flightsearchapp.core.ui.uistate
 
-import com.example.flightsearchapp.core.ui.model.Flight
+import com.example.flightsearchapp.core.model.Flight
 
 sealed interface ShowFlightUiState {
     data object Clear : ShowFlightUiState

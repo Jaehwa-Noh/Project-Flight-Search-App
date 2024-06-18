@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.flightsearchapp.core.designsystem.theme.FlightSearchAppTheme
-import com.example.flightsearchapp.core.ui.model.Flight
+import com.example.flightsearchapp.core.model.Flight
 import com.example.flightsearchapp.core.ui.uistate.SearchScreenUiState
 import com.example.flightsearchapp.core.ui.uistate.ShowFlightUiState
 
