@@ -1,9 +1,9 @@
-package com.example.flightsearchapp.domain
+package com.example.flightsearchapp.core.domain
 
-import com.example.flightsearchapp.data.FavoritesRepository
-import com.example.flightsearchapp.data.database.FavoriteEntity
-import javax.inject.Inject
+import com.example.flightsearchapp.core.data.repository.FavoritesRepository
+import com.example.flightsearchapp.core.database.model.FavoriteEntity
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
 class GetAllFavoritesStreamUseCase @Inject constructor(
     private val favoritesRepository: FavoritesRepository,

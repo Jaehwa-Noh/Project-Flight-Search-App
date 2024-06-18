@@ -1,8 +1,8 @@
-package com.example.flightsearchapp.domain
+package com.example.flightsearchapp.core.domain
 
-import com.example.flightsearchapp.data.SearchTextRepository
-import javax.inject.Inject
+import com.example.flightsearchapp.core.data.repository.SearchTextRepository
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
 class GetSavedSearchTextStreamUseCase @Inject constructor(
     private val searchTextRepository: SearchTextRepository,

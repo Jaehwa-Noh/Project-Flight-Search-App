@@ -1,11 +1,10 @@
-package com.example.flightsearchapp.domain
+package com.example.flightsearchapp.core.domain
 
-import com.example.flightsearchapp.data.AirportsFtsRepository
-import com.example.flightsearchapp.data.AirportsRepository
-import com.example.flightsearchapp.data.database.asSuggestionAirport
-import com.example.flightsearchapp.di.DispatcherDefault
-import com.example.flightsearchapp.ui.model.SuggestionAirport
-import javax.inject.Inject
+import com.example.flightsearchapp.core.data.di.DispatcherDefault
+import com.example.flightsearchapp.core.data.repository.AirportsFtsRepository
+import com.example.flightsearchapp.core.data.repository.AirportsRepository
+import com.example.flightsearchapp.core.database.model.SuggestionAirport
+import com.example.flightsearchapp.core.database.model.asSuggestionAirport
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
@@ -13,6 +12,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 class GetSuggestionsStreamUseCase @Inject constructor(
     private val airportsRepository: AirportsRepository,

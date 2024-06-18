@@ -1,11 +1,11 @@
-package com.example.flightsearchapp.domain
+package com.example.flightsearchapp.core.domain
 
-import com.example.flightsearchapp.data.FavoritesRepository
-import com.example.flightsearchapp.data.database.FavoriteEntity
-import com.example.flightsearchapp.di.DispatcherDefault
-import javax.inject.Inject
+import com.example.flightsearchapp.core.data.di.DispatcherDefault
+import com.example.flightsearchapp.core.data.repository.FavoritesRepository
+import com.example.flightsearchapp.core.database.model.FavoriteEntity
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 class InsertFavoriteUseCase @Inject constructor(
     private val favoritesRepository: FavoritesRepository,

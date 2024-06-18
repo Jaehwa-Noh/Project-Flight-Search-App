@@ -1,9 +1,9 @@
-package com.example.flightsearchapp.domain
+package com.example.flightsearchapp.core.domain
 
-import com.example.flightsearchapp.data.AirportsRepository
-import com.example.flightsearchapp.data.database.AirportEntity
-import javax.inject.Inject
+import com.example.flightsearchapp.core.data.repository.AirportsRepository
+import com.example.flightsearchapp.core.database.model.AirportEntity
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
 class GetAirportsStreamUseCase @Inject constructor(
     private val airportsRepository: AirportsRepository,
