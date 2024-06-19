@@ -1,11 +1,12 @@
-package com.example.flightsearchapp.fake
+package com.example.flightsearchapp.core.testing.repository
 
-import com.example.flightsearchapp.data.SearchTextRepository
+import com.example.flightsearchapp.core.data.repository.SearchTextRepository
+import com.example.flightsearchapp.core.testing.fake.datasource.SearchTextFakeRepository
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.test.runTest
 
 /**
  * Instrumented test for [SearchTextFakeRepository]

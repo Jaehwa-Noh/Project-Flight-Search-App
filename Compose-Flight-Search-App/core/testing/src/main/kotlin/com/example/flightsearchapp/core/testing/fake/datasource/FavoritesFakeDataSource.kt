@@ -1,8 +1,8 @@
-package com.example.flightsearchapp.fake
+package com.example.flightsearchapp.core.testing.fake.datasource
 
-import com.example.flightsearchapp.data.FavoritesDataSource
-import com.example.flightsearchapp.data.database.FavoriteEntity
-import com.example.flightsearchapp.data.database.FavoriteWithAirports
+import com.example.flightsearchapp.core.data.datasource.FavoritesDataSource
+import com.example.flightsearchapp.core.database.model.FavoriteEntity
+import com.example.flightsearchapp.core.database.model.FavoriteWithAirports
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow

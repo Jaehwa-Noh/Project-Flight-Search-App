@@ -1,7 +1,7 @@
-package com.example.flightsearchapp.fake
+package com.example.flightsearchapp.core.testing.fake.datasource
 
-import com.example.flightsearchapp.data.AirportsDataSource
-import com.example.flightsearchapp.data.database.AirportEntity
+import com.example.flightsearchapp.core.data.datasource.AirportsDataSource
+import com.example.flightsearchapp.core.database.model.AirportEntity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow

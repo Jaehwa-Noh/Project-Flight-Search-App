@@ -1,4 +1,4 @@
-package com.example.flightsearchapp.core.testing.database
+package com.example.flightsearchapp.core.testing.fake.data.database
 
 import com.example.flightsearchapp.core.data.model.asFtsEntity
 import com.example.flightsearchapp.core.database.model.AirportFtsEntity

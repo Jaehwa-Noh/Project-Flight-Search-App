@@ -1,22 +1,23 @@
-package com.example.flightsearchapp.fake
+package com.example.flightsearchapp.core.testing.datasource
 
-import com.example.flightsearchapp.data.AirportsDataSource
-import com.example.flightsearchapp.testing.model.database.airportEntitiesTestData
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
+import com.example.flightsearchapp.core.data.datasource.AirportsDataSource
+import com.example.flightsearchapp.core.testing.fake.data.database.airportEntitiesTestData
+import com.example.flightsearchapp.core.testing.fake.datasource.AirportsFakeDataSource
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.test.runTest
-import org.junit.Before
 import org.junit.Test
+import kotlin.test.BeforeTest
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 /**
  * Instrumented test for [AirportsFakeDataSource].
  */
 class AirportsFakeDataSourceTest {
-    lateinit var airportsDataSource: AirportsDataSource
+    private lateinit var airportsDataSource: AirportsDataSource
 
-    @Before
+    @BeforeTest
     fun setUp() {
         airportsDataSource = AirportsFakeDataSource()
     }

@@ -1,6 +1,6 @@
-package com.example.flightsearchapp.fake
+package com.example.flightsearchapp.core.testing.fake.datasource
 
-import com.example.flightsearchapp.data.SearchTextRepository
+import com.example.flightsearchapp.core.data.repository.SearchTextRepository
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
