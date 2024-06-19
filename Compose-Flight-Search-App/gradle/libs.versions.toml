@@ -10,6 +10,7 @@ hiltAndroid = "2.51"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 kotlin = "1.9.22"
+kotlinCompilerExtensionVersion = "1.5.10"
 kotlinxCoroutinesTest = "1.8.1-Beta"
 ksp = "1.9.22-1.0.18"
 ktlint = "1.2.1"
@@ -17,6 +18,11 @@ lifecycleVersion = "2.7.0"
 robolectric = "4.12"
 roomVersion = "2.6.1"
 spotless = "6.25.0"
+
+
+appcompat = "1.7.0"
+material = "1.12.0"
+jetbrainsKotlinJvm = "1.9.22"
 
 
 [libraries]
@@ -48,6 +54,10 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric"}
 
+
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidApplication" }
 android-library = { id = "com.android.library", version.ref = "androidApplication" }
@@ -55,3 +65,6 @@ hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndro
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp"}
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless"}
+
+
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
