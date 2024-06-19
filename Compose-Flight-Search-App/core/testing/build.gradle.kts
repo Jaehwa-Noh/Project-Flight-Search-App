@@ -21,4 +21,9 @@ dependencies {
     api(projects.core.data)
 
     implementation(projects.core.data)
+    implementation(libs.androidx.core.ktx)
+
+    testImplementation(kotlin("test"))
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
 }
