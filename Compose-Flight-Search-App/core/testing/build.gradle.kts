@@ -18,10 +18,15 @@ android {
 
 dependencies {
     api(kotlin("test"))
+
     api(projects.core.data)
 
-    implementation(projects.core.data)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.hilt.android.testing)
+    implementation(libs.kotlinx.coroutines.test)
+
+    implementation(projects.core.data)
 
     testImplementation(kotlin("test"))
     testImplementation(libs.junit)
