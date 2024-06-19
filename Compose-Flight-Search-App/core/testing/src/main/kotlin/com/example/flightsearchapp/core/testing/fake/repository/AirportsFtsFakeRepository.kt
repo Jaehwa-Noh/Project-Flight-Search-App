@@ -1,14 +1,14 @@
-package com.example.flightsearchapp.testing.repository
+package com.example.flightsearchapp.core.testing.fake.repository
 
-import com.example.flightsearchapp.data.AirportsFtsRepository
-import com.example.flightsearchapp.data.database.AirportFtsEntity
-import com.example.flightsearchapp.di.DispatcherIO
-import com.example.flightsearchapp.testing.model.database.airportFtsEntitiesTestData
-import javax.inject.Inject
+import com.example.flightsearchapp.core.data.di.DispatcherIO
+import com.example.flightsearchapp.core.data.repository.AirportsFtsRepository
+import com.example.flightsearchapp.core.database.model.AirportFtsEntity
+import com.example.flightsearchapp.core.testing.fake.data.database.airportFtsEntitiesTestData
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import javax.inject.Inject
 
 class AirportsFtsFakeRepository @Inject constructor(
     @DispatcherIO private val ioDispatcher: CoroutineDispatcher,

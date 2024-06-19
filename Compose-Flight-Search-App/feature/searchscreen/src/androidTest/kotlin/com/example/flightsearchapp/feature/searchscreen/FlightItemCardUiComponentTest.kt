@@ -1,4 +1,4 @@
-package com.example.flightsearchapp.ui
+package com.example.flightsearchapp.feature.searchscreen
 
 import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.assertIsDisplayed
@@ -6,9 +6,9 @@ import androidx.compose.ui.test.assertIsNotDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
-import com.example.flightsearchapp.testing.model.ui.bookMarkToggle
-import com.example.flightsearchapp.testing.model.ui.flightTestData
-import com.example.flightsearchapp.ui.flight.FlightItemCardUiComponent
+import com.example.flightsearchapp.core.testing.fake.ui.bookMarkToggle
+import com.example.flightsearchapp.core.testing.fake.ui.flightTestData
+import com.example.flightsearchapp.core.ui.flight.FlightItemCardUiComponent
 import org.junit.Rule
 import org.junit.Test
 
