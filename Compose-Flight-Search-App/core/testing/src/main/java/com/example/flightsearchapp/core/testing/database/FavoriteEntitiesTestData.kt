@@ -1,6 +1,6 @@
-package com.example.flightsearchapp.testing.model.database
+package com.example.flightsearchapp.core.testing.database
 
-import com.example.flightsearchapp.data.database.FavoriteEntity
+import com.example.flightsearchapp.core.database.model.FavoriteEntity
 
 val favoriteEntitiesTestData: List<FavoriteEntity> = listOf(
     testFavoriteEntity(1, "ABC", "CDE"),

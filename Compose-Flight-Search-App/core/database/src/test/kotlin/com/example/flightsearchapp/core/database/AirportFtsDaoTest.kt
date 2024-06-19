@@ -1,12 +1,11 @@
-package com.example.flightsearchapp.database
+package com.example.flightsearchapp.core.database
 
 import androidx.room.Room
-import com.example.flightsearchapp.data.database.AirportDao
-import com.example.flightsearchapp.data.database.AirportFtsDao
-import com.example.flightsearchapp.data.database.AppDatabase
-import com.example.flightsearchapp.data.database.asFtsEntity
-import com.example.flightsearchapp.testing.model.database.airportEntitiesTestData
-import kotlin.test.assertEquals
+import com.example.flightsearchapp.core.data.model.asFtsEntity
+import com.example.flightsearchapp.core.database.dao.AirportDao
+import com.example.flightsearchapp.core.database.dao.AirportFtsDao
+import com.example.flightsearchapp.core.database.dao.AppDatabase
+import com.example.flightsearchapp.core.testing.database.airportEntitiesTestData
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import org.junit.After
@@ -15,6 +14,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
+import kotlin.test.assertEquals
 
 /**
  * Instrumented test for [AirportFtsDao]

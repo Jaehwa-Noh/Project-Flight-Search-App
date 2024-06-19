@@ -1,13 +1,11 @@
-package com.example.flightsearchapp.database
+package com.example.flightsearchapp.core.database
 
 import androidx.room.Room
-import com.example.flightsearchapp.data.database.AirportDao
-import com.example.flightsearchapp.data.database.AppDatabase
-import com.example.flightsearchapp.data.database.FavoriteDao
-import com.example.flightsearchapp.testing.model.database.airportEntitiesTestData
-import com.example.flightsearchapp.testing.model.database.favoriteEntitiesTestData
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
+import com.example.flightsearchapp.core.database.dao.AirportDao
+import com.example.flightsearchapp.core.database.dao.AppDatabase
+import com.example.flightsearchapp.core.database.dao.FavoriteDao
+import com.example.flightsearchapp.core.testing.database.airportEntitiesTestData
+import com.example.flightsearchapp.core.testing.database.favoriteEntitiesTestData
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.advanceUntilIdle
@@ -18,6 +16,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 /**
  * Instrumented test for [FavoriteDao]
