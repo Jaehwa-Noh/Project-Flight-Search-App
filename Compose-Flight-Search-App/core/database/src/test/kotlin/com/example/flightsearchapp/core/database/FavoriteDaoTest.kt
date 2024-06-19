@@ -4,8 +4,8 @@ import androidx.room.Room
 import com.example.flightsearchapp.core.database.dao.AirportDao
 import com.example.flightsearchapp.core.database.dao.AppDatabase
 import com.example.flightsearchapp.core.database.dao.FavoriteDao
-import com.example.flightsearchapp.core.testing.database.airportEntitiesTestData
-import com.example.flightsearchapp.core.testing.database.favoriteEntitiesTestData
+import com.example.flightsearchapp.core.testing.fake.data.database.airportEntitiesTestData
+import com.example.flightsearchapp.core.testing.fake.data.database.favoriteEntitiesTestData
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.advanceUntilIdle

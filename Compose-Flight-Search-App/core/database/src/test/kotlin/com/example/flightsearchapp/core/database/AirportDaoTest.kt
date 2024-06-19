@@ -3,7 +3,7 @@ package com.example.flightsearchapp.core.database
 import androidx.room.Room
 import com.example.flightsearchapp.core.database.dao.AirportDao
 import com.example.flightsearchapp.core.database.dao.AppDatabase
-import com.example.flightsearchapp.core.testing.database.airportEntitiesTestData
+import com.example.flightsearchapp.core.testing.fake.data.database.airportEntitiesTestData
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.test.runTest

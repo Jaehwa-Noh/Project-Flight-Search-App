@@ -5,7 +5,7 @@ import com.example.flightsearchapp.core.data.model.asFtsEntity
 import com.example.flightsearchapp.core.database.dao.AirportDao
 import com.example.flightsearchapp.core.database.dao.AirportFtsDao
 import com.example.flightsearchapp.core.database.dao.AppDatabase
-import com.example.flightsearchapp.core.testing.database.airportEntitiesTestData
+import com.example.flightsearchapp.core.testing.fake.data.database.airportEntitiesTestData
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import org.junit.After
