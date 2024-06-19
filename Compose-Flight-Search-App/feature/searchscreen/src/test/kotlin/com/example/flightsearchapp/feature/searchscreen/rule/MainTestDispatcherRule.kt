@@ -1,4 +1,4 @@
-package com.example.flightsearchapp.rule
+package com.example.flightsearchapp.feature.searchscreen.rule
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

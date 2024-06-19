@@ -1,27 +1,27 @@
-package com.example.flightsearchapp
+package com.example.flightsearchapp.feature.searchscreen
 
-import com.example.flightsearchapp.data.AllFlightsRepository
-import com.example.flightsearchapp.data.InDiskAirportsFtsRepository
-import com.example.flightsearchapp.data.InDiskAirportsRepository
-import com.example.flightsearchapp.data.InDiskFavoritesRepository
-import com.example.flightsearchapp.data.database.asFtsEntity
-import com.example.flightsearchapp.domain.DeleteFavoriteUseCase
-import com.example.flightsearchapp.domain.GetAllFavoriteFlightsStreamUseCase
-import com.example.flightsearchapp.domain.GetAllFlightsStreamUseCase
-import com.example.flightsearchapp.domain.GetSavedSearchTextStreamUseCase
-import com.example.flightsearchapp.domain.GetSuggestionsStreamUseCase
-import com.example.flightsearchapp.domain.InsertFavoriteUseCase
-import com.example.flightsearchapp.domain.SetSavedSearchTextUseCase
-import com.example.flightsearchapp.fake.AirportsFakeDataSource
-import com.example.flightsearchapp.fake.AirportsFtsFakeDataSource
-import com.example.flightsearchapp.fake.FavoritesFakeDataSource
-import com.example.flightsearchapp.fake.SearchTextFakeRepository
-import com.example.flightsearchapp.rule.MainTestDispatcherRule
-import com.example.flightsearchapp.testing.model.database.airportEntitiesTestData
-import com.example.flightsearchapp.testing.model.database.favoriteEntitiesTestData
-import com.example.flightsearchapp.ui.SearchScreenUiState
-import com.example.flightsearchapp.ui.SearchScreenViewModel
-import com.example.flightsearchapp.ui.ShowFlightUiState
+import com.example.flightsearchapp.core.data.model.asFtsEntity
+import com.example.flightsearchapp.core.data.repository.AllFlightsRepository
+import com.example.flightsearchapp.core.data.repository.InDiskAirportsFtsRepository
+import com.example.flightsearchapp.core.data.repository.InDiskAirportsRepository
+import com.example.flightsearchapp.core.data.repository.InDiskFavoritesRepository
+import com.example.flightsearchapp.core.domain.DeleteFavoriteUseCase
+import com.example.flightsearchapp.core.domain.GetAllFavoriteFlightsStreamUseCase
+import com.example.flightsearchapp.core.domain.GetAllFlightsStreamUseCase
+import com.example.flightsearchapp.core.domain.GetSavedSearchTextStreamUseCase
+import com.example.flightsearchapp.core.domain.GetSuggestionsStreamUseCase
+import com.example.flightsearchapp.core.domain.InsertFavoriteUseCase
+import com.example.flightsearchapp.core.domain.SetSavedSearchTextUseCase
+import com.example.flightsearchapp.core.testing.fake.data.database.airportEntitiesTestData
+import com.example.flightsearchapp.core.testing.fake.data.database.favoriteEntitiesTestData
+import com.example.flightsearchapp.core.testing.fake.datasource.AirportsFakeDataSource
+import com.example.flightsearchapp.core.testing.fake.datasource.AirportsFtsFakeDataSource
+import com.example.flightsearchapp.core.testing.fake.datasource.FavoritesFakeDataSource
+import com.example.flightsearchapp.core.testing.fake.datasource.SearchTextFakeRepository
+import com.example.flightsearchapp.core.ui.uistate.SearchScreenUiState
+import com.example.flightsearchapp.core.ui.uistate.ShowFlightUiState
+import com.example.flightsearchapp.feature.searchscreen.rule.MainTestDispatcherRule
+import com.example.flightsearchapp.feature.searchscreen.ui.SearchScreenViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
@@ -43,82 +43,100 @@ class SearchScreenViewModelTest {
 
     private lateinit var searchScreenViewModel: SearchScreenViewModel
 
-    private val searchTextFakeRepository = SearchTextFakeRepository()
+    private val searchTextFakeRepository =
+        SearchTextFakeRepository()
 
-    private val airportsFakeDataSource = AirportsFakeDataSource()
+    private val airportsFakeDataSource =
+        AirportsFakeDataSource()
 
-    private val airportsFtsFakeDataSource = AirportsFtsFakeDataSource()
+    private val airportsFtsFakeDataSource =
+        AirportsFtsFakeDataSource()
 
-    private val favoritesFakeDataSource = FavoritesFakeDataSource(airportsFakeDataSource)
+    private val favoritesFakeDataSource =
+        FavoritesFakeDataSource(
+            airportsFakeDataSource
+        )
 
-    private val airportsFtsRepository = InDiskAirportsFtsRepository(
-        airportsFtsDataSource = airportsFtsFakeDataSource,
-        defaultDispatcher = mainTestDispatcherRule.testDispatcher,
-    )
+    private val airportsFtsRepository =
+        InDiskAirportsFtsRepository(
+            airportsFtsDataSource = airportsFtsFakeDataSource,
+            defaultDispatcher = mainTestDispatcherRule.testDispatcher,
+        )
 
-    private val airportsRepository = InDiskAirportsRepository(
-        airportsDataSource = airportsFakeDataSource,
-        defaultDispatcher = mainTestDispatcherRule.testDispatcher,
-    )
+    private val airportsRepository =
+        InDiskAirportsRepository(
+            airportsDataSource = airportsFakeDataSource,
+            defaultDispatcher = mainTestDispatcherRule.testDispatcher,
+        )
 
-    private val favoritesRepository = InDiskFavoritesRepository(
-        favoritesDataSource = favoritesFakeDataSource,
-    )
+    private val favoritesRepository =
+        InDiskFavoritesRepository(
+            favoritesDataSource = favoritesFakeDataSource,
+        )
 
-    private val allFlightsRepository = AllFlightsRepository(
-        airportsRepository = airportsRepository,
-        favoritesRepository = favoritesRepository,
-        defaultDispatcher = mainTestDispatcherRule.testDispatcher,
-    )
-
-    private val getSavedSearchTextStreamUseCase = GetSavedSearchTextStreamUseCase(
-        searchTextRepository = searchTextFakeRepository,
-    )
-
-    private val setSavedSearchTextUseCase = SetSavedSearchTextUseCase(
-        searchTextRepository = searchTextFakeRepository,
-        defaultDispatcher = mainTestDispatcherRule.testDispatcher,
-    )
-
-    private val getSuggestionsStreamUseCase = GetSuggestionsStreamUseCase(
-        airportsRepository = airportsRepository,
-        airportsFtsRepository = airportsFtsRepository,
-        defaultDispatcher = mainTestDispatcherRule.testDispatcher,
-    )
-
-    private val getAllFlightsStreamUseCase = GetAllFlightsStreamUseCase(
-        allFlightsRepository = AllFlightsRepository(
+    private val allFlightsRepository =
+        AllFlightsRepository(
             airportsRepository = airportsRepository,
             favoritesRepository = favoritesRepository,
             defaultDispatcher = mainTestDispatcherRule.testDispatcher,
-        ),
-    )
+        )
 
-    private val insertFavoriteUseCase = InsertFavoriteUseCase(
-        favoritesRepository = favoritesRepository,
-        defaultDispatcher = mainTestDispatcherRule.testDispatcher,
-    )
+    private val getSavedSearchTextStreamUseCase =
+        GetSavedSearchTextStreamUseCase(
+            searchTextRepository = searchTextFakeRepository,
+        )
 
-    private val deleteFavoriteUseCase = DeleteFavoriteUseCase(
-        favoritesRepository = favoritesRepository,
-        defaultDispatcher = mainTestDispatcherRule.testDispatcher,
-    )
+    private val setSavedSearchTextUseCase =
+        SetSavedSearchTextUseCase(
+            searchTextRepository = searchTextFakeRepository,
+            defaultDispatcher = mainTestDispatcherRule.testDispatcher,
+        )
 
-    private val getAllFavoritesFlightsStreamUseCase = GetAllFavoriteFlightsStreamUseCase(
-        getAllFlightsRepository = allFlightsRepository,
-    )
+    private val getSuggestionsStreamUseCase =
+        GetSuggestionsStreamUseCase(
+            airportsRepository = airportsRepository,
+            airportsFtsRepository = airportsFtsRepository,
+            defaultDispatcher = mainTestDispatcherRule.testDispatcher,
+        )
+
+    private val getAllFlightsStreamUseCase =
+        GetAllFlightsStreamUseCase(
+            allFlightsRepository = AllFlightsRepository(
+                airportsRepository = airportsRepository,
+                favoritesRepository = favoritesRepository,
+                defaultDispatcher = mainTestDispatcherRule.testDispatcher,
+            ),
+        )
+
+    private val insertFavoriteUseCase =
+        InsertFavoriteUseCase(
+            favoritesRepository = favoritesRepository,
+            defaultDispatcher = mainTestDispatcherRule.testDispatcher,
+        )
+
+    private val deleteFavoriteUseCase =
+        DeleteFavoriteUseCase(
+            favoritesRepository = favoritesRepository,
+            defaultDispatcher = mainTestDispatcherRule.testDispatcher,
+        )
+
+    private val getAllFavoritesFlightsStreamUseCase =
+        GetAllFavoriteFlightsStreamUseCase(
+            getAllFlightsRepository = allFlightsRepository,
+        )
 
     @BeforeTest
     fun createSearchScreenViewModel() {
-        searchScreenViewModel = SearchScreenViewModel(
-            getSavedSearchTextStreamUseCase = getSavedSearchTextStreamUseCase,
-            setSavedSearchTextUseCase = setSavedSearchTextUseCase,
-            getSuggestionsStreamUseCase = getSuggestionsStreamUseCase,
-            getAllFlightsStreamUseCase = getAllFlightsStreamUseCase,
-            insertFavoriteUseCase = insertFavoriteUseCase,
-            deleteFavoriteUseCase = deleteFavoriteUseCase,
-            getAllFavoritesFlightsStreamUseCase = getAllFavoritesFlightsStreamUseCase,
-        )
+        searchScreenViewModel =
+            SearchScreenViewModel(
+                getSavedSearchTextStreamUseCase = getSavedSearchTextStreamUseCase,
+                setSavedSearchTextUseCase = setSavedSearchTextUseCase,
+                getSuggestionsStreamUseCase = getSuggestionsStreamUseCase,
+                getAllFlightsStreamUseCase = getAllFlightsStreamUseCase,
+                insertFavoriteUseCase = insertFavoriteUseCase,
+                deleteFavoriteUseCase = deleteFavoriteUseCase,
+                getAllFavoritesFlightsStreamUseCase = getAllFavoritesFlightsStreamUseCase,
+            )
 
         airportsFakeDataSource.insertAirportsEntities(airportEntitiesTestData)
     }
