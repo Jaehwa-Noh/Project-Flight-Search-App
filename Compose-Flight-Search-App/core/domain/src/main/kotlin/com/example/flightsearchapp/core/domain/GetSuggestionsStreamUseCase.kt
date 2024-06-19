@@ -1,10 +1,9 @@
 package com.example.flightsearchapp.core.domain
 
 import com.example.flightsearchapp.core.data.di.DispatcherDefault
+import com.example.flightsearchapp.core.data.model.asSuggestionAirport
 import com.example.flightsearchapp.core.data.repository.AirportsFtsRepository
 import com.example.flightsearchapp.core.data.repository.AirportsRepository
-import com.example.flightsearchapp.core.database.model.SuggestionAirport
-import com.example.flightsearchapp.core.database.model.asSuggestionAirport
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
@@ -20,7 +19,7 @@ class GetSuggestionsStreamUseCase @Inject constructor(
     @DispatcherDefault private val defaultDispatcher: CoroutineDispatcher,
 ) {
     @OptIn(ExperimentalCoroutinesApi::class)
-    suspend operator fun invoke(query: String): Flow<List<SuggestionAirport>> =
+    suspend operator fun invoke(query: String): Flow<List<com.example.flightsearchapp.core.model.SuggestionAirport>> =
         withContext(defaultDispatcher) {
             airportsFtsRepository.searchAirportsStream(query)
                 .mapLatest { iataCodes ->
@@ -30,7 +29,7 @@ class GetSuggestionsStreamUseCase @Inject constructor(
                     }
                 }.flowOn(defaultDispatcher)
                 .catch {
-                    emptyList<SuggestionAirport>()
+                    emptyList<com.example.flightsearchapp.core.model.SuggestionAirport>()
                 }
         }
 }

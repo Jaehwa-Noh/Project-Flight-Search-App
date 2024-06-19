@@ -1,7 +1,7 @@
 package com.example.flightsearchapp.core.domain
 
-import com.example.flightsearchapp.core.data.model.Flight
 import com.example.flightsearchapp.core.data.repository.AllFlightsRepository
+import com.example.flightsearchapp.core.model.Flight
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
