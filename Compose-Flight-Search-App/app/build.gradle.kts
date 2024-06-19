@@ -109,5 +109,4 @@ dependencies {
     androidTestImplementation(projects.core.testing)
 
     annotationProcessor(libs.androidx.room.compiler)
-
 }
