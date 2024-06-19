@@ -1,15 +1,15 @@
-package com.example.flightsearchapp.testing.di
+package com.example.flightsearchapp.core.testing.fake.di
 
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineScheduler
 import kotlinx.coroutines.test.TestDispatcher
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import javax.inject.Singleton
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @Module

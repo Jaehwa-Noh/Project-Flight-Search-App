@@ -1,13 +1,14 @@
-package com.example.flightsearchapp.testing.repository
+package com.example.flightsearchapp.core.testing.fake.repository
 
-import com.example.flightsearchapp.data.SearchTextRepository
-import javax.inject.Inject
+import com.example.flightsearchapp.core.data.repository.SearchTextRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import javax.inject.Inject
 
-class SearchTextFakeRepository @Inject constructor() : SearchTextRepository {
+class SearchTextFakeHiltRepository @Inject constructor() :
+    SearchTextRepository {
 
     private val mySearchText = MutableStateFlow("")
 

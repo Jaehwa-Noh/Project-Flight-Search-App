@@ -1,8 +1,8 @@
-package com.example.flightsearchapp.testing.di
+package com.example.flightsearchapp.core.testing.fake.di
 
-import com.example.flightsearchapp.di.CoroutineDispatchersModule
-import com.example.flightsearchapp.di.DispatcherDefault
-import com.example.flightsearchapp.di.DispatcherIO
+import com.example.flightsearchapp.core.data.di.CoroutineDispatchersModule
+import com.example.flightsearchapp.core.data.di.DispatcherDefault
+import com.example.flightsearchapp.core.data.di.DispatcherIO
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.components.SingletonComponent
