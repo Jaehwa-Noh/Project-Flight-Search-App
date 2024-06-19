@@ -6,9 +6,9 @@ import com.example.flightsearchapp.core.data.model.asFtsEntity
 import com.example.flightsearchapp.core.data.repository.AirportsFtsRepository
 import com.example.flightsearchapp.core.data.repository.AirportsRepository
 import dagger.hilt.android.HiltAndroidApp
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltAndroidApp
 class SearchFlightApplication : Application() {
