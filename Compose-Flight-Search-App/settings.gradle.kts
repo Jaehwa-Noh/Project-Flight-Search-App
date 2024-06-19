@@ -17,5 +17,15 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version("0.8.0")
 }
 
-rootProject.name = "Flight Search App"
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
+rootProject.name = "Flight-Search-App"
 include(":app")
+include(":core:data")
+include(":core:database")
+include(":core:designsystem")
+include(":core:domain")
+include(":core:model")
+include(":core:testing")
+include(":core:ui")
+include(":feature:searchscreen")

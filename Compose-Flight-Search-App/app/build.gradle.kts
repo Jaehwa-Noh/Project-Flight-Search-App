@@ -53,18 +53,14 @@ android {
     buildFeatures {
         compose = true
     }
+
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.10"
+        kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
     }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
-
-    testOptions {
-        unitTests {
-            isIncludeAndroidResources = true
         }
     }
 }
@@ -91,6 +87,11 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.hilt.android)
 
+    implementation(projects.core.data)
+    implementation(projects.core.model)
+    implementation(projects.core.ui)
+    implementation(projects.feature.searchscreen)
+
     testImplementation(kotlin("test"))
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
@@ -104,6 +105,8 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.ui.test.junit4)
     androidTestImplementation(libs.hilt.android.testing)
+
+    androidTestImplementation(projects.core.testing)
 
     annotationProcessor(libs.androidx.room.compiler)
 }

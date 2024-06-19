@@ -4,10 +4,12 @@ https://developer.android.com/codelabs/basic-android-kotlin-compose-flight-searc
 Practice makes a master.   
 This main branch is the main directory.   
 
-There are 2 branchs for 1 practice, Compose and SwiftUI.   
+There are 4 branchs for 1 practice, Compose and SwiftUI.   
    
 • [Compose branch](https://github.com/Jaehwa-Noh/Project-Flight-Search-App/tree/compose-flight-search-app)   
+• [Modularization Compose branch](https://github.com/Jaehwa-Noh/Project-Flight-Search-App/tree/modularization-compose-flight-search-app)   
 • [SwiftUI branch]   
+• [Modularization SwiftUI branch]   
 
 
 ---
@@ -18,7 +20,9 @@ There are 2 branchs for 1 practice, Compose and SwiftUI.
 1개의 연습에 컴포즈와 스위프트유아이 2개의 브랜치가 있습니다.   
    
 • [컴포즈 브랜치](https://github.com/Jaehwa-Noh/Project-Flight-Search-App/tree/compose-flight-search-app)   
+• [모듈화 컴포즈 브랜치](https://github.com/Jaehwa-Noh/Project-Flight-Search-App/tree/modularization-compose-flight-search-app)   
 • [스위프트유아이 브랜치]   
+• [모듈화 스위프트유아이 브랜치]   
 
 
 ## Flight Search App (비행기 검색 앱)
