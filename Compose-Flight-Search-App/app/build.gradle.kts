@@ -66,7 +66,6 @@ android {
 }
 
 dependencies {
-    ksp(libs.androidx.room.compiler)
     ksp(libs.hilt.android.compiler)
 
     kspAndroidTest(libs.hilt.compiler)
@@ -75,13 +74,10 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.room.ktx)
-    implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
@@ -91,11 +87,6 @@ dependencies {
     implementation(projects.core.model)
     implementation(projects.core.ui)
     implementation(projects.feature.searchscreen)
-
-    testImplementation(kotlin("test"))
-    testImplementation(libs.junit)
-    testImplementation(libs.kotlinx.coroutines.test)
-    testImplementation(libs.robolectric)
 
     debugImplementation(libs.androidx.ui.test.manifest)
     debugImplementation(libs.androidx.ui.tooling)
@@ -107,6 +98,4 @@ dependencies {
     androidTestImplementation(libs.hilt.android.testing)
 
     androidTestImplementation(projects.core.testing)
-
-    annotationProcessor(libs.androidx.room.compiler)
 }
