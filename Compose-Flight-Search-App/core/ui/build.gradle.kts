@@ -27,13 +27,14 @@ android {
 }
 
 dependencies {
+    api(projects.core.designsystem)
+
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.runtime)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.ui.tooling.preview)
 
-    implementation(projects.core.designsystem)
-    implementation(projects.core.ui)
+    implementation(projects.core.model)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
