@@ -6,6 +6,7 @@ import androidx.compose.ui.test.assertIsNotDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
+import com.example.flightsearchapp.core.testing.fake.rules.GrantPostNotificationsPermissionRule
 import com.example.flightsearchapp.core.testing.fake.ui.bookMarkToggle
 import com.example.flightsearchapp.core.testing.fake.ui.flightTestData
 import com.example.flightsearchapp.core.ui.flight.FlightItemCardUiComponent
@@ -16,8 +17,11 @@ import org.junit.Test
  * UI test for [FlightItemCardUiComponent]
  */
 class FlightItemCardUiComponentTest {
-    @get:Rule
+    @get:Rule(order = 0)
     val composeTestRule = createAndroidComposeRule<ComponentActivity>()
+
+    @get:Rule(order = 1)
+    val runtimePermissionRule = GrantPostNotificationsPermissionRule()
 
     @Test
     fun flight_noFavorite_emptyFavorite() {

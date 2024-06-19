@@ -14,6 +14,7 @@ import androidx.compose.ui.test.performTextInput
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.NoActivityResumedException
 import com.example.flightsearchapp.MainActivity
+import com.example.flightsearchapp.core.testing.fake.rules.GrantPostNotificationsPermissionRule
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
@@ -30,6 +31,9 @@ class NavigationTest {
 
     @get:Rule(order = 1)
     val composeTestRule = createAndroidComposeRule<MainActivity>()
+
+    @get:Rule(order = 2)
+    val permissionRule = GrantPostNotificationsPermissionRule()
 
     @Before
     fun setUp() = hiltRule.inject()
