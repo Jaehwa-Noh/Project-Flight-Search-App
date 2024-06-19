@@ -28,8 +28,11 @@ dependencies {
 
     implementation(libs.hilt.android)
     implementation(libs.androidx.datastore.preferences)
-    
+
+    testImplementation(kotlin("test"))
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation(libs.kotlinx.coroutines.test)
+
+    testImplementation(projects.core.testing)
+
 }
