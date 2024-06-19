@@ -1,4 +1,4 @@
-package com.example.flightsearchapp.ui
+package com.example.flightsearchapp.feature.searchscreen.ui
 
 import android.app.Activity
 import androidx.activity.compose.BackHandler
@@ -26,9 +26,11 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.flightsearchapp.R
-import com.example.flightsearchapp.ui.flight.FlightsListScreen
-import com.example.flightsearchapp.ui.suggestion.SuggestionsListScreen
+import com.example.flightsearchapp.core.ui.flight.FlightsListScreen
+import com.example.flightsearchapp.core.ui.suggestion.SuggestionsListScreen
+import com.example.flightsearchapp.core.ui.uistate.SearchScreenUiState
+import com.example.flightsearchapp.core.ui.uistate.ShowFlightUiState
+import com.example.flightsearchapp.feature.searchscreen.R
 
 @Composable
 fun SearchScreen(modifier: Modifier = Modifier) {
@@ -127,6 +129,7 @@ fun SearchScreen(modifier: Modifier = Modifier) {
                             .allFlights
                             .first()
                             .departureIataCode
+                            
                     }",
                     modifier = Modifier
                         .padding(vertical = 8.dp)

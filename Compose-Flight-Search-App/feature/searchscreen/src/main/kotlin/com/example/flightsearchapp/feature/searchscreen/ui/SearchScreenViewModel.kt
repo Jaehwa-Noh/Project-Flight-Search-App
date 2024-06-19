@@ -1,17 +1,17 @@
-package com.example.flightsearchapp.ui
+package com.example.flightsearchapp.feature.searchscreen.ui
 
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.flightsearchapp.domain.DeleteFavoriteUseCase
-import com.example.flightsearchapp.domain.GetAllFavoriteFlightsStreamUseCase
-import com.example.flightsearchapp.domain.GetAllFlightsStreamUseCase
-import com.example.flightsearchapp.domain.GetSavedSearchTextStreamUseCase
-import com.example.flightsearchapp.domain.GetSuggestionsStreamUseCase
-import com.example.flightsearchapp.domain.InsertFavoriteUseCase
-import com.example.flightsearchapp.domain.SetSavedSearchTextUseCase
-import com.example.flightsearchapp.ui.model.Flight
-import com.example.flightsearchapp.ui.model.SuggestionAirport
+import com.example.flightsearchapp.core.domain.DeleteFavoriteUseCase
+import com.example.flightsearchapp.core.domain.GetAllFavoriteFlightsStreamUseCase
+import com.example.flightsearchapp.core.domain.GetAllFlightsStreamUseCase
+import com.example.flightsearchapp.core.domain.GetSavedSearchTextStreamUseCase
+import com.example.flightsearchapp.core.domain.GetSuggestionsStreamUseCase
+import com.example.flightsearchapp.core.domain.InsertFavoriteUseCase
+import com.example.flightsearchapp.core.domain.SetSavedSearchTextUseCase
+import com.example.flightsearchapp.core.ui.uistate.SearchScreenUiState
+import com.example.flightsearchapp.core.ui.uistate.ShowFlightUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -132,15 +132,4 @@ class SearchScreenViewModel @Inject constructor(
             )
         }
     }
-}
-
-sealed interface SearchScreenUiState {
-    data class ShowFavorite(val results: List<Flight>) : SearchScreenUiState
-    data class ShowSuggests(val results: List<SuggestionAirport>) : SearchScreenUiState
-    data object Init : SearchScreenUiState
-}
-
-sealed interface ShowFlightUiState {
-    data object Clear : ShowFlightUiState
-    data class SelectSuggest(val allFlights: List<Flight>) : ShowFlightUiState
 }

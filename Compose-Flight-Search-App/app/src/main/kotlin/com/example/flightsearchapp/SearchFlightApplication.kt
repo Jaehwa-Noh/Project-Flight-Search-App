@@ -1,14 +1,14 @@
 package com.example.flightsearchapp
 
 import android.app.Application
-import com.example.flightsearchapp.data.AirportsFtsRepository
-import com.example.flightsearchapp.data.AirportsRepository
-import com.example.flightsearchapp.data.database.asFtsEntity
-import com.example.flightsearchapp.di.ApplicationScope
+import com.example.flightsearchapp.core.data.di.ApplicationScope
+import com.example.flightsearchapp.core.data.model.asFtsEntity
+import com.example.flightsearchapp.core.data.repository.AirportsFtsRepository
+import com.example.flightsearchapp.core.data.repository.AirportsRepository
 import dagger.hilt.android.HiltAndroidApp
-import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltAndroidApp
 class SearchFlightApplication : Application() {
