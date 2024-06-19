@@ -47,7 +47,9 @@ dependencies {
     implementation(projects.core.model)
     implementation(projects.core.ui)
 
+    testImplementation(kotlin("test"))
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation(libs.kotlinx.coroutines.test)
+
+    testImplementation(projects.core.testing)
 }
