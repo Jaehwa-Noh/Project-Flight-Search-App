@@ -1,17 +1,15 @@
-package com.example.flightsearchapp
+package com.example.flightsearchapp.core.data.repository
 
-import com.example.flightsearchapp.data.AirportsRepository
-import com.example.flightsearchapp.data.InDiskAirportsRepository
-import com.example.flightsearchapp.fake.AirportsFakeDataSource
-import com.example.flightsearchapp.testing.model.database.airportEntitiesTestData
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
+import com.example.flightsearchapp.core.testing.fake.data.database.airportEntitiesTestData
+import com.example.flightsearchapp.core.testing.fake.datasource.AirportsFakeDataSource
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 /**
  * Instrumented test for [AirportsRepository]
@@ -25,7 +23,8 @@ class AirportsRepositoryTest {
 
     @BeforeTest
     fun setUp() {
-        val airportsDataSource = AirportsFakeDataSource()
+        val airportsDataSource =
+            AirportsFakeDataSource()
 
         airportsDataSource.insertAirportsEntities(
             airportEntitiesTestData,
