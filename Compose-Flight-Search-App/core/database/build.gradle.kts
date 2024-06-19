@@ -28,6 +28,7 @@ android {
 }
 
 dependencies {
+    ksp(libs.androidx.room.compiler)
     ksp(libs.hilt.android.compiler)
 
     api(projects.core.model)
@@ -37,8 +38,10 @@ dependencies {
     implementation(libs.hilt.android)
 
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.robolectric)
+
+    testImplementation(projects.core.testing)
 
     annotationProcessor(libs.androidx.room.compiler)
 }
