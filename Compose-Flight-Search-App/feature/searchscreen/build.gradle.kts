@@ -52,4 +52,10 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test)
 
     testImplementation(projects.core.testing)
+
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.junit)
+
+    androidTestImplementation(projects.core.testing)
 }
