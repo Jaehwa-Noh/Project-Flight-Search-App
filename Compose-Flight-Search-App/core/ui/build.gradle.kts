@@ -8,7 +8,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.example.flightsearchapp.ui"
+    namespace = "com.example.flightsearchapp.core.ui"
     compileSdk = 34
 
     buildFeatures {
