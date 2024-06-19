@@ -53,9 +53,11 @@ android {
     buildFeatures {
         compose = true
     }
+
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.10"
+        kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
     }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -91,7 +93,10 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.hilt.android)
 
-    implementation(projects.core.designsystem)
+    implementation(projects.core.data)
+    implementation(projects.core.model)
+    implementation(projects.core.ui)
+    implementation(projects.feature.searchscreen)
 
     testImplementation(kotlin("test"))
     testImplementation(libs.junit)
