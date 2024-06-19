@@ -11,7 +11,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.example.flightsearchapp.database"
+    namespace = "com.example.flightsearchapp.core.database"
     compileSdk = 34
 
     defaultConfig {
