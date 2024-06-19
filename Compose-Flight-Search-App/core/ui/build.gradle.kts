@@ -11,6 +11,14 @@ android {
     namespace = "com.example.flightsearchapp.ui"
     compileSdk = 34
 
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
+    }
+
     defaultConfig {
         minSdk = 24
 
