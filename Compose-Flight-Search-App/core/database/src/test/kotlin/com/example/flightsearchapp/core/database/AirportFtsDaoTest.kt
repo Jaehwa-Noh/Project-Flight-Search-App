@@ -8,12 +8,12 @@ import com.example.flightsearchapp.core.database.dao.AppDatabase
 import com.example.flightsearchapp.core.testing.fake.data.database.airportEntitiesTestData
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
-import org.junit.After
-import org.junit.Before
-import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 import kotlin.test.assertEquals
 
 /**
@@ -26,7 +26,7 @@ class AirportFtsDaoTest {
     private lateinit var airportDao: AirportDao
     private lateinit var appDatabase: AppDatabase
 
-    @Before
+    @BeforeTest
     fun createDB() {
         val context = RuntimeEnvironment
             .getApplication()
@@ -39,7 +39,7 @@ class AirportFtsDaoTest {
         airportFtsDao = appDatabase.airportFtsDao()
     }
 
-    @After
+    @AfterTest
     fun closeDB() = appDatabase.close()
 
     @Test

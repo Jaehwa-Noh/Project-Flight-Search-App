@@ -37,6 +37,7 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.hilt.android)
 
+    testImplementation(kotlin("test"))
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.robolectric)

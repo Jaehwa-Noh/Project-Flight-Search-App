@@ -10,12 +10,12 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
-import org.junit.After
-import org.junit.Before
-import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
@@ -29,7 +29,7 @@ class FavoriteDaoTest {
     private lateinit var favoriteDao: FavoriteDao
     private lateinit var appDatabase: AppDatabase
 
-    @Before
+    @BeforeTest
     fun createDB() {
         val context = RuntimeEnvironment
             .getApplication()
@@ -42,7 +42,7 @@ class FavoriteDaoTest {
         airportDao = appDatabase.airportDao()
     }
 
-    @After
+    @AfterTest
     fun closeDB() {
         appDatabase.close()
     }
