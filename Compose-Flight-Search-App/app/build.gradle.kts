@@ -106,5 +106,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     androidTestImplementation(libs.hilt.android.testing)
 
+    androidTestImplementation(projects.core.testing)
+
     annotationProcessor(libs.androidx.room.compiler)
+
 }
