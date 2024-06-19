@@ -27,6 +27,7 @@ dependencies {
     implementation(libs.hilt.android)
 
     implementation(projects.core.data)
+    implementation(projects.core.model)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
