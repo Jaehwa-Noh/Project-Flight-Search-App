@@ -11,6 +11,13 @@ android {
     namespace = "com.example.flightsearchapp.core.designsystem"
     compileSdk = 34
 
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
+    }
+
     defaultConfig {
         minSdk = 24
 
