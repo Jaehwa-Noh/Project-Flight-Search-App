@@ -3,24 +3,26 @@
 # Please see the documentation for all configuration options:
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
-version: 2
-registries:
-  maven-google:
-    type: "maven-repository"
-    url: "https://maven.google.com"
-updates:
-  - package-ecosystem: "github-actions" # See documentation for possible values
-    directory: "/" # Location of package manifests
-    schedule:
-      interval: "weekly"
-  - package-ecosystem: "gradle" # See documentation for possible values
-    directory: "/Compose-Flight-Search-App" # Location of package manifests
-    schedule:
-      interval: "weekly"
-    registries:
-      - maven-google
-    groups:
-      kotlin-ksp:
-        patterns:
-          - "org.jetbrains.kotlin:*"
-          - "com.google.devtools.ksp"
+# version: 2
+# registries:
+#   maven-google:
+#     type: "maven-repository"
+#     url: "https://maven.google.com"
+# updates:
+#   - package-ecosystem: "github-actions" # See documentation for possible values
+#     directory: "/" # Location of package manifests
+#     schedule:
+#       interval: "weekly"
+#   - package-ecosystem: "gradle" # See documentation for possible values
+#     directory: "/Compose-Flight-Search-App" # Location of package manifests
+#     schedule:
+#       interval: "weekly"
+#     registries:
+#       - maven-google
+#     groups:
+#       kotlin-ksp:
+#         patterns:
+#           - "org.jetbrains.kotlin:*"
+#           - "com.google.devtools.ksp"
+
+# disable github action, this projects will not be managed.
